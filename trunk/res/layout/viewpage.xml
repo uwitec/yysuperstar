@@ -39,16 +39,11 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/LoginPage"
+                    android:id="@+id/MyAddsPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                 </LinearLayout>
                 
-                <LinearLayout
-                    android:id="@+id/RegisterPage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
