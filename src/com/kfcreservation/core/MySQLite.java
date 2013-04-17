@@ -1,6 +1,7 @@
 package com.kfcreservation.core;
 
 import java.util.Vector;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
