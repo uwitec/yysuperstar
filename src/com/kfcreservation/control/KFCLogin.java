@@ -33,10 +33,8 @@ public class KFCLogin extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
-				ftd.getFoodTypeAll(KFCLogin.this);
-				//Intent i = new Intent(KFCLogin.this,KFCWaiter.class);
-				//startActivity(i);
+				Intent i = new Intent(KFCLogin.this,KFCWaiter.class);
+				startActivity(i);
 			}
 		});
 	}
