@@ -1,5 +1,8 @@
 package com.kfcreservation.core;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 
 import android.content.Context;
@@ -10,52 +13,61 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MySQLiteHelper extends SQLiteOpenHelper{
 	
-	private static final String DBNAME = "mydb";
+	private static final String DBNAME = "kfcbdb";
 	private static final int VERSION = 1;
 	private static SQLiteDatabase db;
 	
-	//创建构造数据库
 	public MySQLiteHelper(Context context){
 		this(context,DBNAME,null,VERSION);
 	}
-	/*
-	 * context上下文
-	 * name数据库名称
-	 * factory为Cursor对象
-	 * version版本
-	 */
+
 	public MySQLiteHelper(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
 	}
 	
-	//获得一个SqlIteDatabase对象,通过单例模式创建数据库对象
 	public static SQLiteDatabase getDB(Context context){
 		if(null==db)
 			db = new MySQLiteHelper(context).getWritableDatabase();
 		return db;
 	}
 	
-	public static boolean insert(String sql)// 插入数据
+	public static boolean insert(String sql)
 	{
-		//SQLiteDatabase sld = createOrOpenDatabase();// 连接数据库
-		//MySQLiteHelper.getDB(context);
-		
 		try {
 			db.execSQL(sql);
-
-			//db.close();
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
-
 	}
 
-	public static Vector<Vector<String>> query(String sql)// 查询
+	public static List<HashMap<String, Object>> lQuery(String sql){
+		
+		List<HashMap<String,Object>> lists =new ArrayList<HashMap<String,Object>>();
+		
+		try {
+			Cursor cur= db.rawQuery(sql, new String[] {});
+		
+			while(cur.moveToNext()){
+				HashMap<String,Object> maps =new HashMap<String,Object>();
+				
+				int col = cur.getColumnCount();
+				for (int i = 0; i < col; i++) {
+					maps.put(cur.getColumnName(i).toString(),cur.getString(i));
+				}
+				lists.add(maps);
+			}
+			cur.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lists;
+	}
+
+	public static Vector<Vector<String>> vQuery(String sql)// 查询
 	{
 		Vector<Vector<String>> vector = new Vector<Vector<String>>();// 新建存放查询结果的向量
-		//SQLiteDatabase sld = createOrOpenDatabase();// 得到连接数据库的连接
-		//MySQLiteHelper.getDB(context);
 
 		try {
 			Cursor cur = db.rawQuery(sql, new String[] {});// 得到结果集
@@ -70,7 +82,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				vector.add(v);
 			}
 			cur.close();// 关闭结果集
-			//db.close();// 关闭连接
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,50 +98,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"CREATE TABLE IF NOT EXISTS android_metadata (locale TEXT);",
 			"INSERT INTO \"main\".\"android_metadata\" VALUES (\'en_US\');",
 				
-			// 建立班级表
-			"CREATE TABLE IF NOT EXISTS \"Classes\" (" +
-			"\"_cid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-			"\"className\"  TEXT NOT NULL DEFAULT 未命名班级," +
-			"\"type\"  INTEGER," +
-			"\"icon\"  INTEGER NOT NULL DEFAULT 0," +
-			"\"createDate\"  TEXT," +
-			"CONSTRAINT \"tp\" FOREIGN KEY (\"type\") REFERENCES \"ClassesType\" (\"_tid\")" +
+			// 食品类型表
+			"CREATE TABLE IF NOT EXISTS \"FoodType\" (" +
+			"\"_fid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+			"\"Name\"" +
 			");",
 			
-			"INSERT INTO \"main\".\"Classes\" VALUES (1, 'Android 1班', 1, 0, 20130129);",
-			"INSERT INTO \"main\".\"Classes\" VALUES (2, 'Android 2班', 1, 0, 20130129);",
-			
-			// 建立专业表
-			"CREATE TABLE IF NOT EXISTS \"ClassesType\" (" +
-			"\"_tid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + 
-			"\"classesType\"  TEXT" +
-			");",
-			
-			"INSERT INTO \"main\".\"ClassesType\" VALUES (1, 'Android');",
-			"INSERT INTO \"main\".\"ClassesType\" VALUES (2, 'IOS');",
-			
-			// 学生表
-			"CREATE TABLE IF NOT EXISTS \"Students\" (" +
-			"\"_sid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-			"\"name\"  TEXT NOT NULL," +
-			"\"classesId\"  INTEGER NOT NULL," +
-			"\"joindate\"  TEXT NOT NULL," +
-			"CONSTRAINT \"cid\" FOREIGN KEY (\"classesId\") REFERENCES \"Classes\" (\"_cid\")" +
-			");",
-			
-			"INSERT INTO \"main\".\"Students\" VALUES (1, '杨须斌', 2, 20121228);",
-			"INSERT INTO \"main\".\"Students\" VALUES (2, '杨仁杰', 2, 20130107);",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"主食\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"小食\");",
 		};
 		
 		for (String o : sql) {
-			//MySQLiteHelper.getDB(context).;
 			db.execSQL(o);
 		}
 	}
 
-	//用于数据版本升级操作的方法
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-	}
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {	}
 	
 }

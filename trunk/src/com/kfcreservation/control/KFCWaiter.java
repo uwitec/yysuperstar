@@ -21,6 +21,7 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
 import com.kfcreservation.R;
+import com.kfcreservation.core.ExitApplication;
 
 @SuppressWarnings("deprecation")
 public class KFCWaiter extends Activity {
@@ -33,6 +34,7 @@ public class KFCWaiter extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		ExitApplication.getInstance().addActivity(this);
 		setContentView(R.layout.waiter);
 
 		mManager = new LocalActivityManager(this, true);

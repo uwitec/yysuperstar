@@ -1,15 +1,17 @@
 package com.kfcreservation.control;
 
-import com.kfcreservation.R;
-
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.kfcreservation.R;
+import com.kfcreservation.core.ExitApplication;
+import com.kfcreservation.core.MySQLiteHelper;
+import com.kfcreservation.dao.impl.FoodTypeDaoImpl;
 
 public class KFCLogin extends Activity {
 
@@ -20,6 +22,8 @@ public class KFCLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		ExitApplication.getInstance().addActivity(this);
+		MySQLiteHelper.getDB(KFCLogin.this);
 		setContentView(R.layout.loginpage);
 		
 		cb_rm = (CheckBox) findViewById(R.id.cb_rm);
@@ -29,8 +33,10 @@ public class KFCLogin extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(KFCLogin.this,KFCWaiter.class);
-				startActivity(i);
+				FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
+				ftd.getFoodTypeAll(KFCLogin.this);
+				//Intent i = new Intent(KFCLogin.this,KFCWaiter.class);
+				//startActivity(i);
 			}
 		});
 	}
