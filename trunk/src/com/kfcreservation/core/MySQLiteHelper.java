@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MySQLiteHelper extends SQLiteOpenHelper{
 	
-	private static final String DBNAME = "kfcbdb";
+	private static final String DBNAME = "kfcdb";
 	private static final int VERSION = 1;
 	private static SQLiteDatabase db;
 	
@@ -94,7 +94,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		
 		String sql[] = new String[] 
 		{
-			//系统表
+			// 系统表
 			"CREATE TABLE IF NOT EXISTS android_metadata (locale TEXT);",
 			"INSERT INTO \"main\".\"android_metadata\" VALUES (\'en_US\');",
 				
@@ -103,9 +103,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"\"_fid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
 			"\"Name\"" +
 			");",
-			
+			// 插入食品类型数据
 			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"主食\");",
 			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"小食\");",
+			
+			// 用户表
+			"CREATE TABLE IF NOT EXISTS \"UserInfo\" (" +
+			"\"_uid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+			"\"PhoneNum\" VARCHAR(20)," +
+			"\"Password\" VARCHAR(20)" +
+			");"
 		};
 		
 		for (String o : sql) {

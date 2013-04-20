@@ -1,10 +1,8 @@
 package com.kfcreservation.control;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.kfcreservation.entity.FoodType;
 import com.kfcreservation.R;
 import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
@@ -29,15 +27,13 @@ public class KFCMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ExitApplication.getInstance().addActivity(this);
-		setContentView(R.layout.menu_main);
-		
 		MySQLiteHelper.getDB(KFCMenu.this);
+		setContentView(R.layout.menu_main);
 		
 		FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
 		List<HashMap<String,Object>> lists = ftd.getFoodTypeAll(KFCMenu.this);
 		
 		SimpleAdapter adapter = new SimpleAdapter(this, lists, R.layout.menu_lists, from, to);
-		
 		
 		mLvType=(ListView) findViewById(R.id.lv_Type);
 		

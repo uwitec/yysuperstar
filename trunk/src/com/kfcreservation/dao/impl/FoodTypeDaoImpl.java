@@ -10,7 +10,7 @@ import com.kfcreservation.dao.FoodTypeDao;
 
 public class FoodTypeDaoImpl implements FoodTypeDao {
 
-	String TableName = "FoodType";
+	private String TableName = "FoodType";
 	
 	@Override
 	public List<HashMap<String, Object>> getFoodTypeAll(Context context) {
