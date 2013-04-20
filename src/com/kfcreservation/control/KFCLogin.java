@@ -7,15 +7,18 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.kfcreservation.R;
+import com.kfcreservation.biz.UserInfoBiz;
 import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
-import com.kfcreservation.dao.impl.FoodTypeDaoImpl;
+import com.kfcreservation.entity.UserInfo;
 
 public class KFCLogin extends Activity {
 
 	EditText et_phonenum;
+	EditText et_password;
 	CheckBox cb_rm;
 	ImageButton bt_next;
 	
@@ -33,9 +36,26 @@ public class KFCLogin extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(KFCLogin.this,KFCWaiter.class);
-				startActivity(i);
+				et_phonenum = (EditText) findViewById(R.id.et_phonenum);
+				et_password = (EditText) findViewById(R.id.et_password);
+				
+				UserInfo userinfo = new UserInfo();
+				
+				String PhoneNum = et_phonenum.getText().toString();
+				String PassWord = et_password.getText().toString();
+				
+				userinfo.setPhoneNum(PhoneNum);
+				userinfo.setPassword(PassWord);
+				
+				UserInfoBiz userinfobiz = new UserInfoBiz();
+				userinfobiz.CheckUser(KFCLogin.this, userinfo);
+
+				//finish();
 			}
 		});
+	}
+	
+	public void showToast(String str){
+		Toast.makeText(KFCLogin.this, str, Toast.LENGTH_SHORT).show();
 	}
 }

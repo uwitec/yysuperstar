@@ -1,15 +1,19 @@
 package com.kfcreservation.entity;
 
-public class FoodType {
+import com.kfcreservation.core.Record;
+
+import android.content.ContentValues;
+
+public class FoodType implements Record{
 	
 	private int id;
-	private String name;
+	private String Name;
 
 	public FoodType(){	}
 	
-	public FoodType(int id,String name){
+	public FoodType(int id,String Name){
 		this.setId(id);
-		this.setName(name);
+		this.setName(Name);
 	}
 	
 	public int getId() {
@@ -20,10 +24,18 @@ public class FoodType {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return Name;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String Name) {
+		this.Name = Name;
+	}
+
+	@Override
+	public ContentValues getContentValues() {
+		ContentValues values =new ContentValues();
+		values.put("id", id);
+		values.put("Name", Name);
+		return values;
 	}
 }
