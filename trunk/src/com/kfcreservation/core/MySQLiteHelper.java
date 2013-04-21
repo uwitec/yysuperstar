@@ -31,8 +31,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		return db;
 	}
 	
-	public static boolean insert(String sql)
-	{
+	public static boolean insertBysql(String sql){
 		try {
 			db.execSQL(sql);
 			return true;
@@ -65,10 +64,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		return lists;
 	}
 
-	public static Vector<Vector<String>> vQuery(String sql)// 查询
-	{
+	public static Vector<Vector<String>> vQuery(String sql) {
 		Vector<Vector<String>> vector = new Vector<Vector<String>>();// 新建存放查询结果的向量
-
 		try {
 			Cursor cur = db.rawQuery(sql, new String[] {});// 得到结果集
 

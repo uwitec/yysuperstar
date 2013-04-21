@@ -42,13 +42,13 @@ public class KFCLogin extends Activity {
 				UserInfo userinfo = new UserInfo();
 				
 				String PhoneNum = et_phonenum.getText().toString();
-				String PassWord = et_password.getText().toString();
+				String Password = et_password.getText().toString();
 				
 				userinfo.setPhoneNum(PhoneNum);
-				userinfo.setPassword(PassWord);
+				userinfo.setPassword(Password);
 				
 				UserInfoBiz userinfobiz = new UserInfoBiz();
-				userinfobiz.CheckUser(KFCLogin.this, userinfo);
+				userinfobiz.UserLogin(KFCLogin.this, userinfo);
 
 				//finish();
 			}

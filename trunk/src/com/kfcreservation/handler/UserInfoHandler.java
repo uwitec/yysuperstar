@@ -16,10 +16,10 @@ public class UserInfoHandler {
 			KFCLogin kfclogin =(KFCLogin)msg.obj;
 			switch(msg.arg1){
 				case 0:
-					kfclogin.showToast("手机号错误");
+					kfclogin.showToast("手机号不能为空");
 					break;
 				case 1:
-					kfclogin.showToast("密码错误");
+					kfclogin.showToast("密码不能为空");
 					break;
 				case 2:
 					Intent ia = new Intent();
