@@ -15,14 +15,14 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	private String TableName = "UserInfo";
 	
 	@Override
-	public List<HashMap<String, Object>> getUser(Context context, String PhoneNum, String Password) {
+	public List<HashMap<String, Object>> getUserInfo(Context context, String PhoneNum, String Password) {
 		String sql = "SELECT * FROM " + TableName + " WHERE PhoneNum = \""+ PhoneNum +"\" AND Password = \""+Password+"\";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getUserById(Context context, int uid) {
+	public List<HashMap<String, Object>> getUserInfoById(Context context, int uid) {
 		String sql = "SELECT * FROM " + TableName + " WHERE _uid = " + uid + ";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
@@ -43,6 +43,13 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	@Override
 	public boolean delUser(Context context, int uid) {
 		return false;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getPhoneNum(Context context, String PhoneNum) {
+		String sql = "SELECT * FROM " + TableName + " WHERE PhoneNum = \""+ PhoneNum +"\";";
+		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
+		return lists;
 	}
 
 }

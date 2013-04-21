@@ -5,6 +5,7 @@ import com.kfcreservation.core.Record;
 import android.content.ContentValues;
 
 public class UserInfo implements Record {
+	
 	private int id;
 	private String PhoneNum;
 	private String Password;
