@@ -101,8 +101,35 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"\"Name\"" +
 			");",
 			// 插入食品类型数据
-			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"主食\");",
-			"INSERT INTO \"main\".\"FoodType\" VALUES (NULL,\"小食\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (1,\"主食\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (2,\"配餐\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (3,\"饮料\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (4,\"套餐\");",
+			"INSERT INTO \"main\".\"FoodType\" VALUES (5,\"新品\");",
+			
+			// 食品表
+			"CREATE TABLE IF NOT EXISTS \"FoodAll\" (" +
+			"\"_id\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+			"\"Name\" text," +
+			"\"Price\" text," +
+			"\"FoodType\" integer," +
+			"\"Img\" text" +
+			");",
+			
+			//任何品项套餐命名为 品项名+t
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"田园脆鸡堡\",\"10RMB\",\"1\",\"ty\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡翅\",\"8RMB\",\"2\",\"hw\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"九珍果汁\",\"9RMB\",\"3\",\"jz\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡套餐\",\"23RMB\",\"4\",\"hbt\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"上校鸡块\",\"6RMB\",\"5\",\"sx\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"薯条(中)\",\"7.5RMB\",\"5\",\"ff\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15RMB\",\"1\",\"hb\");",
 			
 			// 用户表
 			"CREATE TABLE IF NOT EXISTS \"UserInfo\" (" +
