@@ -3,6 +3,7 @@ package com.kfcreservation.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.menu;
 import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
@@ -25,10 +27,10 @@ import com.kfcreservation.core.ExitApplication;
 @SuppressWarnings("deprecation")
 public class KFCWaiter extends Activity {
 	List<View> mlistView;
-	Context mContext = null;
-	LocalActivityManager mManager = null;
-	TabHost mTabHost = null;
-	private ViewPager mPager = null;
+	Context mContext ;
+	LocalActivityManager mManager ;
+	TabHost mTabHost ;
+	private ViewPager mPager ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +63,12 @@ public class KFCWaiter extends Activity {
 				this).inflate(R.layout.tabwidget, null);
 		TextView tab1 = (TextView) tabIndicator1.findViewById(R.id.tv_text);
 		tab1.setText("KFC²Ëµ¥");
+		
 		RelativeLayout tabIndicator2 = (RelativeLayout) LayoutInflater.from(
 				this).inflate(R.layout.tabwidget, null);
 		TextView tab2 = (TextView) tabIndicator2.findViewById(R.id.tv_text);
 		tab2.setText("ÎÒµÄKFC");
+		
 		RelativeLayout tabIndicator3 = (RelativeLayout) LayoutInflater.from(
 				this).inflate(R.layout.tabwidget, null);
 		TextView tab3 = (TextView) tabIndicator3.findViewById(R.id.tv_text);
@@ -79,20 +83,37 @@ public class KFCWaiter extends Activity {
 		mTabHost.addTab(mTabHost.newTabSpec("MyAdds").setContent(iKFCMyAdds)
 				.setIndicator(tabIndicator3));
 
-		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
+//		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
+//			@Override
+//			public void onTabChanged(String tabId) {
+//				
+//				if ("Menu".equals(tabId)) {
+//					mPager.setCurrentItem(0);
+//				}
+//				if ("ShoppingCar".equals(tabId)) {
+//					mPager.setCurrentItem(1);
+//				}
+//				if ("MyAdds".equals(tabId)) {
+//					mPager.setCurrentItem(2);
+//				}
+//			}
+//		});
+		mPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
-			public void onTabChanged(String tabId) {
-				if ("Menu".equals(tabId)) {
-					mPager.setCurrentItem(0);
-				}
-				if ("ShoppingCar".equals(tabId)) {
-					mPager.setCurrentItem(1);
-				}
-				if ("MyAdds".equals(tabId)) {
-					mPager.setCurrentItem(2);
-				}
+			public void onPageSelected(int position) {
+				mTabHost.setCurrentTab(position);
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
+		
+		
 		mPager.setAdapter(new PagerAdapter() {
 			
 			private List<View> list = mlistView;
@@ -111,8 +132,8 @@ public class KFCWaiter extends Activity {
 			}
 			
 			@Override
-			public boolean isViewFromObject(View arg0, Object arg1) {
-				return arg0 == arg1;
+			public boolean isViewFromObject(View v, Object o) {
+				return v == o;
 			}
 			
 			@Override
@@ -121,20 +142,7 @@ public class KFCWaiter extends Activity {
 			}
 		});
 
-		mPager.setOnPageChangeListener(new OnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				mTabHost.setCurrentTab(position);
-			}
-
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
-
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-			}
-		});
+		
 	}
 
 	private View getView(String id, Intent intent) {

@@ -6,15 +6,18 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.kfcreservation.R;
+import com.kfcreservation.R.layout;
 import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
@@ -69,6 +72,8 @@ public class KFCMenu extends Activity {
 				
 			}
 		});
+		
+		
 
 	}
 }
