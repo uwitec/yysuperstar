@@ -41,8 +41,11 @@ public class KFCLogin extends Activity {
 				
 				UserInfo userinfo = new UserInfo();
 				
-				String PhoneNum = et_phonenum.getText().toString();
-				String Password = et_password.getText().toString();
+				//String PhoneNum = et_phonenum.getText().toString();
+				//String Password = et_password.getText().toString();
+				
+				String PhoneNum = "15921203291";
+				String Password = "56113214";
 				
 				userinfo.setPhoneNum(PhoneNum);
 				userinfo.setPassword(Password);

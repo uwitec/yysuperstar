@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,7 +138,6 @@ public class KFCWaiter extends Activity {
 	}
 
 	private View getView(String id, Intent intent) {
-		Log.d("KFC", "getView() called! id = " + id);
 		return mManager.startActivity(id, intent).getDecorView();
 	}
 }

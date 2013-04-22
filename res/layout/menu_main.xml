@@ -27,6 +27,7 @@
         <ListView
             android:id="@+id/lv_All"
             android:layout_width="match_parent"
+            android:divider="#ffcc00"
             android:layout_height="wrap_content" >
 
         </ListView>
