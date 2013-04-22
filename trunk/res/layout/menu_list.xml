@@ -61,4 +61,14 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/jia" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_price"
+        android:layout_toRightOf="@+id/tv_price"
+        android:text="￥RMB"
+        android:textColor="#ed304b"
+        android:textSize="20sp" />
+
 </RelativeLayout>
