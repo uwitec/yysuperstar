@@ -9,36 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp"
         android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/tv_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/bu_jian"
-        android:layout_alignBottom="@+id/bu_jian"
-        android:layout_toLeftOf="@+id/bu_add"
-        android:text="0"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Button
-        android:id="@+id/bu_add"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_num"
-        android:layout_alignBottom="@+id/tv_num"
-        android:layout_alignParentRight="true"
-        android:text=" + " />
-
-    <Button
-        android:id="@+id/bu_jian"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/tv_num"
-        android:text=" - " />
 
     <TextView
         android:id="@+id/tv_name"
@@ -57,7 +30,35 @@
         android:layout_alignLeft="@+id/tv_name"
         android:layout_below="@+id/tv_name"
         android:text="price"
-        android:textColor="#652f09"
+        android:textColor="#ed304b"
         android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bt_jian"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/im_img"
+        android:background="@drawable/jian"
+        android:layout_toLeftOf="@+id/tv_num" />
+
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bt_jian"
+        android:layout_toLeftOf="@+id/bt_add"
+        android:textSize="30dp"
+        android:text=" 0 "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/bt_add"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_num"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/jia" />
 
 </RelativeLayout>

@@ -8,10 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-
 import com.kfcreservation.R;
 import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.core.ExitApplication;
@@ -20,12 +19,13 @@ import com.kfcreservation.dao.impl.FoodTypeDaoImpl;
 
 public class KFCMenu extends Activity {
 
-	TextView mTest;
 	ListView mLvType;
 	ListView mLvAll;
+	ImageView mBack;
 	// HashMap的key
 	String[] from = { "Name" };
 	int[] to = { R.id.lists };
+	ActivityCore ac = new ActivityCore();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,8 @@ public class KFCMenu extends Activity {
 
 		mLvAll = (ListView) findViewById(R.id.lv_All);
 		mLvType = (ListView) findViewById(R.id.lv_Type);
+		
+		
 
 		// FoodType表list操作
 		FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
@@ -43,16 +45,25 @@ public class KFCMenu extends Activity {
 		SimpleAdapter adapterFoodType = new SimpleAdapter(this, lists,R.layout.menu_lists, from, to);
 
 		mLvType.setAdapter(adapterFoodType);
+		
+		
+		mLvAll.setAdapter(ac.getFoodImageAdapter(KFCMenu.this, 1));
+		
+		
 
 		// list表点击操作
 		mLvType.setOnItemClickListener(new OnItemClickListener() {
-
-			ActivityCore ac = new ActivityCore();
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				mLvAll.setAdapter(ac.getFoodImageAdapter(KFCMenu.this, position+1));
+				
 			}
 		});
+		
+		
+		
+		
+		
+		
 	}
 }

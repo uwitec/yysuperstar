@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="64dip"
     android:layout_height="64dip"
-    android:background="@drawable/bt">
+    android:background="@drawable/titl">
 
     <TextView
         android:id="@+id/tv_text"

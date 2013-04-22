@@ -111,25 +111,29 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"CREATE TABLE IF NOT EXISTS \"FoodAll\" (" +
 			"\"_id\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
 			"\"Name\" text," +
-			"\"Price\" text," +
+			"\"Price\" real," +
 			"\"FoodType\" integer," +
 			"\"Img\" text" +
 			");",
 			
 			//»Œ∫Œ∆∑œÓÃ◊≤Õ√¸√˚Œ™ ∆∑œÓ√˚+t
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"ÃÔ‘∞¥‡º¶±§\",\"10RMB\",\"1\",\"ty\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶≥·\",\"8RMB\",\"2\",\"hw\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"æ≈’‰π˚÷≠\",\"9RMB\",\"3\",\"jz\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§Ã◊≤Õ\",\"23RMB\",\"4\",\"hbt\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"…œ–£º¶øÈ\",\"6RMB\",\"5\",\"sx\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\" ÌÃı(÷–)\",\"7.5RMB\",\"5\",\"ff\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15RMB\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"—©∂•øß∑»\",\"10\",\"3\",\"coffee\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"∞Ÿ ¬ø…¿÷\",\"7.5\",\"3\",\"coke\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"¥º∂πΩ¨Ã\",\"7\",\"3\",\"dou\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"æ¢¥‡º¶Õ»±§≤Õ\",\"23\",\"4\",\"etct\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\" ÌÃı\",\"7.5\",\"1\",\"ff\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¿±º¶Õ»±§\",\"15\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"∂˛øÈœ„¿±º¶≥·\",\"8.5\",\"1\",\"hw\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"ª∆Ω∫£ª –«2∏ˆ\",\"9\",\"1\",\"hx\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"æ≈’‰(÷–)\",\"9\",\"3\",\"jz\");",
+			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"œ„¥ºƒÃ≤Ë(»»)\",\"10\",\"3\",\"nc\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"ƒ˚¿÷\",\"8\",\"3\",\"nl\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"∂˛øÈ–¬∞¬∂˚¡ºøæ≥·\",\"9\",\"1\",\"nw2\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"–¬∞¬∂˚¡ºøæÕ»±§\",\"15.5\",\"1\",\"nw\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"∂˛øÈÀ±÷∏‘≠Œ∂º¶\",\"16\",\"1\",\"or2\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"“ªøÈÀ±÷∏‘≠Œ∂º¶\",\"9\",\"1\",\"or\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"…œ–£º¶øÈ5øÈ◊∞\",\"6\",\"1\",\"sx\");",
+            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"ÃÔ‘∞¥‡º¶±§\",\"10\",\"1\",\"ty\");",
 			
 			// ”√ªß±Ì
 			"CREATE TABLE IF NOT EXISTS \"UserInfo\" (" +
