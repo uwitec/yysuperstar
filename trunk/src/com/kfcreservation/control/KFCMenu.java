@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
 import com.kfcreservation.R;
 import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.core.ExitApplication;
@@ -26,6 +29,17 @@ public class KFCMenu extends Activity {
 	String[] from = { "Name" };
 	int[] to = { R.id.lists };
 	ActivityCore ac = new ActivityCore();
+	
+	public ViewHolder holder = new ViewHolder();
+
+	public final class ViewHolder{
+		public ImageView im_img;
+		public TextView tv_name;
+		public TextView tv_price;
+		public Button bu_add;
+		public TextView tv_num;
+		public Button bu_jian;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +51,6 @@ public class KFCMenu extends Activity {
 		mLvAll = (ListView) findViewById(R.id.lv_All);
 		mLvType = (ListView) findViewById(R.id.lv_Type);
 		
-		
-
 		// FoodType表list操作
 		FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
 		final List<HashMap<String, Object>> lists = ftd.getFoodTypeAll(KFCMenu.this);
@@ -47,23 +59,16 @@ public class KFCMenu extends Activity {
 		mLvType.setAdapter(adapterFoodType);
 		
 		
-		mLvAll.setAdapter(ac.getFoodImageAdapter(KFCMenu.this, 1));
+		mLvAll.setAdapter(ac.getFoodImageMyAdapter(KFCMenu.this, 1, holder));
 		
-		
-
 		// list表点击操作
 		mLvType.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				mLvAll.setAdapter(ac.getFoodImageAdapter(KFCMenu.this, position+1));
+				mLvAll.setAdapter(ac.getFoodImageMyAdapter(KFCMenu.this, position+1, holder));
 				
 			}
 		});
-		
-		
-		
-		
-		
-		
+
 	}
 }
