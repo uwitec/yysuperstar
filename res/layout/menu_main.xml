@@ -23,7 +23,9 @@
 
         </ListView>
 
-    </LinearLayout><LinearLayout
+    </LinearLayout>
+    
+    <LinearLayout
         android:layout_width="wrap_content"
         android:background="@drawable/rlistback"
         android:layout_height="match_parent" >
@@ -35,14 +37,6 @@
             android:layout_height="wrap_content" >
 
         </ListView>
-
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
     </LinearLayout>
-
-    
 
 </LinearLayout>

@@ -7,21 +7,37 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kfcreservation.control.KFCMenu.ViewHolderM;
+import com.kfcreservation.control.KFCShoppingCar.ViewHolderSC;
+import com.kfcreservation.dao.impl.FoodsDaoImpl;
+import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
+
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
-import com.kfcreservation.control.KFCMenu.ViewHolder;
-import com.kfcreservation.dao.impl.FoodsDaoImpl;
-
 public class ActivityCore {
 
-	public FoodListAdapter getFoodListAdapter(Context context, int FoodTypeId,
-			ViewHolder holder) {
+	public OrderListAdapter getOrderListAdapter(Context context, int uid,
+			ViewHolderSC holder){
+		
+		ViewHolderSC holdersc = holder;
 
-		ViewHolder holderL = holder;
+		UserFoodsDaoImpl ufd = new UserFoodsDaoImpl();
+		List<HashMap<String, Object>> UserFoodsList = ufd.getUserFoodsOrder(context, uid);
+
+		OrderListAdapter adapter = new OrderListAdapter(context, UserFoodsList, holdersc);
+
+		return adapter;
+		
+	}
+	
+	public FoodListAdapter getFoodListAdapter(Context context, int FoodTypeId,
+			ViewHolderM holder) {
+
+		ViewHolderM holderm = holder;
 
 		FoodsDaoImpl fad = new FoodsDaoImpl();
 		List<HashMap<String, Object>> imageList = fad.getFoodsType(context,
@@ -42,7 +58,7 @@ public class ActivityCore {
 			ls.add(mp);
 		}
 
-		FoodListAdapter adapter = new FoodListAdapter(context, ls, holderL);
+		FoodListAdapter adapter = new FoodListAdapter(context, ls, holderm);
 
 		return adapter;
 	}

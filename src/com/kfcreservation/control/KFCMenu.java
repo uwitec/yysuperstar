@@ -30,9 +30,9 @@ public class KFCMenu extends Activity {
 	int[] to = { R.id.lists };
 	ActivityCore ac = new ActivityCore();
 
-	public ViewHolder holder = new ViewHolder();
+	public ViewHolderM holder = new ViewHolderM();
 
-	public final class ViewHolder {
+	public final class ViewHolderM {
 		public ImageView im_img;
 		public TextView tv_name;
 		public TextView tv_price;

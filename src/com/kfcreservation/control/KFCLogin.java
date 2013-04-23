@@ -27,7 +27,7 @@ public class KFCLogin extends Activity {
 		super.onCreate(savedInstanceState);
 		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCLogin.this);
-		setContentView(R.layout.loginpage);
+		setContentView(R.layout.login_main);
 		
 		cb_rm = (CheckBox) findViewById(R.id.cb_rm);
 		bt_next = (ImageButton) findViewById(R.id.bt_next);

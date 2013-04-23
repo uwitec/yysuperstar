@@ -18,4 +18,6 @@ public interface UserFoodsDao {
 	public long delUserFoods(Context context, UserFoods userFoods);
 	
 	public List<HashMap<String, Object>> getUserFoodsByFoodId(Context context, int fid);
+	
+	public List<HashMap<String, Object>> getUserFoodsOrder(Context context, int uid);
 }

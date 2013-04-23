@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.kfcreservation.R;
 import com.kfcreservation.biz.UserFoodsBiz;
-import com.kfcreservation.control.KFCMenu.ViewHolder;
+import com.kfcreservation.control.KFCMenu.ViewHolderM;
 import com.kfcreservation.entity.UserFoods;
 
 import android.content.Context;
@@ -24,10 +24,10 @@ public class FoodListAdapter extends BaseAdapter{
 
 	private LayoutInflater mInflater;
 	private List<HashMap<String, Object>> mData;
-	private ViewHolder holder = null;
+	private ViewHolderM holder = null;
 	private Context context = null;
 	
-	public FoodListAdapter(Context context, List<HashMap<String,Object>> ls, ViewHolder holder){
+	public FoodListAdapter(Context context, List<HashMap<String,Object>> ls, ViewHolderM holder){
 		this.mInflater = LayoutInflater.from(context);
 		this.mData = ls;
 		this.holder = holder;
@@ -67,7 +67,7 @@ public class FoodListAdapter extends BaseAdapter{
 			convertView.setTag(holder);
 
 		}else {
-			holder = (ViewHolder)convertView.getTag();
+			holder = (ViewHolderM)convertView.getTag();
 		}
 		
 		holder.im_img.setImageBitmap((Bitmap) mData.get(position).get("imgs"));
