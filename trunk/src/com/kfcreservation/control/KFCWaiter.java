@@ -34,7 +34,7 @@ public class KFCWaiter extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ExitApplication.getInstance().addActivity(this);
-		setContentView(R.layout.waiter);
+		setContentView(R.layout.waiter_main);
 
 		mManager = new LocalActivityManager(this, true);
 		mManager.dispatchCreate(savedInstanceState);

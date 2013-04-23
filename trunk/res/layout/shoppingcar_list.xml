@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView android:text="TextView"
+        android:id="@+id/tv_name"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/et_count"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_name"
+        android:ems="10" />
+
+    <TextView android:text="TextView"
+        android:id="@+id/tv_price"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/et_count"
+        android:ems="10" />
+
+    <Button android:text="Button"
+        android:id="@+id/bt_cancel"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_price"
+        android:ems="10" >
+
+        <requestFocus />
+    </Button>
+
+</RelativeLayout>

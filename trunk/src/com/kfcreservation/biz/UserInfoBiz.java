@@ -57,7 +57,7 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 			//存在该用户，登入成功
 			if( userInfoList.size() > 0 ){
 				msg.arg1 = 3;
-				AppConfig.userid = (Integer) userInfoList.get(0).get("_uid");
+				AppConfig.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
 				AppConfig.userPhone = (String) userInfoList.get(0).get("PhoneNum");
 				AppConfig.Password = (String) userInfoList.get(0).get("Password");
 				UserInfoHandler.handler.sendMessage(msg);

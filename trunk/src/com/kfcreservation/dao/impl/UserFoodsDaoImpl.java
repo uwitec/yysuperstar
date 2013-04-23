@@ -48,4 +48,12 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 		return lists;
 	}
 
+	@Override
+	public List<HashMap<String, Object>> getUserFoodsOrder(Context context,
+			int uid) {
+		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as Price FROM " + TableName + " as a , \"Foods\" as b" + " WHERE Userid = "+ uid +" AND a.Foodid = b.\"_id\""+";";
+		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
+		return lists;
+	}
+
 }
