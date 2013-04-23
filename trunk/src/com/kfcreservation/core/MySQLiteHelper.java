@@ -108,7 +108,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"INSERT INTO \"main\".\"FoodType\" VALUES (5,\"新品\");",
 			
 			// 食品表
-			"CREATE TABLE IF NOT EXISTS \"FoodAll\" (" +
+			"CREATE TABLE IF NOT EXISTS \"Foods\" (" +
 			"\"_id\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
 			"\"Name\" text," +
 			"\"Price\" real," +
@@ -117,29 +117,49 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			");",
 			
 			//任何品项套餐命名为 品项名+t
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"雪顶咖啡\",\"10\",\"3\",\"coffee\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"百事可乐\",\"10\",\"3\",\"coke\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"醇豆浆甜\",\"7\",\"3\",\"dou\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"劲脆鸡腿堡餐\",\"23\",\"4\",\"etct\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"薯条\",\"7.5\",\"2\",\"ff\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香辣鸡腿堡\",\"15\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"二块香辣鸡翅\",\"8.5\",\"2\",\"hw\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"黄金海皇星2个\",\"9\",\"5\",\"hx\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"九珍(中)\",\"9\",\"3\",\"jz\");",
-			"INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"香醇奶茶(热)\",\"10\",\"3\",\"nc\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"柠乐\",\"8\",\"3\",\"nl\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"二块新奥尔良烤翅\",\"9\",\"2\",\"nw2\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"新奥尔良烤腿堡\",\"15.5\",\"1\",\"nw\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"二块吮指原味鸡\",\"16\",\"2\",\"or2\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"一块吮指原味鸡\",\"9\",\"2\",\"or\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"上校鸡块5块装\",\"6\",\"2\",\"sx\");",
-            "INSERT INTO \"main\".\"FoodAll\" VALUES (NULL,\"田园脆鸡堡\",\"10\",\"1\",\"ty\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"雪顶咖啡\",\"10\",\"3\",\"coffee\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"百事可乐\",\"10\",\"3\",\"coke\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"醇豆浆甜\",\"7\",\"3\",\"dou\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"劲脆鸡腿堡餐\",\"23\",\"4\",\"etct\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"薯条\",\"7.5\",\"2\",\"ff\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香辣鸡腿堡\",\"15\",\"1\",\"hb\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块香辣鸡翅\",\"8.5\",\"2\",\"hw\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"黄金海皇星2个\",\"9\",\"5\",\"hx\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"九珍(中)\",\"9\",\"3\",\"jz\");",
+			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香醇奶茶(热)\",\"10\",\"3\",\"nc\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"柠乐\",\"8\",\"3\",\"nl\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块新奥尔良烤翅\",\"9\",\"2\",\"nw2\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"新奥尔良烤腿堡\",\"15.5\",\"1\",\"nw\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块吮指原味鸡\",\"16\",\"2\",\"or2\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"一块吮指原味鸡\",\"9\",\"2\",\"or\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"上校鸡块5块装\",\"6\",\"2\",\"sx\");",
+            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"田园脆鸡堡\",\"10\",\"1\",\"ty\");",
 			
 			// 用户表
 			"CREATE TABLE IF NOT EXISTS \"UserInfo\" (" +
 			"\"_uid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
 			"\"PhoneNum\" VARCHAR(20)," +
 			"\"Password\" VARCHAR(20)" +
+			");",
+			
+			// 用户选择的食物
+			"CREATE TABLE IF NOT EXISTS \"UserFoods\" (" +
+			"\"_ufid\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+			"\"Userid\" INTEGER," +
+			"\"Foodid\" INTEGER," +
+			"\"Serial\" INTEGER," +
+			"\"Count\" INTEGER," +
+			"\"Status\" INTEGER"+
+			");",
+			
+			//订单表
+			"CREATE TABLE IF NOT EXISTS \"Orders\" (" +
+			"\"_oid\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+			"\"Userid\" INTEGER," +
+			"\"Serial\" INTEGER," +
+			"\"CreateData\" TIMESTAMP," +
+			"\"UpdateData\" TIMESTAMP," +
+			"\"Status\" INTEGER"+
 			");"
 		};
 		

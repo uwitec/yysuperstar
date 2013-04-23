@@ -14,7 +14,7 @@ public interface UserInfoDao {
 	
 	public List<HashMap<String, Object>> getUserInfoById(Context context, int Id);
 	
-	public long setUser(Context context, UserInfo table);
+	public long setUser(Context context, UserInfo userinfo);
 	
 	public boolean updUser(Context context, UserInfo userinfo);
 	

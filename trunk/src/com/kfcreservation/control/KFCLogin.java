@@ -46,6 +46,8 @@ public class KFCLogin extends Activity {
 				
 				String PhoneNum = "15921203291";
 				String Password = "56113214";
+				et_phonenum.setText(PhoneNum);
+				et_password.setText(Password);
 				
 				userinfo.setPhoneNum(PhoneNum);
 				userinfo.setPassword(Password);

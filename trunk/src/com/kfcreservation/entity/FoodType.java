@@ -6,7 +6,7 @@ import android.content.ContentValues;
 
 public class FoodType implements Record{
 	
-	private int id;
+	private int _fid;
 	private String Name;
 
 	public FoodType(){	}
@@ -17,11 +17,11 @@ public class FoodType implements Record{
 	}
 	
 	public int getId() {
-		return id;
+		return _fid;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int _fid) {
+		this._fid = _fid;
 	}
 	public String getName() {
 		return Name;
@@ -34,7 +34,7 @@ public class FoodType implements Record{
 	@Override
 	public ContentValues getContentValues() {
 		ContentValues values =new ContentValues();
-		values.put("id", id);
+		values.put("_fid", _fid);
 		values.put("Name", Name);
 		return values;
 	}
