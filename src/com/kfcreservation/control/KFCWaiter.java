@@ -83,21 +83,21 @@ public class KFCWaiter extends Activity {
 		mTabHost.addTab(mTabHost.newTabSpec("MyAdds").setContent(iKFCMyAdds)
 				.setIndicator(tabIndicator3));
 
-//		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
-//			@Override
-//			public void onTabChanged(String tabId) {
-//				
-//				if ("Menu".equals(tabId)) {
-//					mPager.setCurrentItem(0);
-//				}
-//				if ("ShoppingCar".equals(tabId)) {
-//					mPager.setCurrentItem(1);
-//				}
-//				if ("MyAdds".equals(tabId)) {
-//					mPager.setCurrentItem(2);
-//				}
-//			}
-//		});
+		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
+			@Override
+			public void onTabChanged(String tabId) {
+				
+				if ("Menu".equals(tabId)) {
+					mPager.setCurrentItem(0);
+				}
+				if ("ShoppingCar".equals(tabId)) {
+					mPager.setCurrentItem(1);
+				}
+				if ("MyAdds".equals(tabId)) {
+					mPager.setCurrentItem(2);
+				}
+			}
+		});
 		mPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {

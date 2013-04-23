@@ -1,8 +1,12 @@
 package com.kfcreservation.biz;
 
+import java.util.HashMap;
+import java.util.List;
+
 import android.content.Context;
 import android.os.Message;
 
+import com.kfcreservation.core.AppConfig;
 import com.kfcreservation.dao.impl.UserInfoDaoImpl;
 import com.kfcreservation.entity.UserInfo;
 import com.kfcreservation.handler.UserInfoHandler;
@@ -26,23 +30,47 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 			return false;
 		}
 		
-		if( super.getPhoneNum(context, userinfo.getPhoneNum().toString()).size() > 0){
-			
-			if( super.getUserInfo(context, userinfo.getPhoneNum().toString(), userinfo.getPassword().toString()).size() > 0 ){
-				msg.arg1 = 2;
+		List<HashMap<String, Object>> userPhoneNum = super.getPhoneNum(context, userinfo.getPhoneNum().toString());
+		if( userPhoneNum.size() > 0){
+			//获取用户信息
+			List<HashMap<String, Object>> userInfoList = super.getUserInfo(context, userinfo.getPhoneNum().toString(), userinfo.getPassword().toString());
+			//存在该用户，登入成功
+			if( userInfoList.size() > 0 ){
+				msg.arg1 = 3;
+				AppConfig.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
+				AppConfig.userPhone = (String) userInfoList.get(0).get("PhoneNum");
+				AppConfig.Password = (String) userInfoList.get(0).get("Password");
 				UserInfoHandler.handler.sendMessage(msg);
 				return true;
-			}
-			
-		}else {
-			
-			if( super.setUser(context, userinfo) > 0 ){
-				msg.arg1 = 2;
+			}else {
+				msg.arg1 = 3;
 				UserInfoHandler.handler.sendMessage(msg);
-				return true;
+				return false;
 			}
+			
 		}
 		
-		return false;
+		//注册用户
+		if(super.setUser(context, userinfo) > 0){
+			//获取用户信息
+			List<HashMap<String, Object>> userInfoList = super.getUserInfo(context, userinfo.getPhoneNum().toString(), userinfo.getPassword().toString());
+			//存在该用户，登入成功
+			if( userInfoList.size() > 0 ){
+				msg.arg1 = 3;
+				AppConfig.userid = (Integer) userInfoList.get(0).get("_uid");
+				AppConfig.userPhone = (String) userInfoList.get(0).get("PhoneNum");
+				AppConfig.Password = (String) userInfoList.get(0).get("Password");
+				UserInfoHandler.handler.sendMessage(msg);
+				return true;
+			}else {
+				msg.arg1 = 3;
+				UserInfoHandler.handler.sendMessage(msg);
+				return true;
+			}
+		}else {
+			msg.arg1 = 4;
+			UserInfoHandler.handler.sendMessage(msg);
+			return true;
+		}
 	}
 }
