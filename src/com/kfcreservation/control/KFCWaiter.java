@@ -3,7 +3,6 @@ package com.kfcreservation.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.menu;
 import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Context;
@@ -14,7 +13,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
