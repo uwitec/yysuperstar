@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/myaddress"
     android:orientation="vertical" >
 
+    <ListView
+        android:id="@+id/lv_phones"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignLeft="@+id/lv_addresses"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="94dp" >
+
+    </ListView>
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_newPhone"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="myadds" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="40dp"
+        android:text="添加联系方式" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_newAddress"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_newPhone"
+        android:layout_below="@+id/lv_phones"
+        android:layout_marginTop="35dp"
+        android:text="添加地址" />
+
+    <ListView
+        android:id="@+id/lv_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/btn_newAddress"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp" >
+
+    </ListView>
+    
+</RelativeLayout>
