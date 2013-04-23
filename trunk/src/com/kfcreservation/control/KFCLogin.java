@@ -32,22 +32,24 @@ public class KFCLogin extends Activity {
 		cb_rm = (CheckBox) findViewById(R.id.cb_rm);
 		bt_next = (ImageButton) findViewById(R.id.bt_next);
 		
+		et_phonenum = (EditText) findViewById(R.id.et_phonenum);
+		et_password = (EditText) findViewById(R.id.et_password);
+		
+		String PhoneNum = "15921203291";
+		String Password = "56113214";
+		
+		et_phonenum.setText(PhoneNum);
+		et_password.setText(Password);
+		
 		bt_next.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				et_phonenum = (EditText) findViewById(R.id.et_phonenum);
-				et_password = (EditText) findViewById(R.id.et_password);
-				
+
 				UserInfo userinfo = new UserInfo();
 				
-				//String PhoneNum = et_phonenum.getText().toString();
-				//String Password = et_password.getText().toString();
-				
-				String PhoneNum = "15921203291";
-				String Password = "56113214";
-				et_phonenum.setText(PhoneNum);
-				et_password.setText(Password);
+				String PhoneNum = et_phonenum.getText().toString();
+				String Password = et_password.getText().toString();
 				
 				userinfo.setPhoneNum(PhoneNum);
 				userinfo.setPassword(Password);
