@@ -141,6 +141,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"\"PhoneNum\" VARCHAR(20)," +
 			"\"Password\" VARCHAR(20)" +
 			");",
+			//联系方式表 与用户名_uid关联
+			"create table UserPhone (_Pid Integer PRIMARY key AUTOINCREMENT,_uid Integer not NULL,PhoneNum text,FOREIGN key(_uid) REfERENCES UserInfo (_uid))",
+			
+			"insert into UserPhone(_uid,PhoneNum)values(1,'15000905298')",
 			
 			// 用户选择的食物
 			"CREATE TABLE IF NOT EXISTS \"UserFoods\" (" +

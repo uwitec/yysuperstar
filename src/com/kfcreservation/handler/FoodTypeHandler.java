@@ -5,6 +5,7 @@ import android.os.Message;
 
 public class FoodTypeHandler {
 
+	
 	public static Handler handler =new Handler(){
 
 		@Override
