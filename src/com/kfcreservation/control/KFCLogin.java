@@ -29,7 +29,7 @@ public class KFCLogin extends Activity {
 		MySQLiteHelper.getDB(KFCLogin.this);
 		setContentView(R.layout.login_main);
 		
-		cb_rm = (CheckBox) findViewById(R.id.cb_rm);
+		cb_rm = (CheckBox) findViewById(R.id.cb_rem);
 		bt_next = (ImageButton) findViewById(R.id.bt_next);
 		
 		et_phonenum = (EditText) findViewById(R.id.et_phonenum);

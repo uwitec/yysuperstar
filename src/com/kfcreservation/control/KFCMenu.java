@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kfcreservation.R;
 import com.kfcreservation.core.ActivityCore;
@@ -39,6 +41,7 @@ public class KFCMenu extends Activity {
 		public Button bu_add;
 		public TextView tv_num;
 		public Button bu_jian;
+		
 	}
 
 	@Override
@@ -47,6 +50,17 @@ public class KFCMenu extends Activity {
 		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMenu.this);
 		setContentView(R.layout.menu_main);
+		
+		//toast 提示
+		Toast t = Toast.makeText(KFCMenu.this, R.drawable.tips, Toast.LENGTH_SHORT);
+		//创建一个imageView
+		ImageView image=new ImageView(KFCMenu.this);
+		image.setImageResource(R.drawable.tips);
+		//创建一个linearlayout
+		LinearLayout ll=new LinearLayout(KFCMenu.this);
+		ll.addView(image);
+		t.setView(ll);
+		t.show();
 
 		mLvAll = (ListView) findViewById(R.id.lv_All);
 		mLvType = (ListView) findViewById(R.id.lv_Type);
@@ -69,9 +83,11 @@ public class KFCMenu extends Activity {
 					int position, long id) {
 				mLvAll.setAdapter(ac.getFoodListAdapter(KFCMenu.this,
 						position + 1, holder));
+				
 
 			}
 		});
+		
 
 	}
 }

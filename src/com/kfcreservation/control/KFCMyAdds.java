@@ -32,7 +32,7 @@ public class KFCMyAdds extends Activity {
 		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMyAdds.this);
 		setContentView(R.layout.myadds);
-		lv_phones=(ListView)findViewById(R.id.lv_phones);
+		lv_phones=(ListView)findViewById(R.id.lv_phone);
 		lv_addresses=(ListView)findViewById(R.id.lv_addresses);
 		btn_newPhone=(Button)findViewById(R.id.btn_newPhone);
 		btn_newAddress=(Button)findViewById(R.id.btn_newAddress);
