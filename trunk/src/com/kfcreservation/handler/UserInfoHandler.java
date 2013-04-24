@@ -27,7 +27,7 @@ public class UserInfoHandler {
 					kfclogin.showToast("密码错误");
 					break;
 				case 3:
-					kfclogin.showToast("登录成功");
+					//kfclogin.showToast("登录成功");
 					kfclogin.startActivity(i);
 					break;
 				case 4:
