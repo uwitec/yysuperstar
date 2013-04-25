@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout1"
+    android:descendantFocusability="blocksDescendants" 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -12,8 +13,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="6dp"
-        android:textSize="20dp"
+        android:focusable="true"
         android:text="TextView"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:id="@+id/ibtn_det"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/ic_delete"
+        android:focusable="false" />
 
 </RelativeLayout>
