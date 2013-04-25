@@ -30,14 +30,15 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 
 	@Override
 	public long updUserFoods(Context context, UserFoods userFoods) {
-		// TODO Auto-generated method stub
-		return 0;
+		ContentValues values = userFoods.getContentValues();
+		long count = MySQLiteHelper.getDB(context).update(TableName, values, "Foodid=?", new String[] {String.valueOf(userFoods.getFoodid())} );
+		return count;
 	}
 
 	@Override
 	public long delUserFoods(Context context, UserFoods userFoods) {
-		// TODO Auto-generated method stub
-		return 0;
+		long count = MySQLiteHelper.getDB(context).delete(TableName, "Foodid=?", new String[] {String.valueOf(userFoods.getFoodid())} );
+		return count;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsOrder(Context context,
 			int uid) {
-		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as Price FROM " + TableName + " as a , \"Foods\" as b" + " WHERE Userid = "+ uid +" AND a.Foodid = b.\"_id\""+";";
+		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as SumPrice FROM " + TableName + " as a , \"Foods\" as b" + " WHERE Userid = "+ uid +" AND a.Foodid = b.\"_id\""+";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}

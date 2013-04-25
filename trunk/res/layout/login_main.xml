@@ -57,8 +57,6 @@
         android:ems="13"
         android:hint="请输入密码"
         android:inputType="textVisiblePassword" >
-
-        <requestFocus />
     </EditText>
 
 </RelativeLayout>

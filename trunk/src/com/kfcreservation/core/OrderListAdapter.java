@@ -63,7 +63,7 @@ public class OrderListAdapter extends BaseAdapter {
 		
 		holder.tv_name.setText((String)mData.get(position).get("Name"));
 		holder.et_count.setText((String)mData.get(position).get("Count"));
-		holder.tv_price.setText((String)mData.get(position).get("Price"));
+		holder.tv_price.setText((String)mData.get(position).get("SumPrice"));
 		
 		holder.bt_cancel.setOnClickListener(new OnClickListener() {
 			

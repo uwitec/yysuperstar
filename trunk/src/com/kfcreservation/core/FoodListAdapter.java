@@ -81,9 +81,10 @@ public class FoodListAdapter extends BaseAdapter{
 			public void onClick(View v) {
 				String title = (String)v.getTag();
 				Toast.makeText(context, title + "+1", Toast.LENGTH_SHORT).show();
+				holder.tv_num.setText( String.valueOf((Integer.valueOf(holder.tv_num.getText().toString()) + 1)) );
 				UserFoodsBiz ufb = new UserFoodsBiz();
 				UserFoods uf = new UserFoods();
-				uf.setCount(1);
+				uf.setCount(Integer.valueOf(holder.tv_num.getText().toString()) );
 				uf.setFoodid( Integer.valueOf(v.getTag().toString()) );
 				uf.setStatus(0);
 				uf.setUserid(AppConfig.userid);
