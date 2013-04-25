@@ -44,11 +44,11 @@ public final class R {
         public static final int unselect=0x7f020011;
     }
     public static final class id {
-        public static final int MenuPage=0x7f090030;
-        public static final int MyAddsPage=0x7f090032;
+        public static final int MenuPage=0x7f090031;
+        public static final int MyAddsPage=0x7f090033;
         public static final int RelativeLayout1=0x7f090001;
-        public static final int ShopingCarPage=0x7f090031;
-        public static final int action_settings=0x7f090035;
+        public static final int ShopingCarPage=0x7f090032;
+        public static final int action_settings=0x7f090036;
         public static final int bt_add=0x7f09000f;
         public static final int bt_cancel=0x7f090027;
         public static final int bt_jian=0x7f09000d;
@@ -66,7 +66,7 @@ public final class R {
         public static final int im_img=0x7f09000a;
         public static final int imageButton1=0x7f090025;
         public static final int imageView1=0x7f090003;
-        public static final int iv_image=0x7f09002f;
+        public static final int iv_image=0x7f090030;
         public static final int lists=0x7f090011;
         public static final int lv_All=0x7f090013;
         public static final int lv_Type=0x7f090012;
@@ -74,7 +74,7 @@ public final class R {
         public static final int lv_phone=0x7f090015;
         public static final int orderlist=0x7f090029;
         public static final int sp_zone=0x7f09001f;
-        public static final int tabhost=0x7f090033;
+        public static final int tabhost=0x7f090034;
         public static final int textView1=0x7f090010;
         public static final int textView2=0x7f090023;
         public static final int textView3=0x7f090024;
@@ -83,6 +83,7 @@ public final class R {
         public static final int textView6=0x7f09002c;
         public static final int textView7=0x7f09002b;
         public static final int textView8=0x7f09002d;
+        public static final int textView9=0x7f09002e;
         public static final int tv_address=0x7f09001e;
         public static final int tv_adress=0x7f090017;
         public static final int tv_dphone=0x7f090021;
@@ -94,10 +95,10 @@ public final class R {
         public static final int tv_selectphone=0x7f09001b;
         public static final int tv_showPhone=0x7f090002;
         public static final int tv_showaddress=0x7f090000;
-        public static final int tv_text=0x7f09002e;
+        public static final int tv_text=0x7f09002f;
         public static final int tv_title=0x7f09001d;
         public static final int tv_zone=0x7f09001c;
-        public static final int viewpager=0x7f090034;
+        public static final int viewpager=0x7f090035;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

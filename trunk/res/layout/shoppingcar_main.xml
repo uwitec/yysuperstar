@@ -113,4 +113,14 @@
         android:textColor="#7a9c33"
         android:textSize="25sp" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/orderlist"
+        android:layout_below="@+id/textView4"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="29dp"
+        android:text="TextView" />
+
 </RelativeLayout>
