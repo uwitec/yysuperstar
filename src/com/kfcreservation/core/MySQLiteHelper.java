@@ -146,6 +146,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			
 			"insert into UserPhone(_uid,PhoneNum)values(1,'15000905298')",
 			
+			"create table UserAddress(_Aid Integer PRIMARY KEY AUTOINCREMENT,_Uid Integer not NULL,Address text,FOREIGN key(_Uid) REFERENCES UserInfo (_Uid))",
+			
+			"insert into UserAddress(_Uid,Address)values(1,'小木桥路440弄')",
+			
 			// 用户选择的食物
 			"CREATE TABLE IF NOT EXISTS \"UserFoods\" (" +
 			"\"_ufid\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
