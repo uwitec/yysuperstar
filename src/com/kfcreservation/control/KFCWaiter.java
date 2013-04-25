@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
@@ -59,19 +60,20 @@ public class KFCWaiter extends Activity {
 
 		RelativeLayout tabIndicator1 = (RelativeLayout) LayoutInflater.from(
 				this).inflate(R.layout.tabwidget, null);
-		TextView tab1 = (TextView) tabIndicator1.findViewById(R.id.tv_text);
-		tab1.setText("KFC菜单");
+		ImageView title1 = (ImageView)tabIndicator1.findViewById(R.id.iv_image);
+		title1.setImageResource(R.drawable.title_tong);
+		
 		
 		RelativeLayout tabIndicator2 = (RelativeLayout) LayoutInflater.from(
 				this).inflate(R.layout.tabwidget, null);
-		TextView tab2 = (TextView) tabIndicator2.findViewById(R.id.tv_text);
-		tab2.setText("我的KFC");
+		ImageView title2 = (ImageView)tabIndicator2.findViewById(R.id.iv_image);
+		title2.setImageResource(R.drawable.title_shop);
 		
 		RelativeLayout tabIndicator3 = (RelativeLayout) LayoutInflater.from(
 				this).inflate(R.layout.tabwidget, null);
-		TextView tab3 = (TextView) tabIndicator3.findViewById(R.id.tv_text);
-		tab3.setText("我的地址");
-
+		ImageView title3 = (ImageView)tabIndicator3.findViewById(R.id.iv_image);
+		title3.setImageResource(R.drawable.title_adr);
+		
 		mTabHost.addTab(mTabHost.newTabSpec("Menu").setContent(iKFCMenu).
 				setIndicator(tabIndicator1));
 		

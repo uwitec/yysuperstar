@@ -5,20 +5,10 @@
     android:layout_height="64dip"
     android:background="@drawable/title">
 
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Text"
-        android:textColor="#ffffff"
-        android:textSize="20sp" />
-
     <ImageView
         android:id="@+id/iv_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="64dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
