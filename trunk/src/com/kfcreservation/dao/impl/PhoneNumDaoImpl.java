@@ -16,7 +16,6 @@ public class PhoneNumDaoImpl implements PhoneNumDao {
 	@Override
 	public List<HashMap<String, Object>> getAllNumber(Context context,int uid) {
 		String sql ="select * from " + tabname + " where _uid ="+uid+";";
-		System.out.println("iiiii"+sql);
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}
