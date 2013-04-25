@@ -47,6 +47,7 @@ public class PhoneNumBiz extends PhoneNumDaoImpl implements PhoneNumDao {
 	public long addPhone(Context context,int _uid,String phonenum){
 		return super.addPhone(context, _uid, phonenum);
 	}
+	
 }
 
 

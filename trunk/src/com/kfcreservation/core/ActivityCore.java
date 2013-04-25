@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.kfcreservation.control.KFCMenu.ViewHolderM;
+import com.kfcreservation.control.KFCMyAdds.ViewHolderP;
 import com.kfcreservation.control.KFCShoppingCar.ViewHolderSC;
 import com.kfcreservation.dao.impl.FoodsDaoImpl;
+import com.kfcreservation.dao.impl.PhoneNumDaoImpl;
 import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
 
 import android.content.Context;
@@ -19,6 +21,17 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 public class ActivityCore {
+	
+	
+	
+	public MyNumAdapter getMyNumAdapter(Context context,int uid,ViewHolderP holder){
+
+		ViewHolderP holderp =holder;
+		PhoneNumDaoImpl pndi =new PhoneNumDaoImpl();
+		List<HashMap<String,Object>> lists =pndi.getAllNumber(context, uid);
+		MyNumAdapter adapter =new MyNumAdapter(lists,holderp,context);
+		return adapter;
+	}
 
 	public OrderListAdapter getOrderListAdapter(Context context, int uid,
 			ViewHolderSC holder){

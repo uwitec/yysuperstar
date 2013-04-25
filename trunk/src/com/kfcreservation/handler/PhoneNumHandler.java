@@ -3,11 +3,30 @@ package com.kfcreservation.handler;
 
 
 import com.kfcreservation.control.KFCMyAdds;
+import com.kfcreservation.core.ActivityCore;
 
 import android.os.Handler;
 import android.os.Message;
 
 public class PhoneNumHandler {
+	
+
+	
+	
+	public static Handler h =new Handler(){
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			KFCMyAdds mad =(KFCMyAdds)msg.obj;
+			if(msg.arg1==1){
+				mad.lv_phone.setAdapter(mad.getAd());
+			}
+		}
+		
+	};
+	
 	public static Handler hd =new Handler(){
 
 		@Override

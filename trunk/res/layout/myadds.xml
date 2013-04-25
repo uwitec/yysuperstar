@@ -27,17 +27,6 @@
 
     </ListView>
 
-    <TextView
-        android:id="@+id/tv_adress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lv_addresses"
-        android:layout_below="@+id/lv_phone"
-        android:layout_marginTop="82dp"
-        android:text="联系地址:  "
-        android:textColor="@android:color/black"
-        android:textSize="20dp" />
-
     <ListView
         android:id="@+id/lv_addresses"
         android:layout_width="match_parent"
@@ -81,5 +70,16 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/tv_phone"
         android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_adress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_phone"
+        android:layout_marginTop="34dp"
+        android:layout_toLeftOf="@+id/tv_selectphone"
+        android:text="联系地址:  "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
     
 </RelativeLayout>

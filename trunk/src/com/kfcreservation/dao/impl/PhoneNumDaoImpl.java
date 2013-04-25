@@ -29,4 +29,13 @@ public class PhoneNumDaoImpl implements PhoneNumDao {
 		return count;
 	}
 
+	@Override
+	public void detPhone(Context context, int _uid, String phonenum) {
+		String sql ="DELETE FROM "+tabname+" where _uid ="+_uid+" and PhoneNum = "+phonenum+";";
+		System.out.println(sql);
+		MySQLiteHelper.getDB(context).execSQL(sql);
+		System.out.println("É¾³ý³É¹¦");
+		
+	}
+
 }

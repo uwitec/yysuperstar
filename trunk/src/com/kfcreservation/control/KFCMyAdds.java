@@ -2,24 +2,30 @@ package com.kfcreservation.control;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.kfcreservation.R;
 import com.kfcreservation.biz.PhoneNumBiz;
 import com.kfcreservation.biz.UserAddressBiz;
+import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -30,9 +36,10 @@ public class KFCMyAdds extends Activity {
 	//声明控件
 	private TextView tv_selectphone,tv_selectaddress;
 	private  Button btn_newPhone,btn_newAddress;
-	private  ListView lv_phone,lv_addresses;
+	public  ListView lv_phone,lv_addresses;
 	PhoneNumBiz pub =new PhoneNumBiz();
 	UserAddressBiz uab =new UserAddressBiz();
+	ActivityCore ac =new ActivityCore();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,17 +49,32 @@ public class KFCMyAdds extends Activity {
 		getView();
 	}
 	
+	public  ViewHolderP vhPhone =new ViewHolderP();
+	
+	public final class ViewHolderP {
+		public ImageButton ibtn_det;
+		public TextView tv_myphone;
+	}
+	
+	
+	
 
 
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		lv_phone.setAdapter(getAdapter());
+		lv_phone.setAdapter(ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone));
 		lv_addresses.setAdapter(getAddressAdapter());
 		btn_newPhone.setOnClickListener(new btnClick());
 		btn_newAddress.setOnClickListener(new btnClick());
 		getValues();
+	}
+	
+	
+	public BaseAdapter getAd(){
+		BaseAdapter adapter =ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone);
+		return adapter;
 	}
 	
 	
@@ -63,10 +85,12 @@ public class KFCMyAdds extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				HashMap<String,Object> mp =(HashMap<String,Object>)parent.getItemAtPosition(position);
-				String phonenumber =(String)mp.get("PhoneNum");
-				System.out.println("jjjjjjjj"+phonenumber);
-				tv_selectphone.setText(phonenumber);				
+				System.out.println("=====");
+				List<HashMap<String,Object>> lst =pub.getAllNumber(KFCMyAdds.this, 1);
+				HashMap<String,Object> mp =lst.get(position);
+				String phone =(String)mp.get("PhoneNum");
+				System.out.println(phone);
+				tv_selectphone.setText(phone);				
 				
 			}});
 		lv_addresses.setOnItemClickListener(new OnItemClickListener(){
@@ -75,6 +99,7 @@ public class KFCMyAdds extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				HashMap<String,Object> mp =(HashMap<String,Object>)parent.getItemAtPosition(position);
+				System.out.println(position+"");
 				String myaddress =(String)mp.get("Address");
 				tv_selectaddress.setText(myaddress);
 			}});
@@ -92,13 +117,13 @@ public class KFCMyAdds extends Activity {
 		return adapter;
 	}
 	//联系方式中的adapter
-	public SimpleAdapter getAdapter(){
-		String []from ={"PhoneNum"};
-		int [] to ={R.id.tv_showPhone};
-		List<HashMap<String,Object>> lst =pub.getAllNumber(KFCMyAdds.this, 1);
-		SimpleAdapter adapter =new SimpleAdapter(this,lst,R.layout.addphone,from,to);
-		return adapter;
-	}
+//	public SimpleAdapter getAdapter(){
+//		String []from ={"PhoneNum"};
+//		int [] to ={R.id.tv_showPhone};
+//		List<HashMap<String,Object>> lst =pub.getAllNumber(KFCMyAdds.this, 1);
+//		SimpleAdapter adapter =new SimpleAdapter(this,lst,R.layout.addphone,from,to);
+//		return adapter;
+//	}
 	
 	//土司方法
 	public void getToast(String msg){
@@ -133,7 +158,7 @@ public class KFCMyAdds extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						String p =phone.getText().toString().trim();
 						pub.checkAdd(KFCMyAdds.this, 1, p);
-						lv_phone.setAdapter(getAdapter());
+						lv_phone.setAdapter(ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone));
 					}
 				});
 				builder.setNegativeButton("取消",new DialogInterface.OnClickListener() {
