@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TextView;
 
 import com.kfcreservation.R;
 import com.kfcreservation.core.ExitApplication;
@@ -98,6 +97,7 @@ public class KFCWaiter extends Activity {
 				}
 			}
 		});
+		
 		mPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {

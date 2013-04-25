@@ -13,14 +13,14 @@ public class FoodsDaoImpl implements FoodsDao {
 
 	@Override
 	public List<HashMap<String, Object>> getFoodsType(Context context,int type) {
-		String sql=" select _id,Name,Img,Price from " + TableName + " where FoodType = " + type ;
+		String sql=" select _id,Name,Img,Price from " + TableName + " where FoodType = " + type + ";";
 		List<HashMap<String,Object>> list = MySQLiteHelper.lQuery(sql);
 		return list;
 	}
 
 	@Override
 	public List<HashMap<String, Object>> getFoodImg(Context context,int type) {
-		String sql=" select Img from " + TableName + " where FoodType = " + type ;
+		String sql=" select Img from " + TableName + " where FoodType = " + type + ";";
 		List<HashMap<String,Object>> list = MySQLiteHelper.lQuery(sql);
 		return list;
 		
