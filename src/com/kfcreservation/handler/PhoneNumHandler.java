@@ -40,6 +40,9 @@ public class PhoneNumHandler {
 			case 1:
 				adds.getToast("添加成功");
 				break;
+			case 4:
+				adds.getToast("号码已经存在");
+				break;
 			}
 		}
 

@@ -3,9 +3,11 @@ package com.kfcreservation.core;
 import java.util.HashMap;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.kfcreservation.biz.PhoneNumBiz;
 import com.kfcreservation.control.KFCMyAdds.ViewHolderP;
 import com.kfcreservation.handler.PhoneNumHandler;
 
+@SuppressLint("ResourceAsColor")
 public class MyNumAdapter extends BaseAdapter {
 
 	private LayoutInflater mInflater;
@@ -65,6 +68,9 @@ public class MyNumAdapter extends BaseAdapter {
 		} else {
 			myViewHolder = (ViewHolderP) convertView.getTag();
 		}
+		if(position%2==0){
+			convertView.setBackgroundColor(Color.LTGRAY);
+		}
 		myViewHolder.tv_myphone.setText((String) mData.get(position).get(
 				"PhoneNum"));
 		myViewHolder.ibtn_det.setOnClickListener(new OnClickListener() {
@@ -94,12 +100,6 @@ public class MyNumAdapter extends BaseAdapter {
 							}
 						});
 				builder.create().show();
-				// PhoneNumBiz pnb =new PhoneNumBiz();
-				// pnb.detPhone(mContext, 1, ph);
-				// Message msg =PhoneNumHandler.h.obtainMessage();
-				// msg.obj=mContext;
-				// msg.arg1=1;
-				// PhoneNumHandler.h.sendMessage(msg);
 			}
 		});
 		return convertView;

@@ -5,9 +5,11 @@ import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.dao.PhoneNumDao;
+import com.kfcreservation.entity.PhoneNum;
 
 public class PhoneNumDaoImpl implements PhoneNumDao {
 	
@@ -36,6 +38,14 @@ public class PhoneNumDaoImpl implements PhoneNumDao {
 		MySQLiteHelper.getDB(context).execSQL(sql);
 		System.out.println("É¾³ý³É¹¦");
 		
+	}
+
+	@Override
+	public List<HashMap<String,Object>> getByNum(Context context, int _uid, String phonenum) {
+		String sql ="select * from "+tabname+" where _uid ="+_uid+" and PhoneNum ="+phonenum+";";
+		System.out.println(sql);
+		List<HashMap<String,Object>> lists =MySQLiteHelper.lQuery(sql);
+		return lists;
 	}
 
 }
