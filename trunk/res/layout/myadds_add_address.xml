@@ -3,52 +3,37 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/tv_zone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="29dp"
-        android:text="所在区域" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_zone"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="25dp"
-        android:text="添加地址" />
 
     <TextView
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_zone"
-        android:layout_below="@+id/sp_zone"
-        android:layout_marginTop="22dp"
-        android:text="地址详情" />
-
-    <EditText
-        android:id="@+id/et_daddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/sp_zone"
-        android:layout_alignTop="@+id/tv_address"
-        android:ems="10"
-        android:inputType="textMultiLine" />
+        android:layout_below="@+id/sp_zone"
+        android:text="地址详情： "
+        android:textColor="#000000" />
 
     <Spinner
         android:id="@+id/sp_zone"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_alignBottom="@+id/tv_zone"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:background="#00000000"
         android:entries="@array/shanghaizone" />
+
+    <EditText
+        android:id="@+id/et_daddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_address"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_address"
+        android:ems="10"
+        android:inputType="textMultiLine" />
 
 </RelativeLayout>

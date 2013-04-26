@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +38,7 @@ public class KFCMyAdds extends Activity {
 	PhoneNumBiz pub = new PhoneNumBiz();
 	UserAddressBiz uab = new UserAddressBiz();
 	ActivityCore ac = new ActivityCore();
+	TextView mBold;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,10 @@ public class KFCMyAdds extends Activity {
 		MySQLiteHelper.getDB(KFCMyAdds.this);
 		setContentView(R.layout.myadds);
 		getView();
+		//中文字体加粗
+		mBold=(TextView) findViewById(R.id.tv_selectadress);
+		TextPaint paint = mBold.getPaint();  
+		paint.setFakeBoldText(true);  
 	}
 
 	public ViewHolderP vhPhone = new ViewHolderP();
@@ -151,7 +157,7 @@ public class KFCMyAdds extends Activity {
 				final EditText phone = (EditText) view
 						.findViewById(R.id.et_dphone);
 				builder.setView(view);
-				builder.setPositiveButton("确定",
+				builder.setTitle("添加联系电话").setPositiveButton("确定",
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,
@@ -186,7 +192,7 @@ public class KFCMyAdds extends Activity {
 				final EditText newaddress = (EditText) view2
 						.findViewById(R.id.et_daddress);
 				builder2.setView(view2);
-				builder2.setPositiveButton("确定",
+				builder2.setTitle("添加地址").setPositiveButton("确定",
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,
