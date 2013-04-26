@@ -77,7 +77,6 @@ public class KFCMyAdds extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				System.out.println("=====");
 				List<HashMap<String, Object>> lst = pub.getAllNumber(
 						KFCMyAdds.this, 1);
 				HashMap<String, Object> mp = lst.get(position);

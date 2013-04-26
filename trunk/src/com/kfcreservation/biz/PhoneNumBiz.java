@@ -29,6 +29,12 @@ public class PhoneNumBiz extends PhoneNumDaoImpl implements PhoneNumDao {
 			msg.obj=context;
 			PhoneNumHandler.hd.sendMessage(msg);
 			return false;
+		}else if(getByNum(context, _uid, phone).size()==1){
+			msg =PhoneNumHandler.hd.obtainMessage();
+			msg.arg1=4;
+			msg.obj=context;
+			PhoneNumHandler.hd.sendMessage(msg);
+			return false;
 		}else if(0!=super.addPhone(context, _uid, phone)){
 			msg =PhoneNumHandler.hd.obtainMessage();
 			msg.arg1=1;
@@ -46,6 +52,9 @@ public class PhoneNumBiz extends PhoneNumDaoImpl implements PhoneNumDao {
 	
 	public long addPhone(Context context,int _uid,String phonenum){
 		return super.addPhone(context, _uid, phonenum);
+	}
+	public List<HashMap<String,Object>> getByNum(Context context, int _uid, String phonenum){
+		return super.getByNum(context, _uid, phonenum);
 	}
 	
 }
