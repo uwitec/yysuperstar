@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
@@ -32,23 +33,21 @@ import com.kfcreservation.core.MySQLiteHelper;
 
 public class KFCMyAdds extends Activity {
 	// 声明控件
-	private TextView tv_selectphone, tv_selectaddress;
-	private Button btn_newPhone, btn_newAddress;
+	private TextView tv_selectphone, tv_selectaddress, mBold;
+	private Button btn_newPhone, btn_newAddress, mOrder;
 	public ListView lv_phone, lv_addresses;
 	PhoneNumBiz pub = new PhoneNumBiz();
 	UserAddressBiz uab = new UserAddressBiz();
 	ActivityCore ac = new ActivityCore();
-	TextView mBold;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMyAdds.this);
-		setContentView(R.layout.myadds);
+		setContentView(R.layout.myadds_main);
 		getView();
 		//中文字体加粗
-		mBold=(TextView) findViewById(R.id.tv_selectadress);
 		TextPaint paint = mBold.getPaint();  
 		paint.setFakeBoldText(true);  
 	}
@@ -62,12 +61,12 @@ public class KFCMyAdds extends Activity {
 
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
 		super.onStart();
 		lv_phone.setAdapter(ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone));
 		lv_addresses.setAdapter(getAddressAdapter());
 		btn_newPhone.setOnClickListener(new btnClick());
 		btn_newAddress.setOnClickListener(new btnClick());
+		mOrder.setOnClickListener(new btnClick());
 		getValues();
 	}
 
@@ -97,6 +96,7 @@ public class KFCMyAdds extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				@SuppressWarnings("unchecked")
 				HashMap<String, Object> mp = (HashMap<String, Object>) parent
 						.getItemAtPosition(position);
 				System.out.println(position + "");
@@ -139,6 +139,8 @@ public class KFCMyAdds extends Activity {
 		lv_addresses = (ListView) findViewById(R.id.lv_addresses);
 		btn_newPhone = (Button) findViewById(R.id.btn_newPhone);
 		btn_newAddress = (Button) findViewById(R.id.btn_newAddress);
+		mOrder=(Button) findViewById(R.id.bu_toorder);
+		mBold=(TextView) findViewById(R.id.tv_selectadress);
 	}
 
 	// 两个添加按钮的监听
@@ -219,6 +221,9 @@ public class KFCMyAdds extends Activity {
 				builder2.create().show();
 
 				break;
+			case R.id.bu_toorder:
+				Intent i = new Intent(KFCMyAdds.this,KFCOrder.class);
+				startActivity(i);
 			}
 
 		}

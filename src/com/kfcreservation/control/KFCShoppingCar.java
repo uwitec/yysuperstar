@@ -102,5 +102,6 @@ public class KFCShoppingCar extends Activity {
 				orderlistadapter.notifyDataSetChanged();
 			}
 		});
+		
 	}
 }
