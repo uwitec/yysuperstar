@@ -5,8 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="8"/>
     <supports-screens android:anyDensity="true"/>
 
     <application
@@ -28,6 +27,7 @@
         <activity android:name=".control.KFCMenu" />
         <activity android:name=".control.KFCShoppingCar" />
         <activity android:name=".control.KFCMyAdds" />
+        <activity android:name=".control.KFCOrder" />
     </application>
 
 </manifest>
