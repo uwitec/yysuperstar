@@ -27,48 +27,49 @@
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_name"
-        android:layout_below="@+id/tv_name"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_toRightOf="@+id/textView1"
         android:text="price"
         android:textColor="#ed304b"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/bt_jian"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/im_img"
-        android:background="@drawable/jian"
-        android:layout_toLeftOf="@+id/tv_num" />
-
     <TextView
-        android:id="@+id/tv_num"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bt_jian"
-        android:layout_toLeftOf="@+id/bt_add"
-        android:textSize="30dp"
-        android:text=" 0 "
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@+id/tv_name"
+        android:layout_below="@+id/tv_name"
+        android:text="￥"
+        android:textColor="#ed304b"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/bt_add"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tv_num"
+        android:layout_alignBottom="@+id/im_img"
         android:layout_alignParentRight="true"
         android:background="@drawable/jia" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tv_price"
-        android:layout_toRightOf="@+id/tv_price"
-        android:text="￥"
-        android:textColor="#ed304b"
-        android:textSize="20sp" />
+        android:layout_alignBottom="@+id/bt_add"
+        android:layout_toLeftOf="@+id/bt_add"
+        android:text=" 0 "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/bt_jian"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_num"
+        android:layout_toLeftOf="@+id/tv_num"
+        android:background="@drawable/jian" />
 
 </RelativeLayout>
