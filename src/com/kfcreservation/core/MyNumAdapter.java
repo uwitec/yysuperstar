@@ -19,7 +19,8 @@ import android.widget.TextView;
 
 import com.kfcreservation.R;
 import com.kfcreservation.biz.PhoneNumBiz;
-import com.kfcreservation.control.KFCMyAdds.ViewHolderP;
+
+
 import com.kfcreservation.handler.PhoneNumHandler;
 
 @SuppressLint("ResourceAsColor")
@@ -27,14 +28,12 @@ public class MyNumAdapter extends BaseAdapter {
 
 	private LayoutInflater mInflater;
 	private List<HashMap<String, Object>> mData;
-	private ViewHolderP myViewHolder = null;
+	ViewHolderP myViewHolder ;
 	private Context mContext = null;
 
-	public MyNumAdapter(List<HashMap<String, Object>> ls,
-			ViewHolderP myViewHolder, Context mContext) {
+	public MyNumAdapter(List<HashMap<String, Object>> ls, Context mContext) {
 		this.mInflater = LayoutInflater.from(mContext);
 		this.mData = ls;
-		this.myViewHolder = myViewHolder;
 		this.mContext = mContext;
 	}
 
@@ -47,32 +46,41 @@ public class MyNumAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		return null;
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		return 0;
 	}
+	
+	public  class ViewHolderP {
+		public ImageButton ibtn_det;
+		public TextView tv_myphone;
+	}
+
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
+		
 		if (convertView == null) {
+			
 			convertView = mInflater.inflate(R.layout.addphone, null);
-			myViewHolder.tv_myphone = (TextView) convertView
-					.findViewById(R.id.tv_showPhone);
-			myViewHolder.ibtn_det = (ImageButton) convertView
-					.findViewById(R.id.ibtn_det);
+			myViewHolder=new ViewHolderP();
+			myViewHolder.tv_myphone = (TextView) convertView.findViewById(R.id.tv_showPhone);
+			myViewHolder.ibtn_det = (ImageButton) convertView.findViewById(R.id.ibtn_det);
 			convertView.setTag(myViewHolder);
 		} else {
+			
 			myViewHolder = (ViewHolderP) convertView.getTag();
 		}
 		if(position%2==0){
 			convertView.setBackgroundColor(Color.LTGRAY);
+		}else{
+			convertView.setBackgroundColor(Color.WHITE);
 		}
-		myViewHolder.tv_myphone.setText((String) mData.get(position).get(
-				"PhoneNum"));
+		myViewHolder.tv_myphone.setText((String) mData.get(position).get("PhoneNum"));
 		myViewHolder.ibtn_det.setOnClickListener(new OnClickListener() {
 
 			@Override

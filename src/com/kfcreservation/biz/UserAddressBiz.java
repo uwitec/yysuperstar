@@ -13,17 +13,40 @@ import com.kfcreservation.handler.UserAddressHandler;
 public class UserAddressBiz extends UserAddressDaoImpl implements
 		UserAddressDao {
 	
-		Message msg =UserAddressHandler.hd.obtainMessage();
+		Message msg ;
 	
 	
+		@SuppressWarnings("null")
 		public boolean checkAdd(Context context,int uid,String address){
-			msg.obj=context;
+			
 			if(address==null&&address.equals("")){
+				msg =UserAddressHandler.hd.obtainMessage();
 				msg.arg1=0;
+				msg.obj=context;
+				UserAddressHandler.hd.sendMessage(msg);
+				return false;
+			}else if(-1==address.indexOf('区')){
+				msg =UserAddressHandler.hd.obtainMessage();
+				msg.arg1=2;//未选中区
+				msg.obj=context;
+				UserAddressHandler.hd.sendMessage(msg);
+				return false;
+			}else if(-1==address.indexOf('路')){
+				msg =UserAddressHandler.hd.obtainMessage();
+				msg.arg1=3;//未填写路
+				msg.obj=context;
+				UserAddressHandler.hd.sendMessage(msg);
+				return false;
+			}else if(address.length()<6){
+				msg =UserAddressHandler.hd.obtainMessage();
+				msg.arg1=4;//未填写路
+				msg.obj=context;
 				UserAddressHandler.hd.sendMessage(msg);
 				return false;
 			}else if(0!=super.addAddress(context, uid, address)){
+				msg =UserAddressHandler.hd.obtainMessage();
 				msg.arg1=1;
+				msg.obj=context;
 				UserAddressHandler.hd.sendMessage(msg);
 				return true;
 			}
