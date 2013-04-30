@@ -33,7 +33,8 @@ import com.kfcreservation.core.MySQLiteHelper;
 
 public class KFCMyAdds extends Activity {
 	// 声明控件
-	private TextView tv_selectphone, tv_selectaddress, mBold;
+	private TextView tv_selectphone, tv_selectaddress, mBold,tv_receiver;
+	private EditText et_receiver;
 	private Button btn_newPhone, btn_newAddress, mOrder;
 	public ListView lv_phone, lv_addresses;
 	PhoneNumBiz pub = new PhoneNumBiz();
@@ -52,18 +53,13 @@ public class KFCMyAdds extends Activity {
 		paint.setFakeBoldText(true);  
 	}
 
-	public ViewHolderP vhPhone = new ViewHolderP();
 
-	public final class ViewHolderP {
-		public ImageButton ibtn_det;
-		public TextView tv_myphone;
-	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		lv_phone.setAdapter(ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone));
-		lv_addresses.setAdapter(getAddressAdapter());
+		lv_phone.setAdapter(ac.getMyNumAdapter(KFCMyAdds.this, 1));
+		lv_addresses.setAdapter(ac.getMyAddressAdapter(KFCMyAdds.this, 1));
 		btn_newPhone.setOnClickListener(new btnClick());
 		btn_newAddress.setOnClickListener(new btnClick());
 		mOrder.setOnClickListener(new btnClick());
@@ -71,7 +67,11 @@ public class KFCMyAdds extends Activity {
 	}
 
 	public BaseAdapter getAd() {
-		BaseAdapter adapter = ac.getMyNumAdapter(KFCMyAdds.this, 1, vhPhone);
+		BaseAdapter adapter = ac.getMyNumAdapter(KFCMyAdds.this, 1);
+		return adapter;
+	}
+	public BaseAdapter getDressAdapter(){
+		BaseAdapter adapter =ac.getMyAddressAdapter(KFCMyAdds.this, 1);
 		return adapter;
 	}
 
@@ -96,36 +96,17 @@ public class KFCMyAdds extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				@SuppressWarnings("unchecked")
-				HashMap<String, Object> mp = (HashMap<String, Object>) parent
-						.getItemAtPosition(position);
-				System.out.println(position + "");
+				List<HashMap<String,Object>> li =uab.getAllAddress(KFCMyAdds.this,1);
+				HashMap<String, Object> mp = li.get(position);
 				String myaddress = (String) mp.get("Address");
+				System.out.println(myaddress);
 				tv_selectaddress.setText(myaddress);
 			}
 		});
 	}
 
 	// 地址list中的adapter
-	public SimpleAdapter getAddressAdapter() {
-		String[] from = { "Address" };
-		int[] to = { R.id.tv_showaddress };
-		// uid为1作为测试数据用
-		List<HashMap<String, Object>> ls = uab.getAllAddress(KFCMyAdds.this, 1);
-		SimpleAdapter adapter = new SimpleAdapter(this, ls,
-				R.layout.addaddress, from, to);
-		return adapter;
-	}
 
-	// 联系方式中的adapter
-	// public SimpleAdapter getAdapter(){
-	// String []from ={"PhoneNum"};
-	// int [] to ={R.id.tv_showPhone};
-	// List<HashMap<String,Object>> lst =pub.getAllNumber(KFCMyAdds.this, 1);
-	// SimpleAdapter adapter =new
-	// SimpleAdapter(this,lst,R.layout.addphone,from,to);
-	// return adapter;
-	// }
 
 	// 土司方法
 	public void getToast(String msg) {
@@ -133,6 +114,8 @@ public class KFCMyAdds extends Activity {
 	}
 
 	public void getView() {
+		tv_receiver =(TextView)findViewById(R.id.tv_receiver);
+		et_receiver =(EditText)findViewById(R.id.et_receiver);
 		tv_selectphone = (TextView) findViewById(R.id.tv_selectphone);
 		tv_selectaddress = (TextView) findViewById(R.id.tv_selectadress);
 		lv_phone = (ListView) findViewById(R.id.lv_phone);
@@ -167,7 +150,7 @@ public class KFCMyAdds extends Activity {
 								String p = phone.getText().toString().trim();
 								pub.checkAdd(KFCMyAdds.this, 1, p);
 								lv_phone.setAdapter(ac.getMyNumAdapter(
-										KFCMyAdds.this, 1, vhPhone));
+										KFCMyAdds.this, 1));
 							}
 						});
 				builder.setNegativeButton("取消",
@@ -203,10 +186,11 @@ public class KFCMyAdds extends Activity {
 										.toString().trim();
 								String road = newaddress.getText().toString()
 										.trim();
-								String mAdd = zong + "区" + road;
+								String mAdd = zong+road;
 								System.out.println(zong + road);
 								uab.checkAdd(KFCMyAdds.this, 1, mAdd);
-								lv_addresses.setAdapter(getAddressAdapter());
+								lv_addresses.setAdapter(ac.getMyAddressAdapter(KFCMyAdds.this, 1));
+							
 							}
 						});
 				builder2.setNegativeButton("取消",

@@ -14,18 +14,27 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 import com.kfcreservation.control.KFCMenu.ViewHolderM;
-import com.kfcreservation.control.KFCMyAdds.ViewHolderP;
+
 import com.kfcreservation.dao.impl.FoodsDaoImpl;
 import com.kfcreservation.dao.impl.PhoneNumDaoImpl;
+import com.kfcreservation.dao.impl.UserAddressDaoImpl;
 
 public class ActivityCore {
 
-	public MyNumAdapter getMyNumAdapter(Context context,int uid,ViewHolderP holder){
+	public MyNumAdapter getMyNumAdapter(Context context,int uid){
 
-		ViewHolderP holderp =holder;
 		PhoneNumDaoImpl pndi =new PhoneNumDaoImpl();
 		List<HashMap<String,Object>> lists =pndi.getAllNumber(context, uid);
-		MyNumAdapter adapter =new MyNumAdapter(lists,holderp,context);
+		MyNumAdapter adapter =new MyNumAdapter(lists,context);
+		return adapter;
+	}
+	
+	
+	
+	public MyAddressAdapter getMyAddressAdapter(Context context,int uid){
+		UserAddressDaoImpl uadi =new UserAddressDaoImpl();
+		List<HashMap<String,Object>> lists =uadi.getAllAddress(context, uid);
+		MyAddressAdapter adapter =new MyAddressAdapter(lists,context);
 		return adapter;
 	}
 

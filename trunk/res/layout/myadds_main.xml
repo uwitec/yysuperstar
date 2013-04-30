@@ -13,22 +13,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="3dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="90dp"
         android:text="联系电话： "
         android:textColor="@android:color/black"
         android:textSize="12dp" />
-
-    <ListView
-        android:id="@+id/lv_phone"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btn_newPhone"
-        android:layout_marginLeft="3dp"
-        android:divider="#00000000"
-        android:cacheColorHint="#00000000"
-        android:dividerHeight="12dp" >
-    </ListView>
 
     <ListView
         android:id="@+id/lv_addresses"
@@ -40,17 +28,6 @@
         android:layout_marginLeft="3dp" >
 
     </ListView>
-
-    <Button
-        android:id="@+id/btn_newPhone"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="3dp"
-        android:background="@android:drawable/ic_input_add" />
 
     <Button
         android:id="@+id/btn_newAddress"
@@ -67,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lv_phone"
         android:layout_marginLeft="3dp"
+        android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/tv_selectphone"
         android:text="联系地址： "
         android:textColor="@android:color/black"
@@ -98,8 +76,51 @@
         android:id="@+id/bu_toorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/lv_addresses"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
         android:text="确认" />
+
+    <ListView
+        android:id="@+id/lv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_selectphone"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="12dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btn_newPhone"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_alignBaseline="@+id/tv_selectphone"
+        android:layout_alignBottom="@+id/tv_selectphone"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_input_add" />
+
+    <EditText
+        android:id="@+id/et_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:layout_toRightOf="@+id/tv_receiver"
+        android:ems="10"
+        android:hint="联系人" />
+
+    <TextView
+        android:id="@+id/tv_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_receiver"
+        android:layout_alignBottom="@+id/et_receiver"
+        android:layout_alignLeft="@+id/tv_phone"
+        android:text="收件人"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
 
 </RelativeLayout>

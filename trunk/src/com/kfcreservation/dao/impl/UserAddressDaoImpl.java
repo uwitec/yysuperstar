@@ -29,4 +29,13 @@ public class UserAddressDaoImpl implements UserAddressDao {
 		return count;
 	}
 
+	@Override
+	public void detAddress(Context context, int uid, String address) {
+		// TODO Auto-generated method stub
+		String sql ="DELETE FROM "+tbname+" where _Uid ="+uid+" and Address = '"+address+"';";
+		System.out.println(sql);
+		MySQLiteHelper.getDB(context).execSQL(sql);
+		System.out.println("É¾³ý³É¹¦");
+	}
+
 }
