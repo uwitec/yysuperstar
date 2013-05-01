@@ -1,10 +1,10 @@
 package com.kfcreservation.control;
 
-import com.kfcreservation.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.kfcreservation.R;
 
 public class KFCOrder extends Activity {
 	static TextView mMoney;

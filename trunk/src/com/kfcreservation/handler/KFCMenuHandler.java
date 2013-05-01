@@ -1,24 +1,23 @@
 package com.kfcreservation.handler;
 
+import com.kfcreservation.control.KFCMenu;
+
 import android.os.Handler;
 import android.os.Message;
 
-import com.kfcreservation.control.KFCMenu;
+public class KFCMenuHandler {
 
-public class UserFoodsHandler {
-
-	public static Handler hd = new Handler() {
+	public static Handler mHandler = new Handler(){
 
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			KFCMenu kfcmenu = (KFCMenu) msg.obj;
-			switch (msg.arg1) {
+			KFCMenu kfcmenu =(KFCMenu)msg.obj;
+			switch(msg.arg1){
 			case 0:
-				kfcmenu.RefreshFoodsList();
+				kfcmenu.RefreshMenuList();
 				break;
 			}
 		}
-
 	};
 }

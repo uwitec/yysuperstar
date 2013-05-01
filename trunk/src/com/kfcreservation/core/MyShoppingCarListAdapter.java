@@ -56,7 +56,7 @@ public class MyShoppingCarListAdapter extends BaseAdapter {
 		final Map dataSet = mData.get(position);
 		ViewHolderSC holder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.shoppingcar_list, parent, false);
+			convertView = mInflater.inflate(R.layout.shoppingcar_listitem, parent, false);
 			holder = new ViewHolderSC();
 			holder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
 			holder.et_count = (EditText) convertView.findViewById(R.id.et_count);

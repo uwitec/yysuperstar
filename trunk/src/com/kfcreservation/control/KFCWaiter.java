@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.LocalActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -56,9 +55,9 @@ public class KFCWaiter extends Activity {
 		mViewlist.add(getView("KFCShoppingCar", iKFCShoppingCar));
 		mViewlist.add(getView("KFCMyAdds", iKFCMyAdds));
 
-		RelativeLayout tabIndicator1 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tabwidget, null);
-		RelativeLayout tabIndicator2 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tabwidget, null);
-		RelativeLayout tabIndicator3 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tabwidget, null);
+		RelativeLayout tabIndicator1 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.waiter_tabwidget, null);
+		RelativeLayout tabIndicator2 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.waiter_tabwidget, null);
+		RelativeLayout tabIndicator3 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.waiter_tabwidget, null);
 		
 		ImageView title1 = (ImageView)tabIndicator1.findViewById(R.id.iv_image);
 		ImageView title2 = (ImageView)tabIndicator2.findViewById(R.id.iv_image);

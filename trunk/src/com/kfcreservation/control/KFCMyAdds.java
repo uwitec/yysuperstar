@@ -17,9 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +26,6 @@ import com.kfcreservation.R;
 import com.kfcreservation.biz.PhoneNumBiz;
 import com.kfcreservation.biz.UserAddressBiz;
 import com.kfcreservation.core.ActivityCore;
-import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 
 public class KFCMyAdds extends Activity {

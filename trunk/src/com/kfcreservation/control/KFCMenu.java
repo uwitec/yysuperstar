@@ -68,7 +68,7 @@ public class KFCMenu extends Activity {
 		final List<HashMap<String, Object>> lists = ftd
 				.getFoodTypeAll(KFCMenu.this);
 		SimpleAdapter adapterFoodType = new SimpleAdapter(this, lists,
-				R.layout.menu_lists, from, to);
+				R.layout.menu_foodtypeitem, from, to);
 
 		mLvType.setAdapter(adapterFoodType);
 
@@ -119,7 +119,7 @@ public class KFCMenu extends Activity {
 		return MenuList;
 	}
 
-	public void RefreshFoodsList() {
+	public void RefreshMenuList() {
 		MyMenuListAdapter mymenulistadapter = new MyMenuListAdapter(KFCMenu.this,
 				getMenuList(currentFoodType));
 		mLvAll.setAdapter(mymenulistadapter);
