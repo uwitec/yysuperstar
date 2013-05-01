@@ -67,7 +67,7 @@ public class MyMenuListAdapter extends BaseAdapter {
 		ViewHolderM holder;
 		if (convertView == null) {
 			// holder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.menu_list, parent, false);
+			convertView = mInflater.inflate(R.layout.menu_foodlistitem, parent, false);
 			holder = new ViewHolderM();
 			holder.im_img = (ImageView) convertView.findViewById(R.id.im_img);
 			holder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);

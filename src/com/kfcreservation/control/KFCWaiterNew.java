@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -18,8 +19,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.Toast;
 
 import com.kfcreservation.R;
+import com.kfcreservation.handler.KFCWaiterNewHandler;
 
 @SuppressWarnings("deprecation")
 public class KFCWaiterNew extends Activity {
@@ -27,7 +30,8 @@ public class KFCWaiterNew extends Activity {
 	private LocalActivityManager mManager;
 	private TabHost mTabHost;
 	private ViewPager mPager;
-
+	public boolean isExit;
+	
 	public void init() {
 
 		mTabHost = (TabHost) findViewById(R.id.tabhost);
@@ -47,11 +51,11 @@ public class KFCWaiterNew extends Activity {
 		mViewlist.add(getView("kfcmyadds", kfcmyadds));
 
 		RelativeLayout tabIndicator1 = (RelativeLayout) LayoutInflater.from(
-				this).inflate(R.layout.tabwidget, null);
+				this).inflate(R.layout.waiter_tabwidget, null);
 		RelativeLayout tabIndicator2 = (RelativeLayout) LayoutInflater.from(
-				this).inflate(R.layout.tabwidget, null);
+				this).inflate(R.layout.waiter_tabwidget, null);
 		RelativeLayout tabIndicator3 = (RelativeLayout) LayoutInflater.from(
-				this).inflate(R.layout.tabwidget, null);
+				this).inflate(R.layout.waiter_tabwidget, null);
 
 		ImageView title1 = (ImageView) tabIndicator1
 				.findViewById(R.id.iv_image);
@@ -151,4 +155,27 @@ public class KFCWaiterNew extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {  
+			exit();
+			return false;
+		} else {  
+			return super.onKeyDown(keyCode, event);  
+		}
+	}
+	
+	public void exit(){  
+		if (!isExit) {  
+			isExit = true;  
+			Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();  
+			KFCWaiterNewHandler.mHandler.sendEmptyMessageDelayed(0, 2000);  
+		} else {  
+			Intent intent = new Intent(Intent.ACTION_MAIN);  
+			intent.addCategory(Intent.CATEGORY_HOME);  
+			startActivity(intent);  
+			System.exit(0);  
+		}  
+	}  
 }

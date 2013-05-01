@@ -5,29 +5,24 @@ import android.os.Message;
 
 import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
 import com.kfcreservation.entity.UserFoods;
-import com.kfcreservation.handler.UserFoodsHandler;
+import com.kfcreservation.handler.KFCMenuHandler;
 
 public class UserFoodsBiz extends UserFoodsDaoImpl {
-	
+
 	Message msg;
-	
-	public boolean AddUserFoods(Context context, UserFoods userfoods){
-		if( super.getUserFoodsByFoodId(context, userfoods.getFoodid()).size() > 0 ){
+
+	public boolean AddUserFoods(Context context, UserFoods userfoods) {
+		if (super.getUserFoodsByFoodId(context, userfoods.getFoodid()).size() > 0) {
 			super.updUserFoods(context, userfoods);
-			msg = UserFoodsHandler.hd.obtainMessage();
-			msg.obj = context;
-			msg.arg1 = 0;
-			UserFoodsHandler.hd.sendMessage(msg);
-			return true;
-			
-		}else{
+		} else {
 			super.setUserFoods(context, userfoods);
-			msg = UserFoodsHandler.hd.obtainMessage();
-			msg.obj = context;
-			msg.arg1 = 0;
-			UserFoodsHandler.hd.sendMessage(msg);
-			return true;
 		}
+		
+		msg = KFCMenuHandler.mHandler.obtainMessage();
+		msg.obj = context;
+		msg.arg1 = 0;
+		KFCMenuHandler.mHandler.sendMessage(msg);
+		return true;
 	}
 
 }

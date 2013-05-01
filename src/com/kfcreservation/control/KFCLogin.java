@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.kfcreservation.R;
 import com.kfcreservation.biz.UserInfoBiz;
-import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.entity.UserInfo;
 
@@ -28,7 +27,6 @@ public class KFCLogin extends Activity {
 		//ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCLogin.this);
 		setContentView(R.layout.login_main);
-		
 		cb_rm = (CheckBox) findViewById(R.id.cb_rem);
 		bt_next = (ImageButton) findViewById(R.id.bt_next);
 		
@@ -57,7 +55,7 @@ public class KFCLogin extends Activity {
 				UserInfoBiz userinfobiz = new UserInfoBiz();
 				userinfobiz.UserLogin(KFCLogin.this, userinfo);
 
-				//finish();
+				finish();
 			}
 		});
 	}

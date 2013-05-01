@@ -8,7 +8,7 @@ import android.app.Application;
 
 public class ExitApplication extends Application {
 	
-	private List<Activity> activityList=new LinkedList<Activity>();
+	private List<Activity> activityList = new LinkedList<Activity>();
 	 
 	private static ExitApplication instance;
 
