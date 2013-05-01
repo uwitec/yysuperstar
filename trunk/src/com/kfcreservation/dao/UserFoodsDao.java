@@ -20,4 +20,6 @@ public interface UserFoodsDao {
 	public List<HashMap<String, Object>> getUserFoodsByFoodId(Context context, int fid);
 	
 	public List<HashMap<String, Object>> getUserFoodsOrder(Context context, int uid);
+	
+	public List<HashMap<String, Object>> getUserFoodsCount(Context context, int uid, int FoodType);
 }

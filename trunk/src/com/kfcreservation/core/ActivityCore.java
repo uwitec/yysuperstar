@@ -3,7 +3,6 @@ package com.kfcreservation.core;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,75 +12,27 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
-import com.kfcreservation.control.KFCMenu.ViewHolderM;
-
-import com.kfcreservation.dao.impl.FoodsDaoImpl;
 import com.kfcreservation.dao.impl.PhoneNumDaoImpl;
 import com.kfcreservation.dao.impl.UserAddressDaoImpl;
 
 public class ActivityCore {
 
-	public MyNumAdapter getMyNumAdapter(Context context,int uid){
+	public MyNumAdapter getMyNumAdapter(Context context, int uid) {
 
-		PhoneNumDaoImpl pndi =new PhoneNumDaoImpl();
-		List<HashMap<String,Object>> lists =pndi.getAllNumber(context, uid);
-		MyNumAdapter adapter =new MyNumAdapter(lists,context);
-		return adapter;
-	}
-	
-	
-	
-	public MyAddressAdapter getMyAddressAdapter(Context context,int uid){
-		UserAddressDaoImpl uadi =new UserAddressDaoImpl();
-		List<HashMap<String,Object>> lists =uadi.getAllAddress(context, uid);
-		MyAddressAdapter adapter =new MyAddressAdapter(lists,context);
+		PhoneNumDaoImpl pndi = new PhoneNumDaoImpl();
+		List<HashMap<String, Object>> lists = pndi.getAllNumber(context, uid);
+		MyNumAdapter adapter = new MyNumAdapter(lists, context);
 		return adapter;
 	}
 
-//	public OrderListAdapter getOrderListAdapter(Context context, int uid,
-//			ViewHolderSC holder){
-//		
-//		ViewHolderSC holdersc = holder;
-//
-//		UserFoodsDaoImpl ufd = new UserFoodsDaoImpl();
-//		List<HashMap<String, Object>> UserFoodsList = ufd.getUserFoodsOrder(context, uid);
-//
-//		OrderListAdapter adapter = new OrderListAdapter(context, UserFoodsList, holdersc);
-//
-//		return adapter;
-//		
-//	}
-	
-	public FoodListAdapter getFoodListAdapter(Context context, int FoodTypeId,
-			ViewHolderM holder) {
-
-		ViewHolderM holderm = holder;
-
-		FoodsDaoImpl fad = new FoodsDaoImpl();
-		List<HashMap<String, Object>> imageList = fad.getFoodsType(context,
-				FoodTypeId);
-
-		List<HashMap<String, Object>> ls = new ArrayList<HashMap<String, Object>>();
-
-		for (HashMap<String, Object> k : imageList) {
-
-			HashMap<String, Object> mp = null;
-			mp = new HashMap<String, Object>();
-			mp.put("id", k.get("_id"));
-			mp.put("name", k.get("Name"));
-			mp.put("price", k.get("Price"));
-			mp.put("imgs",
-					getBitmapFormAssets(context.getAssets(), k.get("Img")
-							.toString()));
-			ls.add(mp);
-		}
-
-		FoodListAdapter adapter = new FoodListAdapter(context, ls, holderm);
-
+	public MyAddressAdapter getMyAddressAdapter(Context context, int uid) {
+		UserAddressDaoImpl uadi = new UserAddressDaoImpl();
+		List<HashMap<String, Object>> lists = uadi.getAllAddress(context, uid);
+		MyAddressAdapter adapter = new MyAddressAdapter(lists, context);
 		return adapter;
 	}
 
-	public Bitmap getBitmapFormAssets(AssetManager assets, String imageName) {
+	public static Bitmap getBitmapFormAssets(AssetManager assets, String imageName) {
 
 		InputStream in = null;
 		Bitmap bitmap = null;
@@ -98,7 +49,7 @@ public class ActivityCore {
 		return bitmap;
 	}
 
-	public Bitmap getBitmapFormSdCard(String imageName) {
+	public static Bitmap getBitmapFormSdCard(String imageName) {
 		String path = Environment.getExternalStorageDirectory()
 				+ File.separator + "kfcpng" + File.separator + imageName
 				+ ".png";

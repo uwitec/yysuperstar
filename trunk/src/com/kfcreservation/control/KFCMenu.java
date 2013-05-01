@@ -1,5 +1,6 @@
 package com.kfcreservation.control;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,19 +9,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kfcreservation.R;
 import com.kfcreservation.core.ActivityCore;
-import com.kfcreservation.core.ExitApplication;
+import com.kfcreservation.core.AppData;
+import com.kfcreservation.core.MyMenuListAdapter;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.dao.impl.FoodTypeDaoImpl;
+import com.kfcreservation.dao.impl.FoodsDaoImpl;
+import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
 
 public class KFCMenu extends Activity {
 
@@ -32,39 +34,35 @@ public class KFCMenu extends Activity {
 	int[] to = { R.id.lists };
 	ActivityCore ac = new ActivityCore();
 
-	public ViewHolderM holder = new ViewHolderM();
-
-	public final class ViewHolderM {
-		public ImageView im_img;
-		public TextView tv_name;
-		public TextView tv_price;
-		public Button bu_add;
-		public TextView tv_num;
-		public Button bu_jian;
-		
-	}
+	int currentFoodType = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ExitApplication.getInstance().addActivity(this);
+		//ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMenu.this);
 		setContentView(R.layout.menu_main);
-		
-		//toast 提示
-		Toast t = Toast.makeText(KFCMenu.this, R.drawable.tips, Toast.LENGTH_SHORT);
-		//创建一个imageView
-		ImageView image=new ImageView(KFCMenu.this);
+
+		// toast 提示
+		Toast t = Toast.makeText(KFCMenu.this, R.drawable.tips,
+				Toast.LENGTH_SHORT);
+		// 创建一个imageView
+		ImageView image = new ImageView(KFCMenu.this);
 		image.setImageResource(R.drawable.tips);
-		//创建一个linearlayout
-		LinearLayout ll=new LinearLayout(KFCMenu.this);
+		// 创建一个linearlayout
+		LinearLayout ll = new LinearLayout(KFCMenu.this);
 		ll.addView(image);
 		t.setView(ll);
 		t.show();
 
 		mLvAll = (ListView) findViewById(R.id.lv_All);
 		mLvType = (ListView) findViewById(R.id.lv_Type);
+		mLvAll.setAdapter(new MyMenuListAdapter(KFCMenu.this,
+				getMenuList(currentFoodType)));
+		init();
+	}
 
+	public void init() {
 		// FoodType表list操作
 		FoodTypeDaoImpl ftd = new FoodTypeDaoImpl();
 		final List<HashMap<String, Object>> lists = ftd
@@ -74,20 +72,56 @@ public class KFCMenu extends Activity {
 
 		mLvType.setAdapter(adapterFoodType);
 
-		mLvAll.setAdapter(ac.getFoodListAdapter(KFCMenu.this, 1, holder));
-
 		// list表点击操作
 		mLvType.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				mLvAll.setAdapter(ac.getFoodListAdapter(KFCMenu.this,
-						position + 1, holder));
-				
 
+				currentFoodType = position + 1;
+				MyMenuListAdapter mymenulistadapter = new MyMenuListAdapter(
+						KFCMenu.this, getMenuList(currentFoodType));
+				mLvAll.setAdapter(mymenulistadapter);
 			}
 		});
-		
+	}
 
+	public List<HashMap<String, Object>> getMenuList(int FoodType) {
+		FoodsDaoImpl fad = new FoodsDaoImpl();
+		UserFoodsDaoImpl ufd = new UserFoodsDaoImpl();
+
+		List<HashMap<String, Object>> FoodsTypeList = fad.getFoodsType(
+				KFCMenu.this, FoodType);
+		List<HashMap<String, Object>> UserFoodsCountList = ufd
+				.getUserFoodsCount(KFCMenu.this, AppData.userid, FoodType);
+
+		List<HashMap<String, Object>> MenuList = new ArrayList<HashMap<String, Object>>();
+
+		for (HashMap<String, Object> k : FoodsTypeList) {
+			HashMap<String, Object> mp = new HashMap<String, Object>();
+			mp.put("id", k.get("_id"));
+			mp.put("name", k.get("Name"));
+			mp.put("price", k.get("Price"));
+			mp.put("imgs", ActivityCore.getBitmapFormAssets(
+					KFCMenu.this.getAssets(), k.get("Img").toString()));
+			for (HashMap<String, Object> j : UserFoodsCountList) {
+				if (j.get("Foodid").toString().equals(k.get("_id").toString())) {
+					mp.put("count", j.get("Count"));
+				}
+			}
+
+			if (mp.get("count") == null) {
+				mp.put("count", "0");
+			}
+			MenuList.add(mp);
+		}
+
+		return MenuList;
+	}
+
+	public void RefreshFoodsList() {
+		MyMenuListAdapter mymenulistadapter = new MyMenuListAdapter(KFCMenu.this,
+				getMenuList(currentFoodType));
+		mLvAll.setAdapter(mymenulistadapter);
 	}
 }

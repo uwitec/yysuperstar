@@ -25,7 +25,7 @@ public class KFCLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ExitApplication.getInstance().addActivity(this);
+		//ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCLogin.this);
 		setContentView(R.layout.login_main);
 		

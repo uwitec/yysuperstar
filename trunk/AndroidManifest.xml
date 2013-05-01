@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".control.KFCWaiter" />
+        <activity android:name=".control.KFCWaiterNew" />
         <activity android:name=".control.KFCMenu" />
         <activity android:name=".control.KFCShoppingCar" />
         <activity android:name=".control.KFCMyAdds" />
