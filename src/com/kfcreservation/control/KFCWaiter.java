@@ -20,14 +20,13 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
 import com.kfcreservation.R;
-import com.kfcreservation.core.ExitApplication;
 
 @SuppressWarnings("deprecation")
 public class KFCWaiter extends Activity {
-	List<View> mViewlist;
-	Context mContext ;
-	LocalActivityManager mManager ;
-	TabHost mTabHost ;
+	private List<View> mViewlist;
+	//private Context mContext ;
+	private LocalActivityManager mManager ;
+	private TabHost mTabHost ;
 	private ViewPager mPager ;
 
 	@Override
@@ -43,25 +42,15 @@ public class KFCWaiter extends Activity {
 		mTabHost.setup();
 		mTabHost.setup(mManager);
 
-		mContext = KFCWaiter.this;
+		//mContext = KFCWaiter.this;
 
 		mPager = (ViewPager) findViewById(R.id.viewpager);
 
 		mViewlist = new ArrayList<View>();
-
-		//Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-		//Intent.FLAG_ACTIVITY_CLEAR_TOP
-//		Intent iKFCMenu = new Intent(this, KFCMenu.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//		Intent iKFCShoppingCar = new Intent(this, KFCShoppingCar.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//		Intent iKFCMyAdds = new Intent(this, KFCMyAdds.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		
 		Intent iKFCMenu = new Intent(this, KFCMenu.class);
 		Intent iKFCShoppingCar = new Intent(this, KFCShoppingCar.class);
 		Intent iKFCMyAdds = new Intent(this, KFCMyAdds.class);
-		
-//		ActivityList.put("Menu", getView("KFCMenu", iKFCMenu));
-//		ActivityList.put("ShoppingCar", value)
-//		ActivityList.put("MyAdds", value);
 		
 		mViewlist.add(getView("KFCMenu", iKFCMenu));
 		mViewlist.add(getView("KFCShoppingCar", iKFCShoppingCar));
@@ -84,7 +73,6 @@ public class KFCWaiter extends Activity {
 		mTabHost.addTab(mTabHost.newTabSpec("MyAdds").setContent(iKFCMyAdds).setIndicator(tabIndicator3));
 
 		mTabHost.setOnTabChangedListener(setontabchangelistener);
-		
 		mPager.setAdapter(setpageradapter);
 		mPager.setOnPageChangeListener(setonpagechangelistener);	
 	}
