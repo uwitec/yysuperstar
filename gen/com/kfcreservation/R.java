@@ -50,11 +50,11 @@ public final class R {
         public static final int yangyang=0x7f020017;
     }
     public static final class id {
-        public static final int MenuPage=0x7f09003c;
-        public static final int MyAddsPage=0x7f09003e;
+        public static final int MenuPage=0x7f09003e;
+        public static final int MyAddsPage=0x7f090040;
         public static final int RelativeLayout1=0x7f090000;
-        public static final int ShopingCarPage=0x7f09003d;
-        public static final int action_settings=0x7f090041;
+        public static final int ShopingCarPage=0x7f09003f;
+        public static final int action_settings=0x7f090043;
         public static final int bt_add=0x7f09001d;
         public static final int bt_cancel=0x7f090034;
         public static final int bt_jian=0x7f09001f;
@@ -72,22 +72,22 @@ public final class R {
         public static final int et_password=0x7f090018;
         public static final int et_phonenum=0x7f090017;
         public static final int et_receiver=0x7f090031;
-        public static final int ib_clear=0x7f090035;
+        public static final int ib_clear=0x7f09003c;
         public static final int ibtn_addet=0x7f090002;
         public static final int ibtn_det=0x7f090004;
         public static final int im_img=0x7f09001a;
         public static final int imageView1=0x7f090014;
-        public static final int iv_image=0x7f09003b;
+        public static final int iv_image=0x7f09003d;
         public static final int lists=0x7f090020;
         public static final int lv_All=0x7f090022;
         public static final int lv_Type=0x7f090021;
         public static final int lv_addresses=0x7f090029;
         public static final int lv_order=0x7f090008;
         public static final int lv_phone=0x7f09002c;
-        public static final int orderlist=0x7f090036;
+        public static final int orderlist=0x7f090035;
         public static final int sp_zone=0x7f090024;
         public static final int t1=0x7f090005;
-        public static final int tabhost=0x7f09003f;
+        public static final int tabhost=0x7f090041;
         public static final int textView1=0x7f090013;
         public static final int textView2=0x7f090007;
         public static final int textView3=0x7f090009;
@@ -95,10 +95,10 @@ public final class R {
         public static final int textView5=0x7f09000a;
         public static final int textView6=0x7f09000c;
         public static final int textView7=0x7f09000e;
-        public static final int textView8=0x7f09003a;
         public static final int tv_address=0x7f090023;
         public static final int tv_adress=0x7f09002b;
-        public static final int tv_delivery=0x7f090038;
+        public static final int tv_delivery=0x7f090037;
+        public static final int tv_delivery_num=0x7f09003a;
         public static final int tv_dphone=0x7f090026;
         public static final int tv_name=0x7f09001b;
         public static final int tv_num=0x7f09001e;
@@ -113,9 +113,11 @@ public final class R {
         public static final int tv_selectphone=0x7f09002d;
         public static final int tv_showPhone=0x7f090003;
         public static final int tv_showaddress=0x7f090001;
-        public static final int tv_subtotal=0x7f090037;
-        public static final int tv_total=0x7f090039;
-        public static final int viewpager=0x7f090040;
+        public static final int tv_subtotal=0x7f090036;
+        public static final int tv_subtotal_num=0x7f090039;
+        public static final int tv_total=0x7f090038;
+        public static final int tv_total_num=0x7f09003b;
+        public static final int viewpager=0x7f090042;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

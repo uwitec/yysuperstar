@@ -2,6 +2,7 @@ package com.kfcreservation.handler;
 
 import com.kfcreservation.control.KFCLogin;
 import com.kfcreservation.control.KFCWaiter;
+import com.kfcreservation.control.KFCWaiterNew;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -15,7 +16,7 @@ public class UserInfoHandler {
 		public void handleMessage(Message msg) {
 			KFCLogin kfclogin =(KFCLogin)msg.obj;
 			Intent i = new Intent();
-			i.setClass(kfclogin, KFCWaiter.class);
+			i.setClass(kfclogin, KFCWaiterNew.class);
 			switch(msg.arg1){
 				case 0:
 					kfclogin.showToast("手机号不能为空");

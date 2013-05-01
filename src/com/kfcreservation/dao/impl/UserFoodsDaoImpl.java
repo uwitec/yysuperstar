@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 
+import com.kfcreservation.core.AppData;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.dao.UserFoodsDao;
 import com.kfcreservation.entity.UserFoods;
@@ -52,7 +53,14 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsOrder(Context context,
 			int uid) {
-		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as SumPrice FROM " + TableName + " as a , \"Foods\" as b" + " WHERE Userid = "+ uid +" AND a.Foodid = b.\"_id\""+";";
+		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as SumPrice FROM " + TableName + " as a , \"Foods\" as b" + " WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND a.Foodid = b.\"_id\""+";";
+		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
+		return lists;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getUserFoodsCount(Context context, int uid, int FoodType) {
+		String sql = "SELECT a.Foodid, a.Count FROM \"UserFoods\" as a, \"Foods\" as b WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND b.FoodType = "+ FoodType +" AND a.Foodid = b.\"_id\";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}

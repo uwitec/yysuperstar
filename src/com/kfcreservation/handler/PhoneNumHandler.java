@@ -15,7 +15,7 @@ public class PhoneNumHandler {
 			super.handleMessage(msg);
 			KFCMyAdds mad = (KFCMyAdds) msg.obj;
 			if (msg.arg1 == 1) {
-				mad.lv_phone.setAdapter(mad.getAd());
+				//mad.lv_phone.setAdapter(mad.getAd());
 			}
 		}
 

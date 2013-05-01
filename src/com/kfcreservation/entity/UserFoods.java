@@ -9,7 +9,7 @@ public class UserFoods implements Record {
 	private int _ufid;
 	private int Userid;
 	private int Foodid;
-	private int Serial;
+	private long Serial;
 	private int Count;
 	private int Status;
 	
@@ -48,11 +48,11 @@ public class UserFoods implements Record {
 		Foodid = foodid;
 	}
 
-	public int getSerial() {
+	public long getSerial() {
 		return Serial;
 	}
 
-	public void setSerial(int serial) {
+	public void setSerial(long serial) {
 		Serial = serial;
 	}
 

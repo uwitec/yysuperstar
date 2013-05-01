@@ -6,7 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.os.Message;
 
-import com.kfcreservation.core.AppConfig;
+import com.kfcreservation.core.AppData;
 import com.kfcreservation.dao.impl.UserInfoDaoImpl;
 import com.kfcreservation.entity.UserInfo;
 import com.kfcreservation.handler.UserInfoHandler;
@@ -37,9 +37,10 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 			//存在该用户，登入成功
 			if( userInfoList.size() > 0 ){
 				msg.arg1 = 3;
-				AppConfig.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
-				AppConfig.userPhone = (String) userInfoList.get(0).get("PhoneNum");
-				AppConfig.Password = (String) userInfoList.get(0).get("Password");
+				AppData.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
+				AppData.userPhone = (String) userInfoList.get(0).get("PhoneNum");
+				AppData.Password = (String) userInfoList.get(0).get("Password");
+				AppData.serial = System.currentTimeMillis();
 				UserInfoHandler.handler.sendMessage(msg);
 				return true;
 			}else {
@@ -57,9 +58,10 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 			//存在该用户，登入成功
 			if( userInfoList.size() > 0 ){
 				msg.arg1 = 3;
-				AppConfig.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
-				AppConfig.userPhone = (String) userInfoList.get(0).get("PhoneNum");
-				AppConfig.Password = (String) userInfoList.get(0).get("Password");
+				AppData.userid = Integer.valueOf(userInfoList.get(0).get("_uid").toString());
+				AppData.userPhone = (String) userInfoList.get(0).get("PhoneNum");
+				AppData.Password = (String) userInfoList.get(0).get("Password");
+				AppData.serial = System.currentTimeMillis();
 				UserInfoHandler.handler.sendMessage(msg);
 				return true;
 			}else {

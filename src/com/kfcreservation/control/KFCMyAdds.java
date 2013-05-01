@@ -44,7 +44,7 @@ public class KFCMyAdds extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ExitApplication.getInstance().addActivity(this);
+		//ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMyAdds.this);
 		setContentView(R.layout.myadds_main);
 		getView();

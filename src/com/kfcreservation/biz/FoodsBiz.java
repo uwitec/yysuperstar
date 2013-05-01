@@ -1,5 +1,7 @@
 package com.kfcreservation.biz;
 
-public class FoodsBiz {
+import android.os.Message;
 
+public class FoodsBiz {
+	Message msg;
 }
