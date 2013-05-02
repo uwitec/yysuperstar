@@ -17,7 +17,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,13 +26,16 @@ import com.kfcreservation.biz.PhoneNumBiz;
 import com.kfcreservation.biz.UserAddressBiz;
 import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.core.MySQLiteHelper;
+import com.kfcreservation.myListView.MyListView;
 
 public class KFCMyAdds extends Activity {
 	// 声明控件
+	@SuppressWarnings("unused")
 	private TextView tv_selectphone, tv_selectaddress, mBold,tv_receiver;
+	@SuppressWarnings("unused")
 	private EditText et_receiver;
 	private Button btn_newPhone, btn_newAddress, mOrder;
-	public ListView lv_phone, lv_addresses;
+	public MyListView lv_phone, lv_addresses;
 	PhoneNumBiz pub = new PhoneNumBiz();
 	UserAddressBiz uab = new UserAddressBiz();
 	ActivityCore ac = new ActivityCore();
@@ -112,14 +114,23 @@ public class KFCMyAdds extends Activity {
 
 	public void getView() {
 		tv_receiver =(TextView)findViewById(R.id.tv_receiver);
+		
 		et_receiver =(EditText)findViewById(R.id.et_receiver);
+		
 		tv_selectphone = (TextView) findViewById(R.id.tv_selectphone);
+		
 		tv_selectaddress = (TextView) findViewById(R.id.tv_selectadress);
-		lv_phone = (ListView) findViewById(R.id.lv_phone);
-		lv_addresses = (ListView) findViewById(R.id.lv_addresses);
+		
+		lv_phone = (MyListView) findViewById(R.id.lv_phone);
+		
+		lv_addresses = (MyListView) findViewById(R.id.lv_addresses);
+		
 		btn_newPhone = (Button) findViewById(R.id.btn_newPhone);
+		
 		btn_newAddress = (Button) findViewById(R.id.btn_newAddress);
+		
 		mOrder=(Button) findViewById(R.id.bu_toorder);
+		
 		mBold=(TextView) findViewById(R.id.tv_selectadress);
 	}
 
@@ -171,6 +182,7 @@ public class KFCMyAdds extends Activity {
 						R.layout.myadds_add_address, null);
 				final Spinner spzong = (Spinner) view2
 						.findViewById(R.id.sp_zone);
+				spzong.setPrompt("选择区域");
 				final EditText newaddress = (EditText) view2
 						.findViewById(R.id.et_daddress);
 				builder2.setView(view2);

@@ -18,38 +18,6 @@
         android:textColor="@android:color/black"
         android:textSize="12dp" />
 
-    <ListView
-        android:id="@+id/lv_addresses"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:cacheColorHint="#00000000"
-        android:layout_below="@+id/btn_newAddress"
-        android:layout_marginLeft="3dp" >
-
-    </ListView>
-
-    <Button
-        android:id="@+id/btn_newAddress"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/tv_adress"
-        android:background="@android:drawable/ic_input_add" />
-
-    <TextView
-        android:id="@+id/tv_adress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lv_phone"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="15dp"
-        android:layout_toLeftOf="@+id/tv_selectphone"
-        android:text="联系地址： "
-        android:textColor="@android:color/black"
-        android:textSize="12dp" />
-
     <TextView
         android:id="@+id/tv_selectphone"
         android:layout_width="wrap_content"
@@ -61,17 +29,6 @@
         android:textColor="@android:color/black"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/tv_selectadress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tv_adress"
-        android:layout_toRightOf="@+id/tv_adress"
-        android:text="adress"
-        android:textStyle="bold" 
-        android:textColor="@android:color/black"
-        android:textSize="20dp" />
-
     <Button
         android:id="@+id/bu_toorder"
         android:layout_width="wrap_content"
@@ -80,17 +37,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:text="确认" />
-
-    <ListView
-        android:id="@+id/lv_phone"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tv_selectphone"
-        android:cacheColorHint="#00000000"
-        android:divider="#00000000"
-        android:dividerHeight="12dp" >
-    </ListView>
 
     <Button
         android:id="@+id/btn_newPhone"
@@ -122,5 +68,68 @@
         android:text="收件人"
         android:textColor="@android:color/black"
         android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_selectadress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_adress"
+        android:layout_alignBottom="@+id/tv_adress"
+        android:layout_alignLeft="@+id/tv_selectphone"
+        android:text="address"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_adress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_phone"
+        android:layout_below="@+id/lv_phone"
+        android:layout_marginTop="18dp"
+        android:text="联系地址： "
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <com.kfcreservation.myListView.MyListView
+        android:id="@+id/lv_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:divider="#00000000"
+        android:dividerHeight="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_newAddress"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/shape_bg_listview"
+        android:cacheColorHint="#00000000" >
+
+    </com.kfcreservation.myListView.MyListView>
+
+    <Button
+        android:id="@+id/btn_newAddress"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_alignBaseline="@+id/tv_selectadress"
+        android:layout_alignBottom="@+id/tv_selectadress"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_input_add" />
+
+    <com.kfcreservation.myListView.MyListView
+        android:id="@+id/lv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/tv_selectphone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/shape_bg_listview"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="12dp" >
+
+    </com.kfcreservation.myListView.MyListView>
 
 </RelativeLayout>

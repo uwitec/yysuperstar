@@ -75,11 +75,11 @@ public class MyNumAdapter extends BaseAdapter {
 			
 			myViewHolder = (ViewHolderP) convertView.getTag();
 		}
-		if(position%2==0){
-			convertView.setBackgroundColor(Color.LTGRAY);
-		}else{
-			convertView.setBackgroundColor(Color.WHITE);
-		}
+//		if(position%2==0){
+//			convertView.setBackgroundColor(Color.WHITE);
+//		}else{
+//			convertView.setBackgroundColor(Color.LTGRAY);
+//		}
 		myViewHolder.tv_myphone.setText((String) mData.get(position).get("PhoneNum"));
 		myViewHolder.ibtn_det.setOnClickListener(new OnClickListener() {
 
@@ -107,6 +107,14 @@ public class MyNumAdapter extends BaseAdapter {
 
 							}
 						});
+				builder.setNegativeButton("È¡Ïû", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				builder.create().show();
 			}
 		});
