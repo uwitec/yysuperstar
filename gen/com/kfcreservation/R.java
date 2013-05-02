@@ -13,6 +13,12 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int black=0x7f050003;
+        public static final int gray=0x7f050002;
+        public static final int red=0x7f050000;
+        public static final int white=0x7f050001;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -20,104 +26,106 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int addphones=0x7f020000;
         public static final int address_back=0x7f020001;
-        public static final int clearbutton=0x7f020002;
-        public static final int headb=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int jia=0x7f020005;
-        public static final int jian=0x7f020006;
-        public static final int listview_selector=0x7f020007;
-        public static final int llistback=0x7f020008;
-        public static final int loginbg=0x7f020009;
-        public static final int myaddress=0x7f02000a;
-        public static final int nextbutton=0x7f02000b;
-        public static final int nextbuttonsmall=0x7f02000c;
-        public static final int order_back=0x7f02000d;
-        public static final int rlistback=0x7f02000e;
-        public static final int selected=0x7f02000f;
-        public static final int shoppingcarb=0x7f020010;
-        public static final int tips=0x7f020011;
-        public static final int title=0x7f020012;
-        public static final int title_adr=0x7f020013;
-        public static final int title_shop=0x7f020014;
-        public static final int title_tong=0x7f020015;
-        public static final int unselect=0x7f020016;
-        public static final int yangyang=0x7f020017;
+        public static final int app_list_corner_round=0x7f020002;
+        public static final int app_list_corner_round_bottom=0x7f020003;
+        public static final int app_list_corner_round_top=0x7f020004;
+        public static final int app_list_corner_shape=0x7f020005;
+        public static final int clearbutton=0x7f020006;
+        public static final int headb=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int jia=0x7f020009;
+        public static final int jian=0x7f02000a;
+        public static final int listview_selector=0x7f02000b;
+        public static final int llistback=0x7f02000c;
+        public static final int loginbg=0x7f02000d;
+        public static final int myaddress=0x7f02000e;
+        public static final int nextbutton=0x7f02000f;
+        public static final int nextbuttonsmall=0x7f020010;
+        public static final int order_back=0x7f020011;
+        public static final int rlistback=0x7f020012;
+        public static final int selected=0x7f020013;
+        public static final int shape_bg_listview=0x7f020014;
+        public static final int shoppingcarb=0x7f020015;
+        public static final int tips=0x7f020016;
+        public static final int title=0x7f020017;
+        public static final int title_adr=0x7f020018;
+        public static final int title_shop=0x7f020019;
+        public static final int title_tong=0x7f02001a;
+        public static final int unselect=0x7f02001b;
+        public static final int yangyang=0x7f02001c;
     }
     public static final class id {
-        public static final int MenuPage=0x7f09003e;
-        public static final int MyAddsPage=0x7f090040;
-        public static final int RelativeLayout1=0x7f090000;
-        public static final int ShopingCarPage=0x7f09003f;
-        public static final int action_settings=0x7f090043;
-        public static final int bt_add=0x7f09001d;
-        public static final int bt_cancel=0x7f090034;
-        public static final int bt_jian=0x7f09001f;
-        public static final int bt_next=0x7f090016;
-        public static final int btn_newAddress=0x7f09002a;
-        public static final int btn_newPhone=0x7f090030;
-        public static final int bu_ordercancel=0x7f090010;
-        public static final int bu_ordersure=0x7f090011;
-        public static final int bu_toorder=0x7f09002f;
-        public static final int cb_rem=0x7f090015;
-        public static final int cb_rm=0x7f090019;
-        public static final int et_count=0x7f090033;
-        public static final int et_daddress=0x7f090025;
-        public static final int et_dphone=0x7f090027;
-        public static final int et_password=0x7f090018;
-        public static final int et_phonenum=0x7f090017;
-        public static final int et_receiver=0x7f090031;
-        public static final int ib_clear=0x7f09003c;
-        public static final int ibtn_addet=0x7f090002;
-        public static final int ibtn_det=0x7f090004;
-        public static final int im_img=0x7f09001a;
-        public static final int imageView1=0x7f090014;
-        public static final int iv_image=0x7f09003d;
-        public static final int lists=0x7f090020;
-        public static final int lv_All=0x7f090022;
-        public static final int lv_Type=0x7f090021;
-        public static final int lv_addresses=0x7f090029;
-        public static final int lv_order=0x7f090008;
-        public static final int lv_phone=0x7f09002c;
-        public static final int orderlist=0x7f090035;
-        public static final int sp_zone=0x7f090024;
-        public static final int t1=0x7f090005;
-        public static final int tabhost=0x7f090041;
-        public static final int textView1=0x7f090013;
-        public static final int textView2=0x7f090007;
-        public static final int textView3=0x7f090009;
-        public static final int textView4=0x7f090006;
-        public static final int textView5=0x7f09000a;
-        public static final int textView6=0x7f09000c;
-        public static final int textView7=0x7f09000e;
-        public static final int tv_address=0x7f090023;
-        public static final int tv_adress=0x7f09002b;
-        public static final int tv_delivery=0x7f090037;
-        public static final int tv_delivery_num=0x7f09003a;
-        public static final int tv_dphone=0x7f090026;
-        public static final int tv_name=0x7f09001b;
-        public static final int tv_num=0x7f09001e;
-        public static final int tv_orderaddress=0x7f09000f;
-        public static final int tv_ordermoney=0x7f090012;
-        public static final int tv_ordername=0x7f09000d;
-        public static final int tv_orderphone=0x7f09000b;
-        public static final int tv_phone=0x7f090028;
-        public static final int tv_price=0x7f09001c;
-        public static final int tv_receiver=0x7f090032;
-        public static final int tv_selectadress=0x7f09002e;
-        public static final int tv_selectphone=0x7f09002d;
-        public static final int tv_showPhone=0x7f090003;
-        public static final int tv_showaddress=0x7f090001;
-        public static final int tv_subtotal=0x7f090036;
-        public static final int tv_subtotal_num=0x7f090039;
-        public static final int tv_total=0x7f090038;
-        public static final int tv_total_num=0x7f09003b;
-        public static final int viewpager=0x7f090042;
+        public static final int RelativeLayout1=0x7f0a0000;
+        public static final int action_settings=0x7f0a0040;
+        public static final int bt_add=0x7f0a001d;
+        public static final int bt_cancel=0x7f0a0034;
+        public static final int bt_jian=0x7f0a001f;
+        public static final int bt_next=0x7f0a0016;
+        public static final int btn_newAddress=0x7f0a0032;
+        public static final int btn_newPhone=0x7f0a002b;
+        public static final int bu_ordercancel=0x7f0a0010;
+        public static final int bu_ordersure=0x7f0a0011;
+        public static final int bu_toorder=0x7f0a002a;
+        public static final int cb_rem=0x7f0a0015;
+        public static final int cb_rm=0x7f0a0019;
+        public static final int et_count=0x7f0a0033;
+        public static final int et_daddress=0x7f0a0025;
+        public static final int et_dphone=0x7f0a0027;
+        public static final int et_password=0x7f0a0018;
+        public static final int et_phonenum=0x7f0a0017;
+        public static final int et_receiver=0x7f0a002c;
+        public static final int ib_clear=0x7f0a003c;
+        public static final int ibtn_addet=0x7f0a0002;
+        public static final int ibtn_det=0x7f0a0004;
+        public static final int im_img=0x7f0a001a;
+        public static final int imageView1=0x7f0a0014;
+        public static final int iv_image=0x7f0a003f;
+        public static final int lists=0x7f0a0020;
+        public static final int lv_All=0x7f0a0022;
+        public static final int lv_Type=0x7f0a0021;
+        public static final int lv_addresses=0x7f0a0031;
+        public static final int lv_order=0x7f0a0008;
+        public static final int lv_phone=0x7f0a0030;
+        public static final int orderlist=0x7f0a0035;
+        public static final int sp_zone=0x7f0a0024;
+        public static final int t1=0x7f0a0005;
+        public static final int tabhost=0x7f0a003d;
+        public static final int textView1=0x7f0a0013;
+        public static final int textView2=0x7f0a0007;
+        public static final int textView3=0x7f0a0009;
+        public static final int textView4=0x7f0a0006;
+        public static final int textView5=0x7f0a000a;
+        public static final int textView6=0x7f0a000c;
+        public static final int textView7=0x7f0a000e;
+        public static final int tv_address=0x7f0a0023;
+        public static final int tv_adress=0x7f0a002f;
+        public static final int tv_delivery=0x7f0a0037;
+        public static final int tv_delivery_num=0x7f0a003a;
+        public static final int tv_dphone=0x7f0a0026;
+        public static final int tv_name=0x7f0a001b;
+        public static final int tv_num=0x7f0a001e;
+        public static final int tv_orderaddress=0x7f0a000f;
+        public static final int tv_ordermoney=0x7f0a0012;
+        public static final int tv_ordername=0x7f0a000d;
+        public static final int tv_orderphone=0x7f0a000b;
+        public static final int tv_phone=0x7f0a0028;
+        public static final int tv_price=0x7f0a001c;
+        public static final int tv_receiver=0x7f0a002d;
+        public static final int tv_selectadress=0x7f0a002e;
+        public static final int tv_selectphone=0x7f0a0029;
+        public static final int tv_showPhone=0x7f0a0003;
+        public static final int tv_showaddress=0x7f0a0001;
+        public static final int tv_subtotal=0x7f0a0036;
+        public static final int tv_subtotal_num=0x7f0a0039;
+        public static final int tv_total=0x7f0a0038;
+        public static final int tv_total_num=0x7f0a003b;
+        public static final int viewpager=0x7f0a003e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -126,25 +134,24 @@ public final class R {
         public static final int kfcorder=0x7f030003;
         public static final int login_main=0x7f030004;
         public static final int loginpage=0x7f030005;
-        public static final int menu_list=0x7f030006;
-        public static final int menu_lists=0x7f030007;
+        public static final int menu_foodlistitem=0x7f030006;
+        public static final int menu_foodtypeitem=0x7f030007;
         public static final int menu_main=0x7f030008;
         public static final int myadds_add_address=0x7f030009;
         public static final int myadds_add_dialogphone=0x7f03000a;
         public static final int myadds_main=0x7f03000b;
-        public static final int shoppingcar_list=0x7f03000c;
+        public static final int shoppingcar_listitem=0x7f03000c;
         public static final int shoppingcar_main=0x7f03000d;
-        public static final int tabwidget=0x7f03000e;
-        public static final int viewpage=0x7f03000f;
-        public static final int waiter_main=0x7f030010;
+        public static final int waiter_main=0x7f03000e;
+        public static final int waiter_tabwidget=0x7f03000f;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060002;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060001;
+        public static final int action_settings=0x7f070002;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070001;
     }
     public static final class style {
         /** 
@@ -168,10 +175,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }
