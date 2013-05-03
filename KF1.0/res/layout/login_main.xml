@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/loginbg"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/headb" />
+
+    <CheckBox
+        android:id="@+id/cb_rem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imageView1"
+        android:layout_weight="1.29"
+        android:text="记住我/Remeber Me"
+        android:textColor="#d13827" />
+
+    <ImageButton
+        android:id="@+id/bt_next"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_rem"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cb_rem"
+        android:layout_marginTop="31dp"
+        android:layout_weight="1.29"
+        android:background="@drawable/nextbutton" />
+
+    <EditText
+        android:id="@+id/et_phonenum"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/et_password"
+        android:layout_alignLeft="@+id/et_password"
+        android:layout_weight="0.11"
+        android:ems="13"
+        android:hint="请输入手机号码"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/cb_rem"
+        android:layout_alignLeft="@+id/cb_rem"
+        android:layout_marginBottom="23dp"
+        android:layout_weight="1.29"
+        android:ems="13"
+        android:hint="请输入密码"
+        android:inputType="textVisiblePassword" >
+    </EditText>
+
+</RelativeLayout>
