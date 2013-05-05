@@ -10,7 +10,7 @@ import com.kfcreservation.control.KFCWaiterNew;
 
 public class KFCLoginHandler {
 
-	public static Handler mHandler = new Handler() {
+	public static Handler LoginHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
@@ -34,6 +34,26 @@ public class KFCLoginHandler {
 				break;
 			case 4:
 				kfclogin.showToast("×¢²áÊ§°Ü");
+				break;
+			}
+		}
+	};
+	
+	public static Handler WeiboHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			KFCLogin kfclogin = (KFCLogin) msg.obj;
+			
+			switch (msg.arg1) {
+			case 0:
+				kfclogin.showToast("·ÖÏí³É¹¦");
+				break;
+			case 1:
+				kfclogin.showToast("WeiboException");
+				break;
+			case 2:
+				kfclogin.showToast("IOException");
 				break;
 			}
 		}

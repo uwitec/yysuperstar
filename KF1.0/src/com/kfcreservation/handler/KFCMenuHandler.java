@@ -21,6 +21,18 @@ public class KFCMenuHandler {
 		}
 		
 	};
+	
+	public static Handler weiboHandler =new Handler(){
+
+		@Override
+		public void handleMessage(Message msg1) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg1);
+			position =msg1.arg1;
+			System.out.println("HH =="+position);
+		}
+		
+	};
 
 	public static Handler mHandler = new Handler(){
 

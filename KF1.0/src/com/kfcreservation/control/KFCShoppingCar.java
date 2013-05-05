@@ -45,8 +45,8 @@ public class KFCShoppingCar extends Activity {
 	protected void onStart() {
 		super.onStart();
 		init();
-		RefreshShoppingCarlist();
-		RefreshTotal();
+		//RefreshShoppingCarlist();
+		//RefreshTotal();
 	}
 
 	public void init() {

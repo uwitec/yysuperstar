@@ -34,6 +34,7 @@ public class MyShoppingCarListAdapter extends BaseAdapter {
 		this.mInflater = LayoutInflater.from(context);
 		this.mData = list;
 		this.context = context;
+		super.notifyDataSetChanged();
 	}
 	
 	@Override

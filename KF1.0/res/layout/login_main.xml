@@ -25,7 +25,7 @@
         android:textColor="#d13827" />
 
     <ImageButton
-        android:id="@+id/bt_next"
+        android:id="@+id/ib_next"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cb_rem"
@@ -58,5 +58,13 @@
         android:hint="请输入密码"
         android:inputType="textVisiblePassword" >
     </EditText>
+
+    <ImageButton
+        android:id="@+id/ib_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/et_password"
+        android:layout_alignTop="@+id/cb_rem"
+        android:background="@drawable/weibo" />
 
 </RelativeLayout>

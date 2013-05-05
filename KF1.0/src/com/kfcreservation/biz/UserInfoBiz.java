@@ -16,18 +16,18 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 	Message msg;
 
 	public boolean UserLogin(Context context, UserInfo userinfo) {
-		msg = KFCLoginHandler.mHandler.obtainMessage();
+		msg = KFCLoginHandler.LoginHandler.obtainMessage();
 		msg.obj = context;
 		
 		if (userinfo.getPhoneNum() == null || userinfo.getPhoneNum().equals("")) {
 			msg.arg1 = 0;
-			KFCLoginHandler.mHandler.sendMessage(msg);
+			KFCLoginHandler.LoginHandler.sendMessage(msg);
 			return false;
 		}
 
 		if (userinfo.getPassword() == null || userinfo.getPassword().equals("")) {
 			msg.arg1 = 1;
-			KFCLoginHandler.mHandler.sendMessage(msg);
+			KFCLoginHandler.LoginHandler.sendMessage(msg);
 			return false;
 		}
 
@@ -51,11 +51,11 @@ public class UserInfoBiz extends UserInfoDaoImpl {
 			AppData.Password = (String) userInfoList.get(0).get("Password");
 			AppData.serial = System.currentTimeMillis();
 			msg.arg1 = 3;
-			KFCLoginHandler.mHandler.sendMessage(msg);
+			KFCLoginHandler.LoginHandler.sendMessage(msg);
 			return true;
 		} else {
 			msg.arg1 = 4;
-			KFCLoginHandler.mHandler.sendMessage(msg);
+			KFCLoginHandler.LoginHandler.sendMessage(msg);
 			return false;
 		}
 	}
