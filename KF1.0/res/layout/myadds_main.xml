@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rlistback"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_newPhone"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tv_selectphone"
+        android:layout_alignBottom="@+id/tv_selectphone"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/tv_selectadress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_adress"
+        android:layout_alignBottom="@+id/tv_adress"
+        android:layout_alignLeft="@+id/tv_selectphone"
+        android:text="address"
+        android:textColor="#ff0000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_adress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_phone"
+        android:layout_below="@+id/lv_phone"
+        android:layout_marginTop="10dp"
+        android:text="联系地址： "
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/btn_newAddress"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tv_selectadress"
+        android:layout_alignBottom="@+id/tv_selectadress"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_input_add" />
+
+    <com.kfcreservation.myListView.MyListView
+        android:id="@+id/lv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tv_selectphone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape_bg_listview"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="12dp" >
+
+    </com.kfcreservation.myListView.MyListView>
+
+    <TextView
+        android:id="@+id/tv_selectphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_receiver"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@+id/tv_phone"
+        android:text="phonenumber"
+        android:textColor="#ff0000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_selectphone"
+        android:layout_alignBottom="@+id/tv_selectphone"
+        android:layout_alignLeft="@+id/lv_phone"
+        android:text="联系电话： "
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/bu_toorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="预览订单" />
+
+    <com.kfcreservation.myListView.MyListView
+        android:id="@+id/lv_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/tv_adress"
+        android:layout_below="@+id/btn_newAddress"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape_bg_listview"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="12dp" >
+
+    </com.kfcreservation.myListView.MyListView>
+
+    <TextView
+        android:id="@+id/tv_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_receiver"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:text="联系人："
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/et_receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_phone"
+        android:layout_below="@+id/tv_receiver"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="联系人"
+        android:textColor="#ff0000" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lv_addresses"
+        android:layout_below="@+id/lv_addresses"
+        android:layout_marginTop="6dp"
+        android:text="备注:"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/et_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/lv_phone"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="请留下您的宝贵建议或要求"
+        android:textColor="#ff0000" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>
