@@ -5,11 +5,9 @@ import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.dao.PhoneNumDao;
-import com.kfcreservation.entity.PhoneNum;
 
 public class PhoneNumDaoImpl implements PhoneNumDao {
 	

@@ -6,16 +6,13 @@ import java.util.List;
 import android.content.Context;
 import android.os.Message;
 
-import com.kfcreservation.dao.UserAddressDao;
 import com.kfcreservation.dao.impl.UserAddressDaoImpl;
 import com.kfcreservation.handler.UserAddressHandler;
+import com.kfcreservation.provide.MyAddressAdapter;
 
-public class UserAddressBiz extends UserAddressDaoImpl implements
-		UserAddressDao {
+public class UserAddressBiz extends UserAddressDaoImpl{
 	
 		Message msg ;
-	
-	
 		@SuppressWarnings("null")
 		public boolean checkAdd(Context context,int uid,String address){
 			
@@ -52,15 +49,9 @@ public class UserAddressBiz extends UserAddressDaoImpl implements
 			}
 			return false;
 		}
-	
-	
-	
-	public List<HashMap<String,Object>> getAllAddress(Context context,int uid){
-		return super.getAllAddress(context, uid);
-	}
-	
-	public long addAddress(Context context,int uid,String address){
-		return super.addAddress(context, uid, address);
-	}
-
+		
+		public MyAddressAdapter getMyAddressAdapter(Context context, int uid){
+			List<HashMap<String, Object>> alladdresslist = super.getAllAddress(context, uid);
+			return new MyAddressAdapter(alladdresslist, context);
+		}
 }

@@ -1,8 +1,8 @@
 package com.kfcreservation.entity;
 
-import com.kfcreservation.core.Record;
-
 import android.content.ContentValues;
+
+import com.kfcreservation.core.Record;
 
 public class UserInfo implements Record {
 	

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.kfcreservation.R;
 import com.kfcreservation.core.AppData;
 import com.kfcreservation.core.MySQLiteHelper;
-import com.kfcreservation.core.MyShoppingCarListAdapter;
+import com.kfcreservation.provide.MyShoppingCarListAdapter;
 
 public class KFCShoppingCar extends Activity {
 

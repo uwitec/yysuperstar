@@ -6,7 +6,6 @@ import android.os.Message;
 
 import com.kfcreservation.control.KFCLogin;
 import com.kfcreservation.control.KFCWaiter;
-import com.kfcreservation.control.KFCWaiterNew;
 
 public class KFCLoginHandler {
 	
