@@ -1,15 +1,16 @@
 package com.kfcreservation.control;
 
 
-import com.kfcreservation.R;
-import com.kfcreservation.core.AppData;
-import com.kfcreservation.core.MyOrderAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.kfcreservation.R;
+import com.kfcreservation.core.AppData;
+import com.kfcreservation.provide.MyOrderAdapter;
 
 public class KFCOrder extends Activity {
 	TextView mMoney,mName,mAddress,mPhone,mMsg;

@@ -6,11 +6,11 @@ import java.util.List;
 import android.content.Context;
 import android.os.Message;
 
-import com.kfcreservation.dao.PhoneNumDao;
 import com.kfcreservation.dao.impl.PhoneNumDaoImpl;
 import com.kfcreservation.handler.PhoneNumHandler;
+import com.kfcreservation.provide.MyNumAdapter;
 
-public class PhoneNumBiz extends PhoneNumDaoImpl implements PhoneNumDao {
+public class PhoneNumBiz extends PhoneNumDaoImpl{
 	
 	Message msg ;
 	
@@ -45,18 +45,10 @@ public class PhoneNumBiz extends PhoneNumDaoImpl implements PhoneNumDao {
 		return false;
 	}
 	
-	
-	public List<HashMap<String,Object>> getAllNumber(Context context,int uid){
-		return super.getAllNumber(context, uid);
+	public MyNumAdapter getMyNumAdapter(Context context, int uid){
+		List<HashMap<String, Object>> allnumberlist = super.getAllNumber(context, uid);
+		return new MyNumAdapter(allnumberlist, context);
 	}
-	
-	public long addPhone(Context context,int _uid,String phonenum){
-		return super.addPhone(context, _uid, phonenum);
-	}
-	public List<HashMap<String,Object>> getByNum(Context context, int _uid, String phonenum){
-		return super.getByNum(context, _uid, phonenum);
-	}
-	
 }
 
 

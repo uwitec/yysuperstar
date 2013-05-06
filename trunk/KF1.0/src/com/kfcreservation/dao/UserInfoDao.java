@@ -3,9 +3,9 @@ package com.kfcreservation.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import com.kfcreservation.entity.UserInfo;
-
 import android.content.Context;
+
+import com.kfcreservation.entity.UserInfo;
 
 public interface UserInfoDao {
 	

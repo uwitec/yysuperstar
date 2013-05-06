@@ -1,9 +1,9 @@
 package com.kfcreservation.handler;
 
-import com.kfcreservation.control.KFCMyAdds;
-
 import android.os.Handler;
 import android.os.Message;
+
+import com.kfcreservation.control.KFCMyAdds;
 
 public class UserAddressHandler {
 	

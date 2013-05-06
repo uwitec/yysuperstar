@@ -3,8 +3,6 @@ package com.kfcreservation.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import com.kfcreservation.entity.PhoneNum;
-
 import android.content.Context;
 
 public interface PhoneNumDao {
