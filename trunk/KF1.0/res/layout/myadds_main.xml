@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/rlistback"
+    android:background="@drawable/add_back"
     android:orientation="vertical" >
 
     <Button
@@ -18,13 +18,15 @@
 
     <TextView
         android:id="@+id/tv_selectadress"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tv_adress"
         android:layout_alignBottom="@+id/tv_adress"
         android:layout_alignLeft="@+id/tv_selectphone"
         android:text="address"
         android:textColor="#ff0000"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_phone"
         android:layout_below="@+id/lv_phone"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:text="联系地址： "
         android:textColor="@android:color/black"
         android:textSize="12dp" />
@@ -52,7 +54,7 @@
     <com.kfcreservation.myListView.MyListView
         android:id="@+id/lv_phone"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/tv_selectphone"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="3dp"
@@ -70,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_receiver"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/tv_phone"
         android:text="phonenumber"
         android:textColor="#ff0000"
@@ -88,21 +90,14 @@
         android:textColor="@android:color/black"
         android:textSize="12dp" />
 
-    <Button
-        android:id="@+id/bu_toorder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="预览订单" />
-
     <com.kfcreservation.myListView.MyListView
         android:id="@+id/lv_addresses"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_alignLeft="@+id/tv_adress"
         android:layout_below="@+id/btn_newAddress"
-        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/shape_bg_listview"
         android:cacheColorHint="#00000000"
         android:divider="#00000000"
@@ -139,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/lv_addresses"
         android:layout_below="@+id/lv_addresses"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="3dp"
         android:text="备注:"
         android:textColor="@color/black"
         android:textSize="12dp" />
@@ -159,5 +154,14 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/bu_toorder"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/add_button"
+        android:text="预览订单" />
 
 </RelativeLayout>

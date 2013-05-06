@@ -30,75 +30,82 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int app_list_corner_round=0x7f020000;
-        public static final int app_list_corner_round_bottom=0x7f020001;
-        public static final int app_list_corner_round_top=0x7f020002;
-        public static final int app_list_corner_shape=0x7f020003;
-        public static final int clearbutton=0x7f020004;
-        public static final int headb=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int jia=0x7f020007;
-        public static final int jian=0x7f020008;
-        public static final int listview_selector=0x7f020009;
-        public static final int llistback=0x7f02000a;
-        public static final int loginbg=0x7f02000b;
-        public static final int nextbutton=0x7f02000c;
-        public static final int nextbuttonsmall=0x7f02000d;
-        public static final int order_back=0x7f02000e;
-        public static final int refreshbutton=0x7f02000f;
-        public static final int rlistback=0x7f020010;
-        public static final int selected=0x7f020011;
-        public static final int shape_bg_listview=0x7f020012;
-        public static final int shoppingcarb=0x7f020013;
-        public static final int tips=0x7f020014;
-        public static final int title=0x7f020015;
-        public static final int title_adr=0x7f020016;
-        public static final int title_shop=0x7f020017;
-        public static final int title_tong=0x7f020018;
-        public static final int weibo=0x7f020019;
-        public static final int yangyang=0x7f02001a;
+        public static final int add_back=0x7f020000;
+        public static final int add_button=0x7f020001;
+        public static final int add_sure=0x7f020002;
+        public static final int add_unsure=0x7f020003;
+        public static final int apk_common=0x7f020004;
+        public static final int apk_strong=0x7f020005;
+        public static final int app_list_corner_round=0x7f020006;
+        public static final int app_list_corner_round_bottom=0x7f020007;
+        public static final int app_list_corner_round_top=0x7f020008;
+        public static final int app_list_corner_shape=0x7f020009;
+        public static final int button_selector=0x7f02000a;
+        public static final int clearbutton=0x7f02000b;
+        public static final int headb=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int jia=0x7f02000e;
+        public static final int jian=0x7f02000f;
+        public static final int listview_selector=0x7f020010;
+        public static final int llistback=0x7f020011;
+        public static final int loginbg=0x7f020012;
+        public static final int nextbutton=0x7f020013;
+        public static final int nextbuttonsmall=0x7f020014;
+        public static final int order_back=0x7f020015;
+        public static final int refreshbutton=0x7f020016;
+        public static final int rlistback=0x7f020017;
+        public static final int selected=0x7f020018;
+        public static final int shape_bg_listview=0x7f020019;
+        public static final int shoppingcarb=0x7f02001a;
+        public static final int tips=0x7f02001b;
+        public static final int title=0x7f02001c;
+        public static final int title_adr=0x7f02001d;
+        public static final int title_shop=0x7f02001e;
+        public static final int title_tong=0x7f02001f;
+        public static final int weibo=0x7f020020;
+        public static final int yangyang=0x7f020021;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0000;
-        public static final int action_settings=0x7f0a0047;
+        public static final int action_settings=0x7f0a0048;
         public static final int bt_add=0x7f0a0023;
-        public static final int bt_cancel=0x7f0a003b;
+        public static final int bt_cancel=0x7f0a003c;
         public static final int bt_jian=0x7f0a0025;
         public static final int bt_next=0x7f0a001f;
-        public static final int btn_newAddress=0x7f0a0034;
-        public static final int btn_newPhone=0x7f0a002e;
+        public static final int btn_newAddress=0x7f0a0035;
+        public static final int btn_newPhone=0x7f0a002f;
         public static final int bu_ordersure=0x7f0a0010;
-        public static final int bu_toorder=0x7f0a0036;
+        public static final int bu_toorder=0x7f0a003a;
         public static final int cb_rem=0x7f0a0019;
         public static final int cb_rm=0x7f0a001e;
-        public static final int et_count=0x7f0a003a;
-        public static final int et_daddress=0x7f0a002b;
+        public static final int et_count=0x7f0a003b;
+        public static final int et_daddress=0x7f0a002c;
         public static final int et_dphone=0x7f0a002d;
         public static final int et_msg=0x7f0a0039;
         public static final int et_password=0x7f0a001c;
         public static final int et_phonenum=0x7f0a001b;
-        public static final int et_receiver=0x7f0a0035;
-        public static final int ib_clear=0x7f0a0043;
+        public static final int et_receiver=0x7f0a0036;
+        public static final int ib_clear=0x7f0a0044;
         public static final int ib_next=0x7f0a001a;
         public static final int ib_weibo=0x7f0a001d;
         public static final int ibtn_addet=0x7f0a0002;
         public static final int ibtn_det=0x7f0a0004;
         public static final int im_img=0x7f0a0020;
         public static final int imageView1=0x7f0a0018;
-        public static final int iv_image=0x7f0a0046;
+        public static final int iv_image=0x7f0a0047;
         public static final int lists=0x7f0a0026;
         public static final int lv_All=0x7f0a0028;
         public static final int lv_Type=0x7f0a0027;
         public static final int lv_addresses=0x7f0a0037;
         public static final int lv_order=0x7f0a0008;
-        public static final int lv_phone=0x7f0a0033;
+        public static final int lv_phone=0x7f0a0034;
         public static final int order_count=0x7f0a0016;
         public static final int order_name=0x7f0a0015;
         public static final int order_price=0x7f0a0017;
-        public static final int orderlist=0x7f0a003c;
+        public static final int orderlist=0x7f0a003d;
         public static final int sp_zone=0x7f0a002a;
         public static final int t1=0x7f0a0005;
-        public static final int tabhost=0x7f0a0044;
+        public static final int tabhost=0x7f0a0045;
         public static final int textView1=0x7f0a0012;
         public static final int textView2=0x7f0a0007;
         public static final int textView3=0x7f0a0009;
@@ -107,11 +114,12 @@ public final class R {
         public static final int textView6=0x7f0a000c;
         public static final int textView7=0x7f0a000e;
         public static final int textView8=0x7f0a0013;
-        public static final int tv_address=0x7f0a0029;
-        public static final int tv_adress=0x7f0a0031;
-        public static final int tv_delivery=0x7f0a003e;
-        public static final int tv_delivery_num=0x7f0a0041;
-        public static final int tv_dphone=0x7f0a002c;
+        public static final int tv_address=0x7f0a002b;
+        public static final int tv_adress=0x7f0a0032;
+        public static final int tv_area=0x7f0a0029;
+        public static final int tv_delivery=0x7f0a003f;
+        public static final int tv_delivery_num=0x7f0a0042;
+        public static final int tv_dphone=0x7f0a002e;
         public static final int tv_msg=0x7f0a0014;
         public static final int tv_name=0x7f0a0021;
         public static final int tv_num=0x7f0a0024;
@@ -119,18 +127,18 @@ public final class R {
         public static final int tv_ordermoney=0x7f0a0011;
         public static final int tv_ordername=0x7f0a000d;
         public static final int tv_orderphone=0x7f0a000b;
-        public static final int tv_phone=0x7f0a0032;
+        public static final int tv_phone=0x7f0a0033;
         public static final int tv_price=0x7f0a0022;
         public static final int tv_receiver=0x7f0a0038;
-        public static final int tv_selectadress=0x7f0a0030;
-        public static final int tv_selectphone=0x7f0a002f;
+        public static final int tv_selectadress=0x7f0a0031;
+        public static final int tv_selectphone=0x7f0a0030;
         public static final int tv_showPhone=0x7f0a0003;
         public static final int tv_showaddress=0x7f0a0001;
-        public static final int tv_subtotal=0x7f0a003d;
-        public static final int tv_subtotal_num=0x7f0a0040;
-        public static final int tv_total=0x7f0a003f;
-        public static final int tv_total_num=0x7f0a0042;
-        public static final int viewpager=0x7f0a0045;
+        public static final int tv_subtotal=0x7f0a003e;
+        public static final int tv_subtotal_num=0x7f0a0041;
+        public static final int tv_total=0x7f0a0040;
+        public static final int tv_total_num=0x7f0a0043;
+        public static final int viewpager=0x7f0a0046;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -164,6 +172,11 @@ public final class R {
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.

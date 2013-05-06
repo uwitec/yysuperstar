@@ -8,15 +8,17 @@
 
     <TextView
         android:id="@+id/tv_showaddress"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ibtn_addet"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="15dp"
+        android:ellipsize="end"
         android:focusable="true"
+        android:singleLine="true"
         android:text="TextView"
-        android:textSize="15dp"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="15dp" />
 
     <ImageButton
         android:id="@+id/ibtn_addet"
@@ -24,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
         android:background="@android:drawable/ic_delete"
         android:focusable="false" />
 
