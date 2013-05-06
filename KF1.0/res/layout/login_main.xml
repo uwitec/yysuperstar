@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/et_password"
-        android:layout_alignTop="@+id/cb_rem"
+        android:layout_below="@+id/et_password"
         android:background="@drawable/weibo" />
 
 </RelativeLayout>
