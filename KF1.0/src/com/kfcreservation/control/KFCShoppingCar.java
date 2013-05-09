@@ -1,9 +1,11 @@
 package com.kfcreservation.control;
 
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 import com.kfcreservation.R;
 import com.kfcreservation.core.AppData;
 import com.kfcreservation.core.MySQLiteHelper;
+import com.kfcreservation.dao.UserFoodsDao;
+import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
+import com.kfcreservation.handler.KFCShoppingCarHandler;
 import com.kfcreservation.provide.MyShoppingCarListAdapter;
 
 public class KFCShoppingCar extends Activity {
@@ -24,7 +29,11 @@ public class KFCShoppingCar extends Activity {
 	TextView tv_total_num;
 	Button ib_clear;
 	Message msg;
-
+	
+	MyShoppingCarListAdapter myshoppingcarlistadapter;
+	
+	UserFoodsDao userfoodsdao = new UserFoodsDaoImpl();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,31 +48,70 @@ public class KFCShoppingCar extends Activity {
 		tv_delivery_num = (TextView) findViewById(R.id.tv_delivery_num);
 		tv_total_num = (TextView) findViewById(R.id.tv_total_num);
 		ib_clear = (Button) findViewById(R.id.ib_clear);
+
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
+		System.out.println("----KFCShoppingCar onStart----");
 		init();
-		//RefreshShoppingCarlist();
-		//RefreshTotal();
+		setShoppingCarlist();
+		setTotal();
+//		Thread subthread = new Thread(){
+//			Message msg1;
+//	
+//			@Override
+//			public void run() {
+////				msg = KFCShoppingCarHandler.RefreshShoppingCarHandler.obtainMessage();
+////				msg.obj = KFCShoppingCar.this;
+//				Looper.prepare();
+//				while(true){
+//					try {
+//						sleep(10000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//					
+//					msg1 = KFCShoppingCarHandler.RefreshShoppingCarHandler.obtainMessage();
+//					msg1.obj = KFCShoppingCar.this;
+//					KFCShoppingCarHandler.RefreshShoppingCarHandler.sendMessage(msg1);
+//					Looper.loop();
+//					System.out.println("----KFCShoppingCar Thread subthread----");
+//				}
+//			}
+//		};
+//	
+//		subthread.start();
 	}
 
 	public void init() {
 		ib_clear.setOnClickListener(set_ib_clear_onclicklistener);
 	}
 
-	public void RefreshShoppingCarlist() {
-		orderlist.setAdapter(new MyShoppingCarListAdapter(KFCShoppingCar.this,
-				AppData.UserOrderList));
+	public void setShoppingCarlist() {
+		System.out.println("----setShoppingCarlist----" + " ThreadName:" +Thread.currentThread().getName());
+		List<HashMap<String, Object>> UserFoodsList = userfoodsdao.getUserFoodsOrder(KFCShoppingCar.this, AppData.userid);
+		myshoppingcarlistadapter = new MyShoppingCarListAdapter(KFCShoppingCar.this,UserFoodsList);
+		myshoppingcarlistadapter.addData(UserFoodsList);
+		orderlist.setAdapter(myshoppingcarlistadapter);
+	}
+	
+	public void ReloadShoppingCarlist() {
+		System.out.println("----ReloadShoppingCarlist----");
+		List<HashMap<String, Object>> UserFoodsList = userfoodsdao.getUserFoodsOrder(KFCShoppingCar.this, AppData.userid);
+		myshoppingcarlistadapter = new MyShoppingCarListAdapter(KFCShoppingCar.this,UserFoodsList);
+		myshoppingcarlistadapter.addData(UserFoodsList);
+		myshoppingcarlistadapter.notifyDataSetChanged();
+		orderlist.setAdapter(myshoppingcarlistadapter);
 	}
 
-	public void RefreshTotal() {
+	public void setTotal(){
 		float subtotal = 0.0f;
 		float delivery = 0.0f;
 		float total = 0.0f;
-
-		for (HashMap<String, Object> k : AppData.UserOrderList) {
+		List<HashMap<String, Object>> UserFoodsList = userfoodsdao.getUserFoodsOrder(KFCShoppingCar.this, AppData.userid);
+		for (HashMap<String, Object> k : UserFoodsList) {
 			subtotal += Float.valueOf(k.get("SumPrice").toString());
 		}
 
@@ -82,13 +130,17 @@ public class KFCShoppingCar extends Activity {
 		msg.obj=total;
 		KFCOrder.handler.sendMessage(msg);
 	}
+	
+	public void RefreshTotal() {
+		
+	}
 
 	OnClickListener set_ib_clear_onclicklistener = new OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-			RefreshShoppingCarlist();
-			RefreshTotal();
+			setShoppingCarlist();
+			setTotal();
 		}
 	};
 }

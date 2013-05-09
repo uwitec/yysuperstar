@@ -29,6 +29,10 @@ public class MyMenuListAdapter extends BaseAdapter {
 	private List<? extends Map<String, ?>> mData;
 	private Context context = null;
 	
+	private UserFoods userfoods = new UserFoods();
+
+	private UserFoodsBiz userfoodsbiz = new UserFoodsBiz();
+	
 	public final class ViewHolderM {
 		public ImageView im_img;
 		public TextView tv_name;
@@ -44,6 +48,10 @@ public class MyMenuListAdapter extends BaseAdapter {
 		this.mInflater = LayoutInflater.from(context);
 		this.mData = list;
 		this.context = context;
+	}
+	
+	public void addData(List<HashMap<String, Object>> list){
+		this.mData = list;
 	}
 
 	@Override
@@ -92,23 +100,28 @@ public class MyMenuListAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				HashMap<String, Object> food = (HashMap<String, Object>) v.getTag();
-				UserFoodsBiz ufb = new UserFoodsBiz();
-				UserFoods uf = new UserFoods();
-				uf.setCount(Integer.valueOf(food.get("Count").toString()) + 1);
-				uf.setFoodid(Integer.valueOf(food.get("_id").toString()));
-				uf.setSerial(AppData.serial);
-				uf.setStatus(0);
-				uf.setUserid(AppData.userid);
-				ufb.AddUserFoods(context, uf);
+				List<HashMap<String, Object>> FoodsCountlist = userfoodsbiz.getUserFoodsCountById( context, AppData.userid, AppData.serial, Integer.valueOf(food.get("_id").toString()) );
+				if(FoodsCountlist.size() > 0){
+					userfoods.setCount( Integer.valueOf(FoodsCountlist.get(0).get("Count").toString()) + 1);
+				}else{
+					userfoods.setCount(1);
+				}
+				
+				userfoods.setFoodid( Integer.valueOf(food.get("_id").toString()) );
+				userfoods.setSerial(AppData.serial);
+				userfoods.setStatus(0);
+				userfoods.setUserid(AppData.userid) ;
+				
+				userfoodsbiz.AddUserFoods(context, userfoods);
+				
 				updAppDataUserOrderList();
-				
 				KFCShoppingCar kfcshoppingcar = (KFCShoppingCar) AppData.getActivityList("KFCShoppingCar");
-				
-				kfcshoppingcar.RefreshShoppingCarlist();
-
+				kfcshoppingcar.setShoppingCarlist();
+				kfcshoppingcar.ReloadShoppingCarlist();
+				kfcshoppingcar.setTotal();
 				Toast.makeText(context, "已加入购物车", Toast.LENGTH_SHORT).show();
 				
-				System.out.println("===========");
+				System.out.println("已加入购物车");
 			}
 		});
 
@@ -117,36 +130,20 @@ public class MyMenuListAdapter extends BaseAdapter {
 			
 			@Override
 			public void onClick(View v) {
-				HashMap<String, Object> food = (HashMap<String, Object>) v.getTag();
-				if (Integer.valueOf(food.get("Count").toString()) == 0) {
-					return;
-				}
-				UserFoodsBiz ufb = new UserFoodsBiz();
-				UserFoods uf = new UserFoods();
-				uf.setCount(Integer.valueOf(food.get("Count").toString()) - 1);
-				uf.setFoodid(Integer.valueOf(food.get("_id").toString()));
-				uf.setSerial(AppData.serial);
-				uf.setStatus(0);
-				uf.setUserid(AppData.userid);
-				ufb.AddUserFoods(context, uf);
-				updAppDataUserOrderList();
-				KFCShoppingCar kfcshoppingcar = (KFCShoppingCar) AppData.getActivityList("KFCShoppingCar");
-				kfcshoppingcar.RefreshShoppingCarlist();
-				Toast.makeText(context, "已更新购物车", Toast.LENGTH_SHORT).show();
+				
 			}
 		});
-
+		System.out.println("MyMenuListAdapter Name:"+(String) dataSet.get("Name") + " position:"+position);
 		return convertView;
 	}
 
 	//更新购物车
 	private void updAppDataUserOrderList() {
 		
-		System.out.println("+++++++++===");
+		System.out.println("updAppDataUserOrderList");
 		UserFoodsDaoImpl ufd = new UserFoodsDaoImpl();
 		List<HashMap<String, Object>> UserFoodsList = ufd.getUserFoodsOrder(
 				context, AppData.userid);
-		//AppData.UserOrderList = UserFoodsList;
 		AppData.setUserOrderList(UserFoodsList);
 	}
 }
