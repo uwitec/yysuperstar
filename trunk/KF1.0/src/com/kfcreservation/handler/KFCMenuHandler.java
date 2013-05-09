@@ -8,7 +8,7 @@ import com.kfcreservation.control.KFCMenu;
 public class KFCMenuHandler {
 	
 	public static KFCMenu kfcmenu;
-	public static int position;
+	public static int position = 1;
 	
 	public static Handler setPositionHandler = new Handler(){
 
@@ -41,6 +41,16 @@ public class KFCMenuHandler {
 			super.handleMessage(msg);
 			kfcmenu = (KFCMenu)msg.obj;
 			kfcmenu.RefreshFoodMenuList(position);
+		}
+	};
+	
+	public static Handler ReloadFoodMenuHandler = new Handler(){
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			kfcmenu = (KFCMenu)msg.obj;
+			kfcmenu.ReloadFoodMenuList(position);
 		}
 	};
 }

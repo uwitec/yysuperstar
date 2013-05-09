@@ -61,8 +61,14 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsCount(Context context, int uid, int FoodType) {
 		String sql = "SELECT a.Foodid, a.Count FROM \"UserFoods\" as a, \"Foods\" as b WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND b.FoodType = "+ FoodType +" AND a.Foodid = b.\"_id\";";
-		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
-		return lists;
+		return MySQLiteHelper.lQuery(sql);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getUserFoodsCountById(Context context,
+			int uid, long serial, int fid) {
+		String sql = "SELECT Count FROM \"UserFoods\" WHERE Userid = "+uid+" AND Serial = "+serial+" AND Foodid = "+fid+";";
+		return MySQLiteHelper.lQuery(sql);
 	}
 
 }

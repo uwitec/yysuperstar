@@ -1,5 +1,8 @@
 package com.kfcreservation.control;
 
+import java.util.HashMap;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,6 +15,8 @@ import com.kfcreservation.biz.FoodTypeBiz;
 import com.kfcreservation.biz.FoodsBiz;
 import com.kfcreservation.core.AppData;
 import com.kfcreservation.core.MySQLiteHelper;
+import com.kfcreservation.provide.MyFoodTypeAdapter;
+import com.kfcreservation.provide.MyMenuListAdapter;
 
 public class KFCMenu extends Activity {
 
@@ -25,6 +30,9 @@ public class KFCMenu extends Activity {
 	public FoodTypeBiz foodtypebiz = new FoodTypeBiz();
 
 	int currentFoodType = 1;
+	
+	public MyMenuListAdapter mymenulistadapter;
+	public MyFoodTypeAdapter myfoodtypeadapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +43,8 @@ public class KFCMenu extends Activity {
 		showImgToast();
 		getView();
 		
-		RefreshFoodMenuList(currentFoodType);
-		RefreshFoodTypeList();
+		setFoodMenuList();
+		setFoodTypeList();
 	}
 	
 	private void getView(){
@@ -59,11 +67,31 @@ public class KFCMenu extends Activity {
 		t.show();
 	}
 
+	public void setFoodMenuList(){
+		List<HashMap<String, Object>> foodmenulist = foodsbiz.getFoodMenuList(KFCMenu.this, currentFoodType, AppData.userid, AppData.serial);
+		mymenulistadapter = foodsbiz.getMyMenuListAdapter(KFCMenu.this, foodmenulist);
+		mLvFoodMenu.setAdapter(mymenulistadapter);
+	}
+	
+	public void setFoodTypeList(){
+		myfoodtypeadapter = foodtypebiz.getMyFoodTypeAdapter(KFCMenu.this);
+		mLvFoodType.setAdapter(myfoodtypeadapter);
+	}
+	
+	public void ReloadFoodMenuList(int currentFoodType) {
+		List<HashMap<String, Object>> foodmenulist = foodsbiz.getFoodMenuList(KFCMenu.this, currentFoodType, AppData.userid, AppData.serial);
+		mymenulistadapter.addData(foodmenulist);
+		mymenulistadapter.notifyDataSetChanged();
+	}
+	
 	public void RefreshFoodMenuList(int currentFoodType) {
-		mLvFoodMenu.setAdapter(foodsbiz.getMyMenuListAdapter(KFCMenu.this, currentFoodType, AppData.userid, AppData.serial));
+		List<HashMap<String, Object>> foodmenulist = foodsbiz.getFoodMenuList(KFCMenu.this, currentFoodType, AppData.userid, AppData.serial);
+		mymenulistadapter = foodsbiz.getMyMenuListAdapter(KFCMenu.this, foodmenulist);
+		mLvFoodMenu.setAdapter(mymenulistadapter);
 	}
 	
 	public void RefreshFoodTypeList() {
-		mLvFoodType.setAdapter(foodtypebiz.getMyFoodTypeAdapter(KFCMenu.this));
+		myfoodtypeadapter = foodtypebiz.getMyFoodTypeAdapter(KFCMenu.this);
+		mLvFoodType.setAdapter(myfoodtypeadapter);
 	}
 }

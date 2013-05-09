@@ -1,5 +1,8 @@
 package com.kfcreservation.biz;
 
+import java.util.HashMap;
+import java.util.List;
+
 import android.content.Context;
 import android.os.Message;
 
@@ -14,21 +17,26 @@ public class UserFoodsBiz extends UserFoodsDaoImpl {
 
 	public boolean AddUserFoods(Context context, UserFoods userfoods) {
 		if( super.getUserFoodsByFoodId(context, userfoods.getFoodid()).size() > 0 ){
+			System.out.println("已有记录，增加count");
 			super.updUserFoods(context, userfoods);
-			msg = KFCMenuHandler.RefreshFoodMenuHandler.obtainMessage();
+			msg = KFCMenuHandler.ReloadFoodMenuHandler.obtainMessage();
 			msg.obj = context;
 			msg.arg1 = 0;
-			KFCMenuHandler.RefreshFoodMenuHandler.sendMessage(msg);
+			KFCMenuHandler.ReloadFoodMenuHandler.sendMessage(msg);
 			return true;
 			
 		}else{
+			System.out.println("创建记录");
 			super.setUserFoods(context, userfoods);
-			msg = KFCMenuHandler.RefreshFoodMenuHandler.obtainMessage();
+			msg = KFCMenuHandler.ReloadFoodMenuHandler.obtainMessage();
 			msg.obj = context;
 			msg.arg1 = 0;
-			KFCMenuHandler.RefreshFoodMenuHandler.sendMessage(msg);
+			KFCMenuHandler.ReloadFoodMenuHandler.sendMessage(msg);
 			return true;
 		}
 	}
-
+	
+	public List<HashMap<String, Object>> getUserFoodsCountById(Context context, int uid, long serial, int fid){
+		return super.getUserFoodsCountById(context, uid, serial, fid);
+	}
 }

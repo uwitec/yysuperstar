@@ -14,7 +14,7 @@ import com.kfcreservation.provide.MyMenuListAdapter;
 public class FoodsBiz extends FoodsDaoImpl {
 	Message msg;
 	
-	public MyMenuListAdapter getMyMenuListAdapter(Context context, int currentFoodType, int uid, long Serial){
+	public List<HashMap<String, Object>> getFoodMenuList(Context context, int currentFoodType, int uid, long Serial){
 		List<HashMap<String, Object>> foodmenulist = super.getFoodMenuList(context, currentFoodType, uid, Serial);
 		
 		for (HashMap<String, Object> k : foodmenulist) {
@@ -22,6 +22,16 @@ public class FoodsBiz extends FoodsDaoImpl {
 			k.remove("Img");
 			k.put("Img", ActivityCore.getBitmapFormAssets( context.getAssets(), imgName) );
 		}
-		return new MyMenuListAdapter(context, foodmenulist);
+		return foodmenulist;
+		
+	}
+	
+	public MyMenuListAdapter getMyMenuListAdapter(Context context, List<HashMap<String, Object>> list){
+		
+		return new MyMenuListAdapter(context, list);
+	}
+	
+	public void refreshFoodMenuList(Context context, List<HashMap<String, Object>> list){
+		new MyMenuListAdapter(context, list).addData(list);
 	}
 }

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -19,6 +20,8 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
 import com.kfcreservation.R;
+import com.kfcreservation.core.AppData;
+import com.kfcreservation.handler.KFCLoginHandler;
 
 @SuppressWarnings("deprecation")
 public class KFCWaiter extends Activity {
@@ -89,6 +92,37 @@ public class KFCWaiter extends Activity {
 			}
 			if ("ShoppingCar".equals(tabId)) {
 				mPager.setCurrentItem(1);
+//				try {
+//					Thread.currentThread().join(2000);
+//				} catch (InterruptedException e1) {
+//					e1.printStackTrace();
+//				}
+//				System.out.println("---tabhost shoppingcar---");
+//				
+//				Thread subthread = new Thread(){
+//					@Override
+//					public void run() {
+//						try {
+//							sleep(3000);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				};
+//				
+//				subthread.start();
+//				
+//				try {
+//					subthread.join();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//				System.out.println("---sleep 3000 done---");
+//				KFCShoppingCar kfcshoppingcar = (KFCShoppingCar) AppData.getActivityList("KFCShoppingCar");
+//				kfcshoppingcar.setShoppingCarlist();
+//				//kfcshoppingcar.ReloadShoppingCarlist();
+//				kfcshoppingcar.setTotal();
+//				System.out.println("---tabhost shoppingcar rf---");
 			}
 			if ("MyAdds".equals(tabId)) {
 				mPager.setCurrentItem(2);

@@ -32,6 +32,11 @@ public class MyFoodTypeAdapter extends BaseAdapter {
 		this.mContext = mContext;
 	}
 	
+	public void addData(List<HashMap<String, Object>> list){
+		this.mData = list;
+		notifyDataSetChanged();
+	}
+	
 	@Override
 	public int getCount() {
 		return mData.size();
