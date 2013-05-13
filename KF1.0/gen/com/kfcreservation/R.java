@@ -76,18 +76,22 @@ public final class R {
         public static final int nextbutton=0x7f020013;
         public static final int nextbuttonsmall=0x7f020014;
         public static final int order_back=0x7f020015;
-        public static final int refreshbutton=0x7f020016;
-        public static final int rlistback=0x7f020017;
-        public static final int selected=0x7f020018;
-        public static final int shape_bg_listview=0x7f020019;
-        public static final int shoppingcarb=0x7f02001a;
-        public static final int tips=0x7f02001b;
-        public static final int title=0x7f02001c;
-        public static final int title_adr=0x7f02001d;
-        public static final int title_shop=0x7f02001e;
-        public static final int title_tong=0x7f02001f;
-        public static final int weibo=0x7f020020;
-        public static final int yangyang=0x7f020021;
+        public static final int redbutton=0x7f020016;
+        public static final int redbutton_selector=0x7f020017;
+        public static final int redbuttondown=0x7f020018;
+        public static final int refreshbutton=0x7f020019;
+        public static final int rlistback=0x7f02001a;
+        public static final int selected=0x7f02001b;
+        public static final int shape_bg_listview=0x7f02001c;
+        public static final int shoppingcarb=0x7f02001d;
+        public static final int tips=0x7f02001e;
+        public static final int title=0x7f02001f;
+        public static final int title_adr=0x7f020020;
+        public static final int title_shop=0x7f020021;
+        public static final int title_tong=0x7f020022;
+        public static final int twod=0x7f020023;
+        public static final int weibo=0x7f020024;
+        public static final int yangyang=0x7f020025;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f08000c;

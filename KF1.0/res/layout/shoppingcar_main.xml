@@ -94,9 +94,9 @@
 	    android:layout_alignParentBottom="true"
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentRight="true"
-	    android:background="@drawable/refreshbutton"
+	    android:background="@drawable/redbutton_selector"
 	    android:textColor="#ffffff"
 	    android:textSize="20dp"
-	    android:text="价格不对可以点点我哦！" />
+	    android:text="刷 新 购 物 车" />
 
 </RelativeLayout>

@@ -23,10 +23,10 @@
         android:layout_alignBaseline="@+id/tv_adress"
         android:layout_alignBottom="@+id/tv_adress"
         android:layout_alignLeft="@+id/tv_selectphone"
-        android:text="address"
-        android:textColor="#ff0000"
-        android:singleLine="true"
         android:ellipsize="end"
+        android:singleLine="true"
+        android:text="                                  "
+        android:textColor="#ff0000"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -74,7 +74,7 @@
         android:layout_below="@+id/et_receiver"
         android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/tv_phone"
-        android:text="phonenumber"
+        android:text="                              "
         android:textColor="#ff0000"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -157,11 +157,14 @@
 
     <Button
         android:id="@+id/bu_toorder"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/add_button"
-        android:text="预览订单" />
+        android:layout_alignParentRight="true"
+        android:background="@drawable/redbutton_selector"
+        android:text="预 览 订 单"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
 </RelativeLayout>
