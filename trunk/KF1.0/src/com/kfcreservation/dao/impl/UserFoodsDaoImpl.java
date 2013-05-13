@@ -45,7 +45,7 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsByFoodId(Context context,
 			int fid) {
-		String sql = "SELECT * FROM " + TableName + " WHERE Foodid = \""+ fid +"\";";
+		String sql = "SELECT * FROM " + TableName + " WHERE Foodid = "+fid+" AND status = 0"+";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}
@@ -53,22 +53,21 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsOrder(Context context,
 			int uid) {
-		String sql = "SELECT b.Name,a.Count,a.Count * b.Price as SumPrice FROM " + TableName + " as a , \"Foods\" as b" + " WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND a.Foodid = b.\"_id\""+";";
+		String sql = "SELECT a.foodid,b.Name,a.Count,a.Count * b.Price as SumPrice FROM " + TableName + " as a , \"Foods\" as b" + " WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND a.Foodid = b.\"_id\""+" AND a.status = 0"+";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}
 
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsCount(Context context, int uid, int FoodType) {
-		String sql = "SELECT a.Foodid, a.Count FROM \"UserFoods\" as a, \"Foods\" as b WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND b.FoodType = "+ FoodType +" AND a.Foodid = b.\"_id\";";
+		String sql = "SELECT a.Foodid, a.Count FROM "+TableName+" as a, \"Foods\" as b WHERE a.Userid = "+ uid +" AND a.serial = "+ AppData.serial +" AND b.FoodType = "+ FoodType +" AND a.Foodid = b.\"_id\";";
 		return MySQLiteHelper.lQuery(sql);
 	}
 
 	@Override
 	public List<HashMap<String, Object>> getUserFoodsCountById(Context context,
 			int uid, long serial, int fid) {
-		String sql = "SELECT Count FROM \"UserFoods\" WHERE Userid = "+uid+" AND Serial = "+serial+" AND Foodid = "+fid+";";
+		String sql = "SELECT Count FROM "+TableName+" WHERE Userid = "+uid+" AND status = 0"+" AND Serial = "+serial+" AND Foodid = "+fid+";";
 		return MySQLiteHelper.lQuery(sql);
 	}
-
 }

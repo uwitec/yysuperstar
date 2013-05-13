@@ -28,7 +28,7 @@ public class FoodsDaoImpl implements FoodsDao {
 	@Override
 	public List<HashMap<String, Object>> getFoodMenuList(Context context,
 			int type, int uid ,long Serial) {
-		String sql="select a.\"_id\", a.Name, a.Price, a.FoodType, a.Img as Img, ifnull(b.Count,0) as Count from Foods as a LEFT JOIN UserFoods as b on a.\"_id\" = b.Foodid AND b.Userid = "+uid+" AND b.Serial = "+Serial+" WHERE a.FoodType = "+type+";";
+		String sql="select a.\"_id\", a.Name, a.Price, a.FoodType, a.Img as Img, ifnull(b.Count,0) as Count from Foods as a LEFT JOIN UserFoods as b on a.\"_id\" = b.Foodid AND b.Userid = "+uid+" AND b.Serial = "+Serial+" AND b.status = 0"+" WHERE a.FoodType = "+type+";";
 		return MySQLiteHelper.lQuery(sql);
 	}
 }

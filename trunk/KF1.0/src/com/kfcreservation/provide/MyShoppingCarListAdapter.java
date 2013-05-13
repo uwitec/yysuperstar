@@ -15,13 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kfcreservation.R;
+import com.kfcreservation.biz.UserFoodsBiz;
 import com.kfcreservation.core.AppData;
+import com.kfcreservation.dao.UserFoodsDao;
+import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
+import com.kfcreservation.entity.UserFoods;
 
 public class MyShoppingCarListAdapter extends BaseAdapter {
 	HashMap<Integer,View> lmap = new HashMap<Integer,View>();  
 	private LayoutInflater mInflater;
 	private List<HashMap<String, Object>> mData;
 	private Context context = null;
+	
+	private UserFoods userfoods = new UserFoods();
+	private UserFoodsBiz userfoodsbiz = new UserFoodsBiz();	
 	
 	public final class ViewHolderSC {
 		public TextView tv_name;
@@ -85,16 +92,43 @@ public class MyShoppingCarListAdapter extends BaseAdapter {
 			convertView = lmap.get(position);  
 			holder = (ViewHolderSC)convertView.getTag();  
 		}  
-
+		holder.bt_cancel.setTag(dataSet);
 		holder.bt_cancel.setOnClickListener(new OnClickListener() {
 		
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "取消", Toast.LENGTH_SHORT).show();
+				HashMap<String, Object> food = (HashMap<String, Object>) v.getTag();
+				List<HashMap<String, Object>> FoodsCountlist = userfoodsbiz.getUserFoodsCountById( context, AppData.userid, AppData.serial, Integer.valueOf(food.get("Foodid").toString()) );
+				if(FoodsCountlist.size() > 0){
+					userfoods.setCount( Integer.valueOf(FoodsCountlist.get(0).get("Count").toString()));
+				}else{
+					Toast.makeText(context, "刪除失败", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
+				userfoods.setFoodid( Integer.valueOf(food.get("Foodid").toString()) );
+				userfoods.setSerial(AppData.serial);
+				userfoods.setStatus(1);
+				userfoods.setUserid(AppData.userid) ;
+				
+				userfoodsbiz.cancelUserFoods(context, userfoods);
+				
+				updAppDataUserOrderList();
+				Toast.makeText(context, "删除成功", Toast.LENGTH_SHORT).show();
 			}
 		});
 		System.out.println("MyShoppingCarListAdapter Name:"+(String)dataSet.get("Name") + " Count:"+(String)dataSet.get("Count") + " SumPrice"+(String)dataSet.get("SumPrice")+" position:"+position);
 		return convertView;
+	}
+	
+	//更新购物车
+	private void updAppDataUserOrderList() {
+		
+		System.out.println("updAppDataUserOrderList");
+		UserFoodsDao userfoodsdao = new UserFoodsDaoImpl();
+		List<HashMap<String, Object>> UserFoodsList = userfoodsdao.getUserFoodsOrder(
+				context, AppData.userid);
+		AppData.setUserOrderList(UserFoodsList);
 	}
 
 //	@Override
