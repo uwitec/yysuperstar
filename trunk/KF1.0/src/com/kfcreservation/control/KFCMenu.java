@@ -60,7 +60,7 @@ public class KFCMenu extends Activity {
 		// 创建一个imageView
 		ImageView image = new ImageView(KFCMenu.this);
 		image.setImageResource(R.drawable.tips);
-		// 创建一个linearlayout
+		// 创建一个linearLayout
 		LinearLayout ll = new LinearLayout(KFCMenu.this);
 		ll.addView(image);
 		t.setView(ll);
