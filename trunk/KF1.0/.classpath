@@ -2,8 +2,11 @@
 <classpath>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs/weibo.sdk.android.sso.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="libs/weibo.sdk.android.sso.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/TMProject/trunk/KF1.0/libs/android-integration.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/TMProject/trunk/KF1.0/libs/core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/TMProject/trunk/KF1.0/libs/javase.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
