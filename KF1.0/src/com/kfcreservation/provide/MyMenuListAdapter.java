@@ -107,6 +107,18 @@ public class MyMenuListAdapter extends BaseAdapter {
 					userfoods.setCount(1);
 				}
 				
+				List<HashMap<String, Object>> Foodsufidlist = userfoodsbiz.getUserFoodsufidByFoodid(context, AppData.userid, AppData.serial, Integer.valueOf(food.get("_id").toString()));
+				
+				if(Foodsufidlist.size() > 0) {
+					userfoods.set_ufid( Integer.valueOf(Foodsufidlist.get(0).get("ufid").toString()) );
+				}
+				else {
+					List<HashMap<String, Object>> Maxidlist = userfoodsbiz.getUserFoodsMaxid(context);
+					if(Maxidlist.get(0).get("ufid") != null ) {
+						userfoods.set_ufid( Integer.valueOf(Maxidlist.get(0).get("ufid").toString()) + 1 );
+					}
+				}
+				
 				userfoods.setFoodid( Integer.valueOf(food.get("_id").toString()) );
 				userfoods.setSerial(AppData.serial);
 				userfoods.setStatus(0);

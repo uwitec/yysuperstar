@@ -17,11 +17,15 @@ public interface UserFoodsDao {
 	
 	public long delUserFoods(Context context, UserFoods userFoods);
 	
-	public List<HashMap<String, Object>> getUserFoodsByFoodId(Context context, int fid);
+	public List<HashMap<String, Object>> getUserFoodsByufid(Context context, int ufid);
 	
 	public List<HashMap<String, Object>> getUserFoodsOrder(Context context, int uid);
 	
 	public List<HashMap<String, Object>> getUserFoodsCount(Context context, int uid, int FoodType);
 	
 	public List<HashMap<String, Object>> getUserFoodsCountById(Context context, int uid, long serial, int fid);
+	
+	public List<HashMap<String, Object>> getUserFoodsufidByFoodid(Context context, int uid, long serial, int fid);
+	
+	public List<HashMap<String, Object>> getUserFoodsMaxid(Context context);
 }

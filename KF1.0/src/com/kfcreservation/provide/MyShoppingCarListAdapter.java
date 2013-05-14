@@ -106,15 +106,27 @@ public class MyShoppingCarListAdapter extends BaseAdapter {
 					return;
 				}
 				
+				List<HashMap<String, Object>> Foodsufidlist = userfoodsbiz.getUserFoodsufidByFoodid(context, AppData.userid, AppData.serial, Integer.valueOf(food.get("Foodid").toString()));
+				
+				if(Foodsufidlist.size() > 0) {
+					userfoods.set_ufid( Integer.valueOf(Foodsufidlist.get(0).get("ufid").toString()) );
+				}
+				else {
+					Toast.makeText(context, "„h³ýÊ§°Ü", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
 				userfoods.setFoodid( Integer.valueOf(food.get("Foodid").toString()) );
 				userfoods.setSerial(AppData.serial);
 				userfoods.setStatus(1);
 				userfoods.setUserid(AppData.userid) ;
 				
-				userfoodsbiz.cancelUserFoods(context, userfoods);
+				if(userfoodsbiz.cancelUserFoods(context, userfoods)){
+					Toast.makeText(context, "É¾³ý³É¹¦", Toast.LENGTH_SHORT).show();
+				}
 				
 				updAppDataUserOrderList();
-				Toast.makeText(context, "É¾³ý³É¹¦", Toast.LENGTH_SHORT).show();
+				
 			}
 		});
 		System.out.println("MyShoppingCarListAdapter Name:"+(String)dataSet.get("Name") + " Count:"+(String)dataSet.get("Count") + " SumPrice"+(String)dataSet.get("SumPrice")+" position:"+position);
