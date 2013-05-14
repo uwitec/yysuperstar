@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.Message;
-import android.widget.ListAdapter;
 
 import com.kfcreservation.core.ActivityCore;
 import com.kfcreservation.dao.impl.FoodsDaoImpl;

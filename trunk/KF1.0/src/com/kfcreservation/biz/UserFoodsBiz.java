@@ -17,7 +17,7 @@ public class UserFoodsBiz extends UserFoodsDaoImpl {
 	Message msg;
 
 	public boolean AddUserFoods(Context context, UserFoods userfoods) {
-		if( super.getUserFoodsByFoodId(context, userfoods.getFoodid()).size() > 0 ){
+		if( super.getUserFoodsByufid(context, userfoods.get_ufid()).size() > 0 ){
 			System.out.println("已有记录，增加count");
 			super.updUserFoods(context, userfoods);
 			msg = KFCMenuHandler.ReloadFoodMenuHandler.obtainMessage();
@@ -41,17 +41,25 @@ public class UserFoodsBiz extends UserFoodsDaoImpl {
 		return super.getUserFoodsCountById(context, uid, serial, fid);
 	}
 	
+	public List<HashMap<String, Object>> getUserFoodsufidByFoodid(Context context, int uid, long serial, int fid){
+		return super.getUserFoodsufidByFoodid(context, uid, serial, fid);
+	}
+	
+	public List<HashMap<String, Object>> getUserFoodsMaxid(Context context){
+		return super.getUserFoodsMaxid(context);
+	}
+	
 	public boolean cancelUserFoods(Context context, UserFoods userfoods){
-		if( super.getUserFoodsByFoodId(context, userfoods.getFoodid()).size() > 0 ){
+		if( super.getUserFoodsByufid(context, userfoods.get_ufid()).size() > 0 ){
 			super.updUserFoods(context, userfoods);
-			System.out.println("删除成功");
+			System.out.println("cancelUserFoods 删除成功");
 			msg = KFCShoppingCarHandler.RefreshShoppingCarHandler.obtainMessage();
 			msg.obj = context;
 			KFCShoppingCarHandler.RefreshShoppingCarHandler.sendMessage(msg);
 			return true;
 			
 		}else{
-			System.out.println("无此数据，删除失败");
+			System.out.println("cancelUserFoods 无此数据，删除失败");
 			msg = KFCShoppingCarHandler.RefreshShoppingCarHandler.obtainMessage();
 			msg.obj = context;
 			KFCShoppingCarHandler.RefreshShoppingCarHandler.sendMessage(msg);

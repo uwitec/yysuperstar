@@ -32,20 +32,20 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	@Override
 	public long updUserFoods(Context context, UserFoods userFoods) {
 		ContentValues values = userFoods.getContentValues();
-		long count = MySQLiteHelper.getDB(context).update(TableName, values, "Foodid=?", new String[] {String.valueOf(userFoods.getFoodid())} );
+		long count = MySQLiteHelper.getDB(context).update(TableName, values, "_ufid=? AND Foodid=?", new String[] {String.valueOf(userFoods.get_ufid()),String.valueOf(userFoods.getFoodid())} );
 		return count;
 	}
 
 	@Override
 	public long delUserFoods(Context context, UserFoods userFoods) {
-		long count = MySQLiteHelper.getDB(context).delete(TableName, "Foodid=?", new String[] {String.valueOf(userFoods.getFoodid())} );
+		long count = MySQLiteHelper.getDB(context).delete(TableName, "_ufid=?", new String[] {String.valueOf(userFoods.get_ufid())} );
 		return count;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getUserFoodsByFoodId(Context context,
-			int fid) {
-		String sql = "SELECT * FROM " + TableName + " WHERE Foodid = "+fid+" AND status = 0"+";";
+	public List<HashMap<String, Object>> getUserFoodsByufid(Context context,
+			int ufid) {
+		String sql = "SELECT * FROM " + TableName + " WHERE _ufid = "+ufid+" AND status = 0"+";";
 		List<HashMap<String, Object>> lists = MySQLiteHelper.lQuery(sql);
 		return lists;
 	}
@@ -68,6 +68,19 @@ public class UserFoodsDaoImpl implements UserFoodsDao{
 	public List<HashMap<String, Object>> getUserFoodsCountById(Context context,
 			int uid, long serial, int fid) {
 		String sql = "SELECT Count FROM "+TableName+" WHERE Userid = "+uid+" AND status = 0"+" AND Serial = "+serial+" AND Foodid = "+fid+";";
+		return MySQLiteHelper.lQuery(sql);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getUserFoodsufidByFoodid(
+			Context context, int uid, long serial, int fid) {
+		String sql = "SELECT _ufid as ufid FROM "+TableName+" WHERE Userid = "+uid+" AND status = 0"+" AND Serial = "+serial+" AND Foodid = "+fid+";";
+		return MySQLiteHelper.lQuery(sql);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getUserFoodsMaxid(Context context) {
+		String sql = "SELECT max(\"_ufid\") as ufid FROM "+TableName+";";
 		return MySQLiteHelper.lQuery(sql);
 	}
 }
