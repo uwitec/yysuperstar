@@ -4,6 +4,9 @@ package com.kfcreservation.control;
 import java.text.DecimalFormat;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 import com.kfcreservation.R;
 import com.kfcreservation.Zxing.Demo.CaptureActivity;
 import com.kfcreservation.core.AppData;
+import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.entity.Order;
 import com.kfcreservation.provide.MyOrderAdapter;
 
@@ -28,7 +32,7 @@ public class KFCOrder extends Activity {
 	TextView mPhone;
 	TextView mMsg;
 	ListView mList;
-	Button btn_2d;
+	Button btn_2d,btn_ordersure;
 	static String money;
 	String name;
 	String address;
@@ -36,7 +40,7 @@ public class KFCOrder extends Activity {
 	String msg;
 	static double discount=0.0;
 	Order o =new Order();
-	
+	//final ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);    
 
 	//handler方法传送数据
 	public static Handler handler = new Handler(){
@@ -64,9 +68,16 @@ public class KFCOrder extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.kfcorder);
-
+		ExitApplication.getInstance().addActivity(this);
 		getView();
 		mList.setAdapter(new MyOrderAdapter(KFCOrder.this,AppData.UserOrderList));
+		btn_ordersure.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				ExitApplication.getInstance().exit();
+			}});
 		btn_2d.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -99,6 +110,7 @@ public class KFCOrder extends Activity {
 		mList=(ListView) findViewById(R.id.lv_order);
 		mMsg=(TextView) findViewById(R.id.tv_msg);
 		btn_2d=(Button)findViewById(R.id.btn_2d);
+		btn_ordersure=(Button)findViewById(R.id.bu_ordersure);
 	}
 	
 	public void getStringFromIntent(){

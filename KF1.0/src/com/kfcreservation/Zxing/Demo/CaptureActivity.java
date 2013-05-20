@@ -30,6 +30,7 @@ import com.kfcreservation.Zxing.Demo.decoding.CaptureActivityHandler;
 import com.kfcreservation.Zxing.Demo.decoding.InactivityTimer;
 import com.kfcreservation.Zxing.Demo.view.ViewfinderView;
 import com.kfcreservation.control.KFCOrder;
+import com.kfcreservation.core.ExitApplication;
 
 public class CaptureActivity extends Activity implements Callback {
 
@@ -38,7 +39,7 @@ public class CaptureActivity extends Activity implements Callback {
 	private boolean hasSurface;
 	private Vector<BarcodeFormat> decodeFormats;
 	private String characterSet;
-	private TextView txtResult, showdialog, btn_goback;
+	private TextView showdialog, btn_goback;
 	private InactivityTimer inactivityTimer;
 	private MediaPlayer mediaPlayer;
 	private boolean playBeep;
@@ -52,6 +53,7 @@ public class CaptureActivity extends Activity implements Callback {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		ExitApplication.getInstance().addActivity(this);
 		//初始化 CameraManager
 		CameraManager.init(getApplication());
 		name =CaptureActivity.this.getIntent().getStringExtra("name").toString();
@@ -61,7 +63,7 @@ public class CaptureActivity extends Activity implements Callback {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!"+name+phone+address+msg);
 		
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		txtResult = (TextView) findViewById(R.id.txtResult);
+		//txtResult = (TextView) findViewById(R.id.txtResult);
 		//定义一个文字
 		btn_goback=(TextView)findViewById(R.id.btn_goback);
 		btn_goback.setOnClickListener(new TvClick());
@@ -193,20 +195,20 @@ public class CaptureActivity extends Activity implements Callback {
 		playBeepSoundAndVibrate();
 		String rst=obj.getText().toString().trim();
 	//打印
-		System.out.println(rst);
+		//System.out.println(rst);
 		getDiscount(rst);
 		Message msg =KFCOrder.disHandler.obtainMessage();
 		msg.obj=disc;
 		KFCOrder.disHandler.sendMessage(msg);
-		txtResult.setText(obj.getBarcodeFormat().toString() + ":"
-				+ obj.getText());
+//		txtResult.setText(obj.getBarcodeFormat().toString() + ":"
+//				+ obj.getText());
 	}
 	
 	private double getDiscount(String rst){
-		int end =rst.indexOf('#');
-		String d =rst.substring(0, end);
-		System.out.println("ddddddddddddddddd"+d);
-		disc=Double.parseDouble(d);
+//		int end =rst.indexOf('#');
+//		String d =rst.substring(0, end);
+		//System.out.println("ddddddddddddddddd"+d);
+		disc=Double.parseDouble(rst);
 		return disc;
 	}
 

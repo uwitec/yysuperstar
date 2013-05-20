@@ -32,7 +32,7 @@ public class MyMenuListAdapter extends BaseAdapter {
 	private UserFoods userfoods = new UserFoods();
 
 	private UserFoodsBiz userfoodsbiz = new UserFoodsBiz();
-	
+	private int index;
 	public final class ViewHolderM {
 		public ImageView im_img;
 		public TextView tv_name;
@@ -131,9 +131,9 @@ public class MyMenuListAdapter extends BaseAdapter {
 				kfcshoppingcar.setShoppingCarlist();
 				kfcshoppingcar.ReloadShoppingCarlist();
 				kfcshoppingcar.setTotal();
-				Toast.makeText(context, "已加入购物车", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(context, "已加入购物车", Toast.LENGTH_SHORT).show();
 				
-				System.out.println("已加入购物车");
+
 			}
 		});
 
@@ -142,10 +142,68 @@ public class MyMenuListAdapter extends BaseAdapter {
 			
 			@Override
 			public void onClick(View v) {
-				
+				HashMap<String, Object> food = (HashMap<String, Object>) v.getTag();
+				List<HashMap<String, Object>> FoodsCountlist = userfoodsbiz.getUserFoodsCountById( context, AppData.userid, AppData.serial, Integer.valueOf(food.get("_id").toString()) );
+				index =Integer.valueOf(FoodsCountlist.get(0).get("Count").toString());
+				if(index>0){
+				if(FoodsCountlist.size() > 0){
+					 System.out.println("index========"+index);
+					userfoods.setCount( Integer.valueOf(FoodsCountlist.get(0).get("Count").toString()) - 1);
+					List<HashMap<String, Object>> Foodsufidlist = userfoodsbiz.getUserFoodsufidByFoodid(context, AppData.userid, AppData.serial, Integer.valueOf(food.get("_id").toString()));
+					
+					if(Foodsufidlist.size() > 0) {
+						userfoods.set_ufid( Integer.valueOf(Foodsufidlist.get(0).get("ufid").toString()) );
+					}
+					else {
+						List<HashMap<String, Object>> Maxidlist = userfoodsbiz.getUserFoodsMaxid(context);
+						if(Maxidlist.get(0).get("ufid") != null ) {
+							userfoods.set_ufid( Integer.valueOf(Maxidlist.get(0).get("ufid").toString()) + 1 );
+						}
+					}
+					
+					userfoods.setFoodid( Integer.valueOf(food.get("_id").toString()) );
+					userfoods.setSerial(AppData.serial);
+					userfoods.setStatus(0);
+					userfoods.setUserid(AppData.userid) ;
+					
+					userfoodsbiz.AddUserFoods(context, userfoods);
+					
+					updAppDataUserOrderList();
+					KFCShoppingCar kfcshoppingcar = (KFCShoppingCar) AppData.getActivityList("KFCShoppingCar");
+					kfcshoppingcar.setShoppingCarlist();
+					kfcshoppingcar.ReloadShoppingCarlist();
+					kfcshoppingcar.setTotal();
+					}
+				}else{
+					Toast.makeText(context, "不能低于0", Toast.LENGTH_SHORT).show();
+				}
+//				List<HashMap<String, Object>> Foodsufidlist = userfoodsbiz.getUserFoodsufidByFoodid(context, AppData.userid, AppData.serial, Integer.valueOf(food.get("_id").toString()));
+//				
+//				if(Foodsufidlist.size() > 0) {
+//					userfoods.set_ufid( Integer.valueOf(Foodsufidlist.get(0).get("ufid").toString()) );
+//				}
+//				else {
+//					List<HashMap<String, Object>> Maxidlist = userfoodsbiz.getUserFoodsMaxid(context);
+//					if(Maxidlist.get(0).get("ufid") != null ) {
+//						userfoods.set_ufid( Integer.valueOf(Maxidlist.get(0).get("ufid").toString()) + 1 );
+//					}
+//				}
+//				
+//				userfoods.setFoodid( Integer.valueOf(food.get("_id").toString()) );
+//				userfoods.setSerial(AppData.serial);
+//				userfoods.setStatus(0);
+//				userfoods.setUserid(AppData.userid) ;
+//				
+//				userfoodsbiz.AddUserFoods(context, userfoods);
+//				
+//				updAppDataUserOrderList();
+//				KFCShoppingCar kfcshoppingcar = (KFCShoppingCar) AppData.getActivityList("KFCShoppingCar");
+//				kfcshoppingcar.setShoppingCarlist();
+//				kfcshoppingcar.ReloadShoppingCarlist();
+//				kfcshoppingcar.setTotal();
 			}
 		});
-		System.out.println("MyMenuListAdapter Name:"+(String) dataSet.get("Name") + " position:"+position);
+		//System.out.println("MyMenuListAdapter Name:"+(String) dataSet.get("Name") + " position:"+position);
 		return convertView;
 	}
 

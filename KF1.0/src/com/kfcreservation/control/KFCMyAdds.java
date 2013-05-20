@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.kfcreservation.R;
 import com.kfcreservation.biz.PhoneNumBiz;
 import com.kfcreservation.biz.UserAddressBiz;
+import com.kfcreservation.core.AppData;
+import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 
 public class KFCMyAdds extends Activity {
@@ -43,7 +45,7 @@ public class KFCMyAdds extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//ExitApplication.getInstance().addActivity(this);
+		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMyAdds.this);
 		setContentView(R.layout.myadds_main);
 		getView();
@@ -57,8 +59,8 @@ public class KFCMyAdds extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		lv_phone.setAdapter( phonenumbiz.getMyNumAdapter(KFCMyAdds.this, 1) );
-		lv_addresses.setAdapter(useraddressbiz.getMyAddressAdapter(KFCMyAdds.this, 1));
+		lv_phone.setAdapter( phonenumbiz.getMyNumAdapter(KFCMyAdds.this, AppData.userid) );
+		lv_addresses.setAdapter(useraddressbiz.getMyAddressAdapter(KFCMyAdds.this, AppData.userid));
 		btn_newPhone.setOnClickListener(new btnClick());
 		btn_newAddress.setOnClickListener(new btnClick());
 		mOrder.setOnClickListener(new btnClick());
@@ -66,11 +68,11 @@ public class KFCMyAdds extends Activity {
 	}
 
 	public BaseAdapter getAd() {
-		BaseAdapter adapter = phonenumbiz.getMyNumAdapter(KFCMyAdds.this, 1);
+		BaseAdapter adapter = phonenumbiz.getMyNumAdapter(KFCMyAdds.this, AppData.userid);
 		return adapter;
 	}
 	public BaseAdapter getDressAdapter(){
-		BaseAdapter adapter =useraddressbiz.getMyAddressAdapter(KFCMyAdds.this, 1);
+		BaseAdapter adapter =useraddressbiz.getMyAddressAdapter(KFCMyAdds.this, AppData.userid);
 		return adapter;
 	}
 
@@ -82,7 +84,7 @@ public class KFCMyAdds extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				List<HashMap<String, Object>> lst = phonenumbiz.getAllNumber(
-						KFCMyAdds.this, 1);
+						KFCMyAdds.this, AppData.userid);
 				HashMap<String, Object> mp = lst.get(position);
 				myphone = (String) mp.get("PhoneNum");
 				System.out.println(myphone);
@@ -95,7 +97,7 @@ public class KFCMyAdds extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				List<HashMap<String,Object>> li =useraddressbiz.getAllAddress(KFCMyAdds.this,1);
+				List<HashMap<String,Object>> li =useraddressbiz.getAllAddress(KFCMyAdds.this,AppData.userid);
 				HashMap<String, Object> mp = li.get(position);
 				myaddress = (String) mp.get("Address");
 				System.out.println(myaddress);
@@ -148,8 +150,8 @@ public class KFCMyAdds extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								String p = phone.getText().toString().trim();
-								phonenumbiz.checkAdd(KFCMyAdds.this, 1, p);
-								lv_phone.setAdapter(phonenumbiz.getMyNumAdapter(KFCMyAdds.this, 1));
+								phonenumbiz.checkAdd(KFCMyAdds.this, AppData.userid, p);
+								lv_phone.setAdapter(phonenumbiz.getMyNumAdapter(KFCMyAdds.this, AppData.userid));
 							}
 						});
 				builder.setNegativeButton("È¡Ïû",
@@ -187,8 +189,8 @@ public class KFCMyAdds extends Activity {
 										.trim();
 								String mAdd = zong+road;
 								System.out.println(zong + road);
-								useraddressbiz.checkAdd(KFCMyAdds.this, 1, mAdd);
-								lv_addresses.setAdapter(phonenumbiz.getMyNumAdapter(KFCMyAdds.this, 1));
+								useraddressbiz.checkAdd(KFCMyAdds.this, AppData.userid, mAdd);
+								lv_addresses.setAdapter(useraddressbiz.getMyAddressAdapter(KFCMyAdds.this, AppData.userid));
 							
 							}
 						});

@@ -14,6 +14,7 @@ import com.kfcreservation.R;
 import com.kfcreservation.biz.FoodTypeBiz;
 import com.kfcreservation.biz.FoodsBiz;
 import com.kfcreservation.core.AppData;
+import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.provide.MyFoodTypeAdapter;
 import com.kfcreservation.provide.MyMenuListAdapter;
@@ -37,7 +38,7 @@ public class KFCMenu extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//ExitApplication.getInstance().addActivity(this);
+		ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCMenu.this);
 		setContentView(R.layout.menu_main);
 		showImgToast();

@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.kfcreservation.R;
 import com.kfcreservation.core.AppData;
+import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.dao.UserFoodsDao;
 import com.kfcreservation.dao.impl.UserFoodsDaoImpl;
@@ -37,7 +38,7 @@ public class KFCShoppingCar extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// ExitApplication.getInstance().addActivity(this);
+		 ExitApplication.getInstance().addActivity(this);
 		AppData.setActivityList("KFCShoppingCar", (KFCShoppingCar)KFCShoppingCar.this);
 		MySQLiteHelper.getDB(KFCShoppingCar.this);
 
