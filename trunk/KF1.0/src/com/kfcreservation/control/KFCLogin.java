@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.kfcreservation.R;
 import com.kfcreservation.biz.UserInfoBiz;
 import com.kfcreservation.core.AccessTokenKeeper;
+import com.kfcreservation.core.ExitApplication;
 import com.kfcreservation.core.MySQLiteHelper;
 import com.kfcreservation.entity.UserInfo;
 import com.weibo.sdk.android.Oauth2AccessToken;
@@ -41,7 +42,7 @@ public class KFCLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// ExitApplication.getInstance().addActivity(this);
+		 ExitApplication.getInstance().addActivity(this);
 		MySQLiteHelper.getDB(KFCLogin.this);
 		setContentView(R.layout.login_main);
 		mWeibo = Weibo.getInstance(CONSUMER_KEY, REDIRECT_URL);
@@ -52,11 +53,6 @@ public class KFCLogin extends Activity {
 		et_phonenum = (EditText) findViewById(R.id.et_phonenum);
 		et_password = (EditText) findViewById(R.id.et_password);
 
-		String PhoneNum = "15921203291";
-		String Password = "56113214";
-
-		et_phonenum.setText(PhoneNum);
-		et_password.setText(Password);
 
 		ib_weibo.setOnClickListener(new OnClickListener() {
 

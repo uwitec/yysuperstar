@@ -56,7 +56,7 @@
         android:layout_weight="1.29"
         android:ems="13"
         android:hint="请输入密码"
-        android:inputType="textVisiblePassword" >
+        android:inputType="textPassword" >
     </EditText>
 
     <ImageButton
