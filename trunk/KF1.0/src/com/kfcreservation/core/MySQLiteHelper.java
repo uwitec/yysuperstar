@@ -101,39 +101,47 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			"\"Name\"" +
 			");",
 			// 插入食品类型数据
-			"INSERT INTO \"main\".\"FoodType\" VALUES (1,\"主食\");",
-			"INSERT INTO \"main\".\"FoodType\" VALUES (2,\"配餐\");",
-			"INSERT INTO \"main\".\"FoodType\" VALUES (3,\"饮料\");",
-			"INSERT INTO \"main\".\"FoodType\" VALUES (4,\"套餐\");",
-			"INSERT INTO \"main\".\"FoodType\" VALUES (5,\"新品\");",
-			
-			// 食品表
-			"CREATE TABLE IF NOT EXISTS \"Foods\" (" +
-			"\"_id\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-			"\"Name\" text," +
-			"\"Price\" real," +
-			"\"FoodType\" integer," +
-			"\"Img\" text" +
-			");",
-			
-			//任何品项套餐命名为 品项名+t
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"雪顶咖啡\",\"10\",\"3\",\"coffee\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"百事可乐\",\"10\",\"3\",\"coke\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"醇豆浆甜\",\"7\",\"3\",\"dou\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"劲脆鸡腿堡餐\",\"23\",\"4\",\"etct\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"薯条\",\"7.5\",\"2\",\"ff\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香辣鸡腿堡\",\"15\",\"1\",\"hb\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块香辣鸡翅\",\"8.5\",\"2\",\"hw\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"黄金海皇星2个\",\"9\",\"5\",\"hx\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"九珍(中)\",\"9\",\"3\",\"jz\");",
-			"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香醇奶茶(热)\",\"10\",\"3\",\"nc\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"柠乐\",\"8\",\"3\",\"nl\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块新奥尔良烤翅\",\"9\",\"2\",\"nw2\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"新奥尔良烤腿堡\",\"15.5\",\"1\",\"nw\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"二块吮指原味鸡\",\"16\",\"2\",\"or2\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"一块吮指原味鸡\",\"9\",\"2\",\"or\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"上校鸡块5块装\",\"6\",\"2\",\"sx\");",
-            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"田园脆鸡堡\",\"10\",\"1\",\"ty\");",
+						"INSERT INTO \"main\".\"FoodType\" VALUES (1,\"冷菜\");",
+						"INSERT INTO \"main\".\"FoodType\" VALUES (2,\"热炒\");",
+						"INSERT INTO \"main\".\"FoodType\" VALUES (3,\"干煎\");",
+						"INSERT INTO \"main\".\"FoodType\" VALUES (4,\"清蒸\");",
+						"INSERT INTO \"main\".\"FoodType\" VALUES (5,\"香煮\");",
+						
+						// 食品表
+						"CREATE TABLE IF NOT EXISTS \"Foods\" (" +
+						"\"_id\"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+						"\"Name\" text," +
+						"\"Price\" real," +
+						"\"FoodType\" integer," +
+						"\"Img\" text" +
+						");",
+						
+						//任何品项套餐命名为 品项名+t
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"凉拌老虎菜\",\"10\",\"1\",\"dban01\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"醋溜花生\",\"10\",\"1\",\"dban02\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"酸辣黄瓜条\",\"8\",\"1\",\"dban03\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"水果色拉\",\"10\",\"1\",\"dban04\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香菜干丝\",\"6\",\"1\",\"dban05\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"地三鲜\",\"22\",\"2\",\"chao01\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"番茄炒花菜\",\"18\",\"2\",\"chao02\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"干煸四季豆\",\"20\",\"2\",\"chao03\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"宫保鸡丁\",\"20\",\"2\",\"chao04\");",
+						"INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"荷塘月色\",\"15\",\"2\",\"chao05\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"虎皮包肉\",\"25\",\"3\",\"fjian01\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香煎银鳕鱼\",\"35\",\"3\",\"fjian02\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"香煎杏鲍菇\",\"32\",\"3\",\"fjian03\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"铁板松茸\",\"78\",\"3\",\"fjian04\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"肉末跑蛋\",\"16\",\"3\",\"fjian05\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"粉蒸狮子头\",\"30\",\"4\",\"dzheng01\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"玉米粉蒸肉\",\"32\",\"4\",\"dzheng02\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"清蒸带鱼\",\"42\",\"4\",\"dzheng03\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"清蒸鲈鱼\",\"38\",\"4\",\"dzheng04\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"清蒸多宝鱼\",\"45\",\"4\",\"dzheng05\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"五谷丰登\",\"15\",\"5\",\"ezhu01\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"松茸五花肉\",\"25\",\"5\",\"ezhu02\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"本帮猪脚\",\"50\",\"5\",\"ezhu08\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"黑白太极羹\",\"16\",\"5\",\"ezhu04\");",
+			            "INSERT INTO \"main\".\"Foods\" VALUES (NULL,\"麻汁豆角\",\"12\",\"5\",\"ezhu05\");",
 			
 			// 用户表
 			"CREATE TABLE IF NOT EXISTS \"UserInfo\" (" +
@@ -144,11 +152,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			//联系方式表 与用户名_uid关联
 			"create table UserPhone (_Pid Integer PRIMARY key AUTOINCREMENT,_uid Integer not NULL,PhoneNum text,FOREIGN key(_uid) REfERENCES UserInfo (_uid))",
 			
-			"insert into UserPhone(_uid,PhoneNum)values(1,'15000905298')",
 			
 			"create table UserAddress(_Aid Integer PRIMARY KEY AUTOINCREMENT,_Uid Integer not NULL,Address text,FOREIGN key(_Uid) REFERENCES UserInfo (_Uid))",
 			
-			"insert into UserAddress(_Uid,Address)values(1,'小木桥路440弄')",
 			
 			// 用户选择的食物
 			"CREATE TABLE IF NOT EXISTS \"UserFoods\" (" +
